@@ -1,0 +1,19 @@
+<html metal:use-macro="context/@@standard_macros/page">
+    <body metal:fill-slot="body">
+        <script language="JavaScript" src="++resource++surveyanswers_js/FusionMaps.js">
+        </script>
+        <script language="JavaScript" src="++resource++surveyanswers_js/FusionCharts.js">
+        </script>
+        <div class="not_drilled_down" id="mapdiv" align="center">
+            FusionMaps.
+        </div>
+        <input type="button" value="Go Back" class="drilled_down" onclick="drillback();" />
+        <div class="drilled_down" tal:repeat="chart_id view/countries" tal:attributes="id chart_id" id="chartdiv-013" style="display: None;" align="center">
+            The
+            chart will appear within this DIV. This text will be replaced by the
+            chart.
+        </div>
+        <script type="text/javascript" tal:attributes="src string: ${context/absolute_url}/xml_data">
+        </script>
+    </body>
+</html>

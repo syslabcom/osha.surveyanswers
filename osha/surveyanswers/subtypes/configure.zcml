@@ -1,0 +1,24 @@
+<configure
+	xmlns="http://namespaces.zope.org/zope"
+	    xmlns:five="http://namespaces.zope.org/five"
+	
+	xmlns:browser="http://namespaces.zope.org/browser"
+	i18n_domain="osha.surveyanswers">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+    <utility
+        name="yesnoanswers"
+        factory=".descriptors.YesNoAnswersDescriptor"
+        />
+
+    <utility
+        name="singlechoiceunorderedanswers"
+        factory=".descriptors.SingleChoiceUnorderedAnswersDescriptor"
+        />
+
+    <utility
+        name="singlechoiceorderedanswers"
+        factory=".descriptors.SingleChoiceOrderedAnswersDescriptor"
+        />
+</configure>
