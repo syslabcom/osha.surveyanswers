@@ -7,7 +7,7 @@
         <div class="not_drilled_down" id="mapdiv" align="center">
             FusionMaps.
         </div>
-        <input type="button" value="Go Back" class="drilled_down" onclick="drillback();" />
+        <input type="button" value="Go Back" id="drilled_down_button" class="drilled_down" onclick="drillback();" />
         <div class="drilled_down" tal:repeat="chart_id view/countries" tal:attributes="id chart_id" id="chartdiv-013" style="display: None;" align="center">
             The
             chart will appear within this DIV. This text will be replaced by the

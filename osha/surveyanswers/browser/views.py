@@ -23,6 +23,7 @@ function drilldown(chart){
   var chart_to_show = jq('#chartdiv-' + chart)
   if (chart_to_show){
       chart_to_show.show();
+    jq('#drilled_down_button').show();
     jq('.not_drilled_down').hide();
   }
 }
@@ -104,7 +105,7 @@ function FC_Rendered(DOMId){
         var fmap = new FusionMaps("++resource++surveyanswers_flash/%s", "Map1Id", "750", "400", "0", "1");
         fmap.setDataXML(xmlMapDataEmpty);
         fmap.render("mapdiv");
-        """ % self.params['map_name'] 
+        """ % self.getMapParams()['map_name'] 
         chart_map = """
         var myChart = new FusionCharts("++resource++surveyanswers_flash/MSColumn2D.swf", "myChartId", "900", "300", "0", "1");
         myChart.setDataXML(%s);
