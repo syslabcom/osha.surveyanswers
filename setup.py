@@ -57,9 +57,6 @@ setup(name='osha.surveyanswers',
           'archetypes.schemaextender',
           # -*- Extra requirements: -*-
       ],
-      entry_points="""
-      # -*- Entry points: -*-
-      """,
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
       test_suite = 'osha.surveyanswers.tests.test_docs.test_suite',
