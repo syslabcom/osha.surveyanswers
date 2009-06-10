@@ -1,6 +1,11 @@
 osha.surveyanswers Changelog
 ============================
 
+osha.surveyanswers 1.1 (2009-06-10)
+-----------------------------------
+
+- I screwed up the first release, here goes another one (thomasw)
+
 osha.surveyanswers 1.0 (2009-06-10)
 -----------------------------------
 
