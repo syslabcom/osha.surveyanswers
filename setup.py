@@ -35,8 +35,7 @@ tests_require=['zope.testing']
 setup(name='osha.surveyanswers',
       version=version,
       description="Transform a file like object into a flash view",
-      long_description=open("README.txt").read() + "\n" + 
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+      long_description=long_description,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
         "Framework :: Plone",
