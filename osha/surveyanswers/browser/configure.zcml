@@ -3,16 +3,6 @@
 	xmlns:browser="http://namespaces.zope.org/browser"
 	i18n_domain="slc.fusionmaps">
 
-	<browser:resourceDirectory
-		name="surveyanswers_flash"
-		directory="resources/flash"
-		permission="zope2.Public" />
-
-    <browser:resourceDirectory
-        name="surveyanswers_js"
-        directory="resources/js"
-        permission="zope2.Public" />
-
 	<browser:page
 		for="osha.surveyanswers.subtypes.interfaces.IYesNoAnswers"
 		name="file_view"

@@ -7,16 +7,7 @@
 
   <five:registerPackage package="." initialize=".initialize" />
   
-   <include package=".browser" />
    <include package=".schemaextender" />
    <include package=".subtypes" />
 
-      <genericsetup:registerProfile
-          name="default"
-          title="Osha Surveyanswers"
-          directory="profiles/default"
-          description='Extension profile for the Osha Survey Answers'
-          provides="Products.GenericSetup.interfaces.EXTENSION"
-          />
-  
 </configure>
