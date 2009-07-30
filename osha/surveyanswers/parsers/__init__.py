@@ -58,11 +58,12 @@ SHORT_NAME_TO_ID = dict((
 SINGLE_DATASET = """
   <entity id = '%(shortname)s' 
           value = '%(value)s'
-          link='JavaScript:drilldown(\\"%(shortname)s\\");' /" + ">""".replace('\n', '')
+          link='%(question)s/%(shortname)s' /" + ">""".replace('\n', '')
 
-def extractor(string): 
+def country_extractor(context, results): 
     #data = csv.reader(StringIO(string), 'excel-tab')
     #data.next()
-    for row in SHORT_NAME_TO_ID.keys():
-        yield SINGLE_DATASET % ({'shortname' : SHORT_NAME_TO_ID.get(row, ''),
-                                      'value' : int(random.random() * 100)})
+    for key, value in SHORT_NAME_TO_ID.items():
+        yield (SINGLE_DATASET % ({'shortname' : SHORT_NAME_TO_ID.get(key, ''), 
+                                  'value' : "%02.2f" % (results.get(int(value), 0) * 100 ),
+                                  'question' : context}))

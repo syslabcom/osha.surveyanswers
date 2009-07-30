@@ -6,8 +6,11 @@
     i18n_domain="osha.surveyanswers">
 
   <five:registerPackage package="." initialize=".initialize" />
+
+   <adapter factory=".database.SurveyDatabase" />
   
    <include package=".schemaextender" />
    <include package=".subtypes" />
+   <include package=".browser" />
 
 </configure>

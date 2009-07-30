@@ -3,17 +3,35 @@
 	xmlns:browser="http://namespaces.zope.org/browser"
 	i18n_domain="slc.fusionmaps">
 
-	<browser:page
-		for="osha.surveyanswers.subtypes.interfaces.IYesNoAnswers"
-		name="file_view"
-		class=".views.FusionMap"
-		permission="zope2.View"
-		template="map.pt" />
+    <adapter factory=".views.SurveyTraverser" />
+    <adapter factory=".views.CountryTraverser" />
 
 	<browser:page
-		for="osha.surveyanswers.subtypes.interfaces.IYesNoAnswers"
+		for="osha.surveyanswers.interfaces.ISurvey"
 		name="xml_data"
 		class=".views.FusionJS"
 		permission="zope2.View"/>
+
+	<browser:page
+		for="osha.surveyanswers.interfaces.ISurvey"
+		name="document_view"
+		class=".views.QuestionOverView"
+		permission="zope2.View"
+		template="survey.pt"/>
+
+	<browser:page
+		for="osha.surveyanswers.interfaces.ISurvey"
+		name="question"
+		class=".views.SingleQuestion"
+		permission="zope2.View"
+		template="question.pt"/>
+
+	<browser:page
+		for="osha.surveyanswers.interfaces.ISurvey"
+		name="question_country"
+		class=".views.SingleQuestionCountry"
+		permission="zope2.View"
+		template="country.pt"/>
+
 
 </configure>

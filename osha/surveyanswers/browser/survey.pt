@@ -1,0 +1,14 @@
+<html metal:use-macro="context/@@standard_macros/page">
+    <body metal:fill-slot="body">
+    	<ul>
+			<li tal:repeat="group view/all_questions">
+				<h4 tal:content="group/name">Group title</h4>
+				<ul>
+					<li tal:repeat="question group/questions">
+						<a href="" tal:content="question/name" tal:attributes="href string:${here/absolute_url}/${question/id}">Country</a>
+					</li>
+				</ul>
+			</li>
+    	<ul>
+    </body>
+</html>

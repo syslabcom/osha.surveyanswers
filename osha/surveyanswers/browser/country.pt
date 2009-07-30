@@ -1,0 +1,22 @@
+<html metal:use-macro="context/@@standard_macros/page">
+    <body metal:fill-slot="body">
+            <script language="JavaScript" src="FusionMaps.js">
+        </script>
+        <script language="JavaScript" src="FusionCharts.js">
+        </script>
+    
+        <div class="country" id="chartdiv" align="center">
+            The
+            chart will appear within this DIV. This text will be replaced by the
+            chart.
+        </div>
+        <ul class="discriminators">
+        	<li tal:repeat="discriminator view/discriminators">
+        		<a href="some_url" tal:attributes="href string: ${request/URL}?group_by=${discriminator/key}" tal:content="discriminator/value">Some discriminator</a>
+        	</li>
+        </ul>
+        	
+        <script type="text/javascript" tal:attributes="src string: ${view/absolute_url}/xml_data?question=${view/question}&country=${view/country}&group_by=${request/form/group_by | nothing}">
+        </script>
+    </body>
+</html>

@@ -1,9 +1,11 @@
 <html metal:use-macro="context/@@standard_macros/page">
     <body metal:fill-slot="body">
-        <script language="JavaScript" src="++resource++surveyanswers_js/FusionMaps.js">
+            <script language="JavaScript" src="FusionMaps.js">
         </script>
-        <script language="JavaScript" src="++resource++surveyanswers_js/FusionCharts.js">
+        <script language="JavaScript" src="FusionCharts.js">
         </script>
+    
+        <a href="back" tal:attributes="href context/absolute_url">Go Back</a>
         <div class="not_drilled_down" id="mapdiv" align="center">
             FusionMaps.
         </div>
@@ -12,7 +14,14 @@
             chart will appear within this DIV. This text will be replaced by the
             chart.
         </div>
-        <script type="text/javascript" tal:attributes="src string: ${context/absolute_url}/xml_datax?question_id=${view/question}">
+        <div class="country" id="chartdiv" align="center">
+            The
+            chart will appear within this DIV. This text will be replaced by the
+            chart.
+        </div>
+        
+        
+        <script type="text/javascript" tal:attributes="src string: ${view/absolute_url}/xml_data?question=${view/question}">
         </script>
     </body>
 </html>

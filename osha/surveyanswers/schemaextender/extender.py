@@ -46,10 +46,6 @@ class BlobExtender(object):
     field_adder(fields, MyMapLabelSepCharField, StringWidget)
     field_adder(fields, MyMapBaseFontSizeField, IntegerWidget)
     field_adder(fields, MyMapMapField, SelectionWidget)
-    maps = resource_listdir(__module__, #@UndefinedVariable
-                         os.path.join('..', 'browser', 'resources', 'flash'))
-    maps.sort()
-    fields[-1].vocabulary = maps
     
     def __init__(self, context):
         self.context = context
