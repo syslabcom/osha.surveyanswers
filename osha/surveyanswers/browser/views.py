@@ -1,4 +1,5 @@
-from osha.surveyanswers.parsers import SHORT_NAME_TO_ID, country_extractor
+from osha.surveyanswers.parsers import SHORT_NAME_TO_ID, country_extractor,\
+    getShortNameById, SHORT_NAME_TO_LONG
 from Products.Five.browser import BrowserView
 from zope.component import getUtility #@UnresolvedImport
 from collective.lead.interfaces import IDatabase
@@ -44,9 +45,9 @@ class CountryTraverser(object):
         
     def publishTraverse(self, request, name):
         db = ISurveyDatabase(self.context.context)
-        if db.hasQuestion(self.context.question):
+        if db.hasQuestion(self.context.question_id):
             view = getMultiAdapter((self.context.context, self.request), name="question_country").__of__(self.context.context)
-            view.init(self.context.question, name)
+            view.init(self.context.question_id, name)
             return view
         return DefaultPublishTraverse(self.context.context, self.request).publishTraverse(self.request, name)
     
@@ -62,8 +63,8 @@ class SingleQuestionCountry(object):
         self.request = request
         self.db = ISurveyDatabase(self.context)
 
-    def init(self, name, country):
-        self.question = name
+    def init(self, question_id, country):
+        self.question_id = question_id
         self.country = country
 
     def absolute_url(self):
@@ -83,7 +84,10 @@ class QuestionOverView(BrowserView):
         
     @property
     def all_questions(self):
-        return self.db.getAllQuestions()
+        for questions in self.db.getAllQuestions():
+            if questions['name'] not in ['Gruppe', 'Discriminator question']:
+                questions['count'] = len(questions['questions'])
+                yield questions
     
 class SingleQuestion(object):
     implements(IBrowserView, ISingleQuestion)
@@ -94,12 +98,21 @@ class SingleQuestion(object):
         self.request = request
         self.db = ISurveyDatabase(self.context)
         
-    def init(self, name):
-        self.question = name
+    def init(self, question_id):
+        self.question_id = question_id
         
+    @property
+    def question_text(self):
+        return self.db.getQuestion(self.question_id)['text']
+    
     @property
     def countries(self):
         return ['chartdiv-' + id for id in SHORT_NAME_TO_ID.values()]
+    
+    @property
+    def discriminators(self):
+        return [{"key" : x[0], "value" : x[1]} for x in 
+                [x for x in self.db.getDiscriminators() if x[0] in ['question_2', 'question_3']]]
 
     def absolute_url(self):
         return self.context.context.absolute_url()
@@ -112,6 +125,7 @@ class FusionJS(object):
                   , label_sep_char=': '
                   , base_font_size='9'
                   , map_name='FCMap_Europe.swf'
+                  
     )
     
     static_xml = """
@@ -142,17 +156,25 @@ function FC_Rendered(DOMId){
     <map borderColor='%(border_color)s' 
          fillColor='%(fill_color)s' 
          animation='0'
+         showCanvasBorder='0'
+         showLegend='1'
          includeNameInLabels='0' 
          numberSuffix='%(number_suffix)s' 
          includeValueInLabels='1' 
          labelSepChar='%(label_sep_char)s' 
          baseFontSize='%(base_font_size)s'>
+            <colorRange>
+        <color minValue='0' maxValue='%(rng1)i' displayValue='%(rng1_msg)s' color='A7E9BC' />
+        <color minValue='%(rng1)i' maxValue='%(rng2)i' displayValue='%(rng2_msg)s' color='FFFFCC' />
+        <color minValue='%(rng2)i' maxValue='100' displayValue='%(rng3_msg)s' color='FF9377' />
+   </colorRange>
       <data>%(contents)s</data>
     </map>
     """.replace("\n", "")
     xml_chart_template = """var xmlChartData = "
     <chart  
-           numberSuffix= '%%'>
+           numberSuffix= '%%'
+           labelDisplay='ROTATE'>
       <categories>
         %s
       </categories>
@@ -162,10 +184,15 @@ function FC_Rendered(DOMId){
               
     
     extractors = {}
+    
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+        self.db = ISurveyDatabase(self.context)
 
     def __call__(self):
         retval = []
-        self.question = self.request.form['question']
+        self.question_id = self.request.form['question_id']
         self.country = self.request.form.get('country', '')
         self.group_by = self.request.form.get('group_by', '')
         if self.group_by == 'None':
@@ -177,31 +204,40 @@ function FC_Rendered(DOMId){
         return "\n".join(retval)
 
     def contents(self):
-        db = ISurveyDatabase(self.context)
         if not self.country:
-            contents = db.getAnswersFor(self.question)
-            map_contents = ''.join(country_extractor('/'.join((self.context.absolute_url(), self.question)), contents))
-        
+            contents = self.db.getAnswersFor(self.question_id)
+            map_contents = ''.join(country_extractor('/'.join((self.context.absolute_url(), self.question_id)), contents))
+                
             map_data_full = "var xmlMapData = \"%s\";" % self.getMapData(map_contents)
             map_data_empty = "var xmlMapDataEmpty = \"%s\";" % self.getMapData()
             datasets = []
-            values_xml = []
-            for value in contents.values():
-                values_xml.append("<set value='%s' />" % value)
-            datasets.append("<dataset seriesName=''>%s\</dataset>" % ("".join(values_xml)))
-            categories = ["<category label='' />"]
+            if self.group_by:
+                chart_contents = self.db.getAnswersForAndGroupedBy(self.question_id, self.group_by)
+            else:
+                keyToName = lambda x: SHORT_NAME_TO_LONG[getShortNameById(x + 1)]
+                inner = {}
+                for key, value in contents.items():
+                    inner[keyToName(key)] = value
+                chart_contents = {'':inner}
+                
+            for dataset in chart_contents.keys():
+                values_xml = []
+                for value in chart_contents[dataset].values():
+                    values_xml.append("<set value='%02.2f' />" % (value * 100))
+                datasets.append("<dataset showValues='0' seriesName='%s'>%s\</dataset>" % (dataset, "".join(values_xml)))
+            categories = ["<category label='%s' />" % x for x in chart_contents.values()[0].keys()]
             charts_data = self.xml_chart_template % ("".join(categories), "".join(datasets))
             return "\n".join([map_data_full, map_data_empty, charts_data])
         else:
-            contents = db.getAnswersForCountry(self.question, self.country, self.group_by)
-            charts_data = []
-            datasets = []
-            for key, values in contents.items():
-                values_xml = "".join(["<set value='%s' />" % value for value in values.values()])
-                datasets.append("<dataset seriesName='%s'>%s\</dataset>" % (key, values_xml))
+            contents = self.db.getAnswersForCountry(self.question_id, self.country, self.group_by)
             categories = []
             for key in contents.values()[0].keys():
                 categories.append("<category label='%s' />" % key)
+            charts_data = []
+            datasets = []
+            for key, values in contents.items():
+                values_xml = "".join(["<set value='%02.2f' />" % (value * 100) for value in values.values()])
+                datasets.append("<dataset seriesName='%s'>%s\</dataset>" % (key, values_xml))
             charts_data = self.xml_chart_template % ("".join(categories), "".join(datasets))
             return charts_data
     
@@ -214,7 +250,6 @@ function FC_Rendered(DOMId){
             """ % self.getMapParams()['map_name'] 
             chart_map = """
             var myChart = new FusionCharts("MSColumn2D.swf", "myChartId", "900", "300", "0", "1");
-            alert(xmlChartData);
             myChart.setDataXML(xmlChartData);
             myChart.render("chartdiv");
             """
@@ -230,6 +265,8 @@ function FC_Rendered(DOMId){
 
     def getMapData(self, contents=''):
         params = self.getMapParams()
+        map_info = self.db.getMapInfo(self.question_id)
+        params.update(map_info)
         params['contents'] = contents
         return self.xml_map_template % params
     
@@ -243,3 +280,4 @@ function FC_Rendered(DOMId){
         for key in self.default_params:
             param_setter(params, key)
         return params
+    

@@ -15,6 +15,13 @@ questionFilter = lambda x: re.compile('^question_[1-9][0-9]{0,1}$').match(x)
 class SurveyDatabase(object):
     adapts(ISurvey)
     implements(ISurveyDatabase)
+    ID_ROW = 0
+    ANSWER_ROW_ID = 1
+    NAME_ROW = 2
+    GROUP_ROW = 3
+    questionDicter = lambda ign, x: {'text' : x[SurveyDatabase.NAME_ROW], 
+                                'question_id': x[SurveyDatabase.ID_ROW],
+                                'answer_row_name' : x[SurveyDatabase.ANSWER_ROW_ID]}
     
     def __init__(self, context):
         self.context = context 
@@ -26,76 +33,201 @@ class SurveyDatabase(object):
         self.connection = connection
         self.responses = sa.Table('responses', meta, autoload=True)
         self.questions = sa.Table('questions', meta, autoload=True)
+        self.map_data = sa.Table('map_data', meta, autoload=True)
         self.answer_meanings = sa.Table('answer_meanings', meta, autoload=True)
         
     def _query(self, stmt, **kwargs):
         return self.connection.engine.execute(stmt, **kwargs).fetchall()
             
     def getAllQuestions(self):
-        questionDicter = lambda x: {'name' : x[2], 'id': x[1]}
+        """
+        Return a List of dictionaries
+        The dictionary contains a name, that is a human readable group name
+        and questions, which is a list of dictionaries, representing questions
+        of the group
+        The question dictionary has the attributes
+        text which contains the human readable question text
+        question_id which contains the numeric id of the question row in the database
+        answer_row_name which contains the row name in the answers db for the given question
+        """
         all_questions = self.connection.execute(self.questions.select('')).fetchall()
         def reducer(retval, question):
             found = False
             for group in retval:
-                if group['name'] == question[3]:
-                    group['questions'].append(questionDicter(question))
+                if group['name'] == question[self.GROUP_ROW]:
+                    group['questions'].append(self.questionDicter(question))
                     found = True
             if not found:
-                retval.append({'name' : question[3], 'questions': [questionDicter(question)]})
+                retval.append({'name' : question[self.GROUP_ROW], 
+                               'questions': [self.questionDicter(question)]})
             return retval
         return reduce(reducer, all_questions, [])
             
-    def hasQuestion(self, question):
-        question_exists = self.connection.execute(self.questions.select('question_field=:question').params(question=question)).fetchall() 
+    def hasQuestion(self, question_id):
+        """
+        Return whether a question with the given question_id exists
+        """
+        question_exists = self.connection.execute(self.questions.select('id=:question').params(question=question_id)).fetchall() 
         return question_exists
     
-    def getAnswersFor(self, question):
-        if not questionFilter(question):
-            raise AttributeError("Warning invalid value supplied for question: %s" % question)
-        map_answers = []
-        for map_answer, type in self.connection.engine.execute('select map_answer, type from questions where question_field = :question', question=question).fetchall():
-            map_answers.append(map_answer)
-        where_stmt = ' or '.join(['%s & %s' % (question, x) for x in map_answers])
-        yes = self._query('select question_1, count(*) from responses where %s group by question_1' % where_stmt) # save sql statement
-        all = self._query('select question_1, count(*) from responses group by question_1')
-        return dict(map(lambda ((country, yes), (i, all)): (country, float(yes) / all), zip(yes, all)))
+    def getQuestion(self, question_id):
+        """
+        Return common information about a question:
+        text which contains the human readable question text
+        question_id which contains the numeric id of the question row in the database
+        answer_row_name which contains the row name in the answers db for the given question
+        """
+        question = self.connection.execute(self.questions.select('id=:question').params(question=question_id)).fetchall()[0]
+        return self.questionDicter(question)
+    
+    def getAnswerRow(self, question_id):
+        """
+        Return the row name for a given question in the answers table
+        """ 
+        return self.getQuestion(question_id)['answer_row_name']
+    
+    def getMapInfo(self, question_id):
+        """
+        Return range information to beautify a map for a given question
+        """
+        question = self.connection.execute(self.map_data.select('question_id=:question_id').params(question_id=question_id)).fetchall()[0]
+        retval = {}
+        retval['rng1'] = question[2]
+        retval['rng1_msg'] = question[3]
+        retval['rng2'] = question[4]
+        retval['rng2_msg'] = question[5]
+        retval['rng3'] = question[6]
+        retval['rng3_msg'] = question[7]
          
-    def getAnswersForCountry(self, question, country, group_by = None):
-        if not questionFilter(question):
-            raise AttributeError("Warning invalid value supplied for question: %s" % question)
-        if not questionFilter(group_by):
-            raise AttributeError("Warning invalid value supplied for group_by: %s" % question)
-        question_id = self._query("select id from questions where question_field = :question", question = question)[0][0] 
+        return retval
+
+    def getAnswersFor(self, question_id):
+        """
+        Return a dictionary of relative percentages to show on map
+        """
+        answer_map = self.connection.engine.execute('select show_which from questions where id = :question_id', question_id=question_id).fetchall()[0][0]
+        where_stmt = '%s & %s' % (self.getAnswerRow(question_id), answer_map)
+        yes = self._query('select question_1, count(*) from responses where %s group by question_1 order by question_1' % where_stmt) # save sql statement
+        all = self._query('select question_1, count(*) from responses group by question_1 order by question_1')
+        # Map and reduce in simple
+        return dict(map(lambda ((country, yes), (i, all)): 
+                            (country, 
+                             (float(yes) / all)
+                            ),
+                         zip(yes, all)))
+    
+    def getAnswersForAndGroupedBy(self, question_id, group_by):
+        if group_by and not questionFilter(group_by):
+            raise AttributeError("Warning invalid value supplied for group_by: \"%s\"" % group_by)
+        retval = {}
+
+        total_answers_per_country = self._query("select question_1, count(*) from responses group by question_1")
+        
         discriminator_question_id = self._query("select id from questions where question_field = :question", question = group_by)[0][0] 
-        map_answers = self._query("select answer_bit, answer_text from answer_meanings where question_id = :question_id", question_id = question_id)
         discriminator_answers = self._query("select answer_bit, answer_text from answer_meanings where question_id = :question_id", question_id = discriminator_question_id)
 
-        datasets = {}
-        group_by_stmt = ""
-        select_what_more = ""
-        total_answers_count = float(self._query("select count(*) from responses where question_1 = :country", country = country)[0][0])
-        if group_by:
-            group_by_stmt = "group by %s" % group_by
-            select_what_more = ", %s" % group_by
+        answer_map = self.connection.engine.execute('select show_which from questions where id = :question_id', question_id=question_id).fetchall()[0][0]
 
-        for answer_bit, answer_text in map_answers:
-            query_match = "select count(*) %s from responses where question_1 = :country and %s & %s %%s %s" % (select_what_more, question, answer_bit, group_by_stmt)
-            answers_match = {}
-            for (count, answer) in self._query(query_match % "", country = country):
-                for discriminator_answer_bit, discriminator_answer_text in discriminator_answers:
-                    discriminator_count = answers_match.get(discriminator_answer_text, 0)
-                    if answer & discriminator_answer_bit:
-                        discriminator_count += count
-                        answers_match[discriminator_answer_text] = discriminator_count
+        select_stmt = "%s" % group_by
+        where_stmt = '%s & %s' % (self.getAnswerRow(question_id), answer_map)
+        group_by_stmt = "%s, question_1" % group_by
+        
+        query_match = "select question_1, count(*), %s from responses WHERE %s group by %s" %  (select_stmt, where_stmt, group_by_stmt)
+
+        for (country, count, discriminator) in self._query(query_match):
+            discriminators = retval.get(country, {})
+            for(bit, name) in discriminator_answers:
+                if(discriminator & bit):
+                    discriminators[name] = discriminators.get(name, 0) + count
+            retval[country] = discriminators
+        
+        for country, count in total_answers_per_country:
+            discriminators = retval[country]
+            for key in discriminators.keys():
+                discriminators[key] = discriminators[key] / float(count)
+                
+        return retval
+                                        
+    def getAnswersForCountry(self, question_id, country, group_by = None):
+        """
+        Return a dictionary, key is the human readable answer and 
+        the value another dictionary, key is the discriminator answer, and 
+        value the percentage for this answer combination
+        """
+        if group_by in [None, '']:
+            return self._innerGetAnswersForCountry(question_id, country)
+        else:
+            return self.getAnswersForCountryAndGroupedBy(question_id, country, group_by)
+
+    def _innerGetAnswersForCountry(self, question_id, country):
+        """
+        Return a dictionary, key is the human readable answer and 
+        the value another dictionary, key is the discriminator answer, and 
+        value the percentage for this answer combination
+        """
+        question_row = self.getAnswerRow(question_id)
+        map_answers = self._query("select answer_bit, answer_text from answer_meanings where question_id = :question_id", question_id = question_id)
+
+        total_answers_count = float(self._query("select count(*) from responses where question_1 = :country", country = country)[0][0])
+
+        inner = {}
+        retval = {"":inner}
+
+        query_match = "select count(*), %s from responses where question_1 = :country group by %s" % (question_row, question_row)
+        
+        for (count, answer_bit) in self._query(query_match, country = country):
+            for bit, text in map_answers:
+                if answer_bit & bit:
+                    inner[text] = inner.get(text, 0) + count
+                    
+        for key in inner.keys():
+            inner[key] = inner[key] / total_answers_count
             
-            answers_match_percent = {}
-            for key, value in answers_match.items():
-                answers_match_percent[key] = "%02.2f" % (100 * value / total_answers_count)
-            datasets[answer_text] = answers_match_percent
-        return datasets
+        return retval
     
-    
+    def getAnswersForCountryAndGroupedBy(self, question_id, country, group_by):
+        """
+        Return a dictionary, key is the human readable answer and 
+        the value another dictionary, key is the discriminator answer, and 
+        value the percentage for this answer combination
+        """
+        if not questionFilter(group_by):
+            raise AttributeError("Warning invalid value supplied for group_by: \"%s\"" % group_by)
+        retval = {}
+
+        total_answers_count = float(self._query("select count(*) from responses where question_1 = :country", country = country)[0][0])
+
+        discriminator_question_id = self._query("select id from questions where question_field = :question", question = group_by)[0][0] 
+        discriminator_answers = self._query("select answer_bit, answer_text from answer_meanings where question_id = :question_id", question_id = discriminator_question_id)
+
+        answer_map = {}
+        
+        for bit, text in self._query("select answer_bit, answer_text from answer_meanings where question_id = :question_id", question_id = question_id):
+            answer_map[text] = bit
+
+        select_stmt = "%s" % group_by
+        question_row = self.getAnswerRow(question_id)
+        group_by_stmt = "%s, %s" % (question_row, group_by)
+        query_match = "select %s, count(*), %s from responses where question_1 = :country group by %s" % (question_row, select_stmt, group_by_stmt)
+        
+        for (current_answer_bit, count, discriminator) in self._query(query_match, country = country):
+            for answer_text, answer_bit in answer_map.items():
+                if not answer_bit & current_answer_bit:
+                    continue
+                if not retval.has_key(answer_text):
+                    retval[answer_text] = {}
+                discriminators = retval[answer_text]
+                for(bit, name) in discriminator_answers:
+                    if(discriminator & bit):
+                        discriminators[name] = discriminators.get(name, 0) + count
+        
+        for discriminators in retval.values():
+            for key in discriminators.keys():
+                discriminators[key] = discriminators[key] / float(total_answers_count)
+                
+        return retval
+
     def getDiscriminators(self):
-        return self._query('select question_field, question from questions where designator = 1')
+        return self._query('select question_field, question from questions where is_designator = 1')
             
         

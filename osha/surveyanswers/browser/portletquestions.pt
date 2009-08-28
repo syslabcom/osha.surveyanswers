@@ -1,0 +1,20 @@
+    	<div class="surveyanswers" id="accordion">
+			<div class="group" tal:repeat="group view/all_questions">
+				<h4 class="title" href="#"><tal:span tal:replace="group/name">Name</tal:span> (<tal:span tal:replace="group/count">4</tal:span>)</h4>
+				<div>
+					<ul>
+						<li tal:repeat="question group/questions">
+							<a href="" tal:content="question/text" tal:attributes="href string:${here/absolute_url}/${question/question_id}">Country</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+    	</div>
+    	<script type="text/javascript">
+jq(document).ready(function(){
+	jq('#accordion .title').click(function() {
+		jq(this).next().toggle('slow');
+		return false;
+	}).next().hide();
+});
+		</script>

@@ -55,15 +55,73 @@ SHORT_NAME_TO_ID = dict((
         ('WA', '048'),
 )) 
 
+SHORT_NAME_TO_LONG = dict((
+        ('AL', 'Albania'),
+        ('AD', 'Andorra'),
+        ('AT', 'Austria'),
+        ('BY', 'Belarus'),
+        ('BE', 'Belgium'),
+        ('BA', 'Bosnia-Herzegovina'),
+        ('BG', 'Bulgaria'),
+        ('HY', 'Croatia'),
+        ('CZ', 'Czech Republic'),
+        ('DK', 'Denmark'),
+        ('EE', 'Estonia'),
+        ('FI', 'Finland'),
+        ('FR', 'France'),
+        ('DE', 'Germany'),
+        ('GR', 'Greece'),
+        ('HU', 'Hungary'),
+        ('IS', 'Iceland'),
+        ('IE', 'Ireland'),
+        ('IT', 'Italy'),
+        ('LV', 'Latvia'),
+        ('LI', 'Liechtenstein'),
+        ('LT', 'Lithuania'),
+        ('LU', 'Luxembourg'),
+        ('MK', 'Macedonia'),
+        ('MT', 'Malta'),
+        ('MD', 'Moldova'),
+        ('MC', 'Monaco'),
+        ('MO', 'Montenegro'),
+        ('NL', 'Netherlands'),
+        ('NO', 'Norway'),
+        ('PL', 'Poland'),
+        ('PT', 'Portugal'),
+        ('RO', 'Romania'),
+        ('SM', 'San Marino'),
+        ('CS', 'Serbia'),
+        ('SK', 'Slovakia'),
+        ('SL', 'Slovenia'),
+        ('ES', 'Spain'),
+        ('SE', 'Sweden'),
+        ('CH', 'Switzerland'),
+        ('UA', 'Ukraine'),
+        ('UK', 'United Kingdom'),
+        ('VA', 'Vatican City'),
+        ('CY', 'Cyprus'),
+        ('TK', 'Turkey'),
+        ('RU', 'Russia'),
+        ('SC', 'Scotland'),
+        ('EN', 'England'),
+        ('NI', 'North Ireland'),
+        ('WA', 'Wales'),
+)) 
+
 SINGLE_DATASET = """
   <entity id = '%(shortname)s' 
           value = '%(value)s'
           link='%(question)s/%(shortname)s' /" + ">""".replace('\n', '')
 
+def getShortNameById(id):
+    for key, value in SHORT_NAME_TO_ID.items():
+        if int(value) == id:
+            return key
+        
 def country_extractor(context, results): 
     #data = csv.reader(StringIO(string), 'excel-tab')
     #data.next()
     for key, value in SHORT_NAME_TO_ID.items():
         yield (SINGLE_DATASET % ({'shortname' : SHORT_NAME_TO_ID.get(key, ''), 
-                                  'value' : "%02.2f" % (results.get(int(value), 0) * 100 ),
+                                  'value' : "%02.2f" % (results.get(int(value), 0) * 100),
                                   'question' : context}))

@@ -4,7 +4,7 @@
         </script>
         <script language="JavaScript" src="FusionCharts.js">
         </script>
-    
+    	<a href="back" tal:attributes="href string: ${context/absolute_url}/${view/question_id}">Go Back</a>
         <div class="country" id="chartdiv" align="center">
             The
             chart will appear within this DIV. This text will be replaced by the
@@ -16,7 +16,7 @@
         	</li>
         </ul>
         	
-        <script type="text/javascript" tal:attributes="src string: ${view/absolute_url}/xml_data?question=${view/question}&country=${view/country}&group_by=${request/form/group_by | nothing}">
+        <script type="text/javascript" tal:attributes="src string: ${view/absolute_url}/xml_data?question_id=${view/question_id}&country=${view/country}&group_by=${request/form/group_by | nothing}">
         </script>
     </body>
 </html>

@@ -2,7 +2,8 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
 	xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+	xmlns:cmf="http://namespaces.zope.org/cmf"
+	xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="osha.surveyanswers">
 
   <five:registerPackage package="." initialize=".initialize" />
@@ -12,5 +13,19 @@
    <include package=".schemaextender" />
    <include package=".subtypes" />
    <include package=".browser" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="OSHA Surveyanswsers"
+      directory="profiles/default"
+      description=''
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+  <cmf:registerDirectory
+      name="skins"
+      directory="skins"
+      recursive="True"
+      />
+
 
 </configure>

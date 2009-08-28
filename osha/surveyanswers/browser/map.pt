@@ -12,7 +12,7 @@
             chart will appear within this DIV. This text will be replaced by the
             chart.
         </div>
-        <script type="text/javascript" tal:attributes="src string: ${context/absolute_url}/xml_datax?question_id=${view/question}">
+        <script type="text/javascript" tal:attributes="src string: ${context/absolute_url}/xml_datax?question_id=${view/question_id}">
         </script>
     </body>
 </html>

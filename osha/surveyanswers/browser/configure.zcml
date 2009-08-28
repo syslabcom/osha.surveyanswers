@@ -1,7 +1,8 @@
 <configure
 	xmlns="http://namespaces.zope.org/zope"
 	xmlns:browser="http://namespaces.zope.org/browser"
-	i18n_domain="slc.fusionmaps">
+	i18n_domain="slc.fusionmaps"
+	xmlns:plone="http://namespaces.plone.org/plone">
 
     <adapter factory=".views.SurveyTraverser" />
     <adapter factory=".views.CountryTraverser" />
@@ -32,6 +33,15 @@
 		class=".views.SingleQuestionCountry"
 		permission="zope2.View"
 		template="country.pt"/>
+		
+	<plone:portlet
+	    name="surveyanswers"
+    	interface="osha.surveyanswers.interfaces.IQuestionsPortlet"
+	    assignment=".portlet.Assignment"
+    	renderer=".portlet.Renderer"
+    	addview=".portlet.AddForm"
+    	editview=".portlet.EditForm"
+    />
 
 
 </configure>

@@ -1,0 +1,25 @@
+div.surveyanswers div.group{
+	background-color: #E6E8ED;
+	border-color: #AAB1C5;
+	border-style: solid;
+	border-width: 1px;
+	width: 15em;
+}
+
+div.surveyanswers ul{
+	margin: 0;
+	}
+div.surveyanswers li{
+	list-style: None;
+	border-color: #AAB1C5;
+	border-bottom-style: solid;
+	border-width: 1px;
+}
+
+div.surveyanswers_country{
+	padding-top: 4em;
+	}
+	
+div.surveyanswers_country div.chart{
+	float:left;
+	}

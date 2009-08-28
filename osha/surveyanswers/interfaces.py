@@ -1,4 +1,5 @@
 from zope.interface import Interface
+from plone.portlets.interfaces import IPortletDataProvider
 
 class ISingleQuestion(Interface):
     pass
@@ -22,3 +23,5 @@ class ISurveyDatabase(Interface):
         Return whether the question exists
         """
         
+class IQuestionsPortlet(IPortletDataProvider):
+    pass

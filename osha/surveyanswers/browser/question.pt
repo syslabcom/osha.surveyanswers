@@ -6,22 +6,30 @@
         </script>
     
         <a href="back" tal:attributes="href context/absolute_url">Go Back</a>
-        <div class="not_drilled_down" id="mapdiv" align="center">
-            FusionMaps.
-        </div>
-        <div class="drilled_down" tal:repeat="chart_id view/countries" tal:attributes="id chart_id" id="chartdiv-013" style="display: None;" align="center">
-            The
-            chart will appear within this DIV. This text will be replaced by the
-            chart.
-        </div>
-        <div class="country" id="chartdiv" align="center">
-            The
-            chart will appear within this DIV. This text will be replaced by the
-            chart.
-        </div>
+		<h4 tal:content="view/question_text"></h4>
+		<div>
+	        <div class="not_drilled_down" id="mapdiv" align="center">
+            	FusionMaps.
+        	</div>
+		</div>
+		<div class="surveyanswers_country">
+	        <div id="chartdiv" class="chart" align="center">
+            	The
+            	chart will appear within this DIV. This text will be replaced by the
+            	chart.
+        	</div>
+			<div>
+		        <ul class="discriminators">
+		        	<li tal:repeat="discriminator view/discriminators">
+		        		<a href="some_url" tal:attributes="href string: ${request/URL}?group_by=${discriminator/key}" tal:content="discriminator/value">Some discriminator</a>
+		        	</li>
+		        </ul>
+			</div>
+			<div style="clear:both"> </div>
+		</div>
         
         
-        <script type="text/javascript" tal:attributes="src string: ${view/absolute_url}/xml_data?question=${view/question}">
+        <script type="text/javascript" tal:attributes="src string: ${view/absolute_url}/xml_data?question_id=${view/question_id}&group_by=${request/form/group_by | nothing}">
         </script>
     </body>
 </html>

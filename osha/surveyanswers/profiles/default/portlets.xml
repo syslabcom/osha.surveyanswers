@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<portlets>
+
+ <portlet 
+   addview="surveyanswers"
+   title="Questions"
+   description="">
+   <for interface="plone.app.portlets.interfaces.IColumn" />
+   <for interface="plone.app.portlets.interfaces.IDashboard" />
+ </portlet>
+
+</portlets>
