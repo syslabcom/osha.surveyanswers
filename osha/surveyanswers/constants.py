@@ -106,4 +106,4 @@ SHORT_NAME_TO_LONG = dict((
         ('WA', 'Wales'),
 ))
 
-ID_TO_LONG_NAME = dict([(x[0], SHORT_NAME_TO_LONG[x[1]]) for x in ID_TO_SHORT_NAME])
+ID_TO_LONG_NAME = dict([(x[0], SHORT_NAME_TO_LONG[x[1]]) for x in ID_TO_SHORT_NAME.items()])

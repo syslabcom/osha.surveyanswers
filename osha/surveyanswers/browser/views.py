@@ -204,8 +204,9 @@ function FC_Rendered(DOMId){
             contents = self.db.getAnswersFor(self.question_id)
 
             SINGLE_DATASET = "<entity id = '%(shortname)s' value = '%(value)s' link='%(question)s/%(shortname)s' /\" + \">"
-            def country_extractor(context, results): 
-                for key, value in SHORT_NAME_TO_ID.items():
+            def country_extractor(context, results):
+                all_countries = SHORT_NAME_TO_ID.items()
+                for key, value in all_countries:
                     yield (SINGLE_DATASET % ({'shortname' : SHORT_NAME_TO_ID.get(key, ''), 
                                   'value' : "%02.2f" % (results.get(int(value), 0) * 100),
                                   'question' : context}))
@@ -218,18 +219,28 @@ function FC_Rendered(DOMId){
             
             if self.group_by:
                 chart_contents = self.db.getAnswersForAndGroupedBy(self.question_id, self.group_by)
+                sorted_keys_dataset = self.db.getOrderedAnswerMeanings(self.group_by)
             else:
+                sorted_keys_dataset = [""]
                 keyToName = lambda x: ID_TO_LONG_NAME['%03i' % (x + 1)]
-                inner = {}
+                chart_contents = {}
                 for key, value in contents.items():
-                    inner[keyToName(key)] = value
-                chart_contents = {'':inner}
+                    chart_contents[keyToName(key)] = {"": value}
                 
-            charts_data = self.getXMLChartData(chart_contents)
+            sorted_keys_category = self.db.getOrderedAnswerMeanings(self.db.country_row)
+                
+            charts_data = self.getXMLChartData(chart_contents, sorted_keys_category, sorted_keys_dataset)
             return "\n".join([map_data_full, map_data_empty, charts_data])
         else:
+            if self.group_by:
+                sorted_keys_dataset = self.db.getOrderedAnswerMeanings(self.group_by)
+            else:
+                sorted_keys_dataset = [""]
+            
+            
+            sorted_keys_category = self.db.getOrderedAnswerMeanings(self.db.getAnswerRow(self.question_id))
             chart_contents = self.db.getAnswersForCountry(self.question_id, self.country, self.group_by)
-            return self.getXMLChartData(chart_contents)
+            return self.getXMLChartData(chart_contents, sorted_keys_category, sorted_keys_dataset)
         
     def flash_init(self):
         if not self.country:
@@ -260,11 +271,13 @@ function FC_Rendered(DOMId){
         params['contents'] = contents
         return self.xml_map_template % params
     
-    def getXMLChartData(self, chart_contents):
-        categories = ["<category label='%s' />" % x for x in chart_contents.values()[0].keys()]
+    def getXMLChartData(self, chart_contents, sorted_categories, sorted_dataset):
+        sorted_categories_non_empty = [x for x in sorted_categories if x in chart_contents.keys()]
+        categories = ["<category label='%s' />" % x for x in sorted_categories_non_empty]
         datasets = []
-        for key, values in chart_contents.items():
-            values_xml = "".join(["<set value='%02.2f' />" % (value * 100) for value in values.values()])
+        for key in sorted_dataset:
+            values = [chart_contents[x].get(key, 0) for x in sorted_categories_non_empty]
+            values_xml = "".join(["<set value='%02.2f' />" % (value * 100) for value in values])
             datasets.append("<dataset showValues='0' seriesName='%s'>%s\</dataset>" % (key, values_xml))
         return self.xml_chart_template % ("".join(categories), "".join(datasets))
             
