@@ -1,18 +1,14 @@
-from osha.surveyanswers.parsers import SHORT_NAME_TO_ID, country_extractor,\
-    getShortNameById, SHORT_NAME_TO_LONG
 from Products.Five.browser import BrowserView
-from zope.component import getUtility #@UnresolvedImport
-from collective.lead.interfaces import IDatabase
-import sqlalchemy as sa #@UnresolvedImport
 from zope.component import adapts #@UnresolvedImport
 from zope.interface import implements
 from zope.publisher.interfaces.browser import IBrowserRequest, IBrowserPublisher,\
     IBrowserView
-from Products.ATContentTypes.interface.document import IATDocument
 from osha.surveyanswers.interfaces import ISurvey, ISingleQuestion,\
     ISurveyDatabase
 from ZPublisher.BaseRequest import DefaultPublishTraverse
 from zope.component import getMultiAdapter #@UnresolvedImport
+from osha.surveyanswers.constants import ID_TO_SHORT_NAME, SHORT_NAME_TO_ID,\
+    SHORT_NAME_TO_LONG, ID_TO_LONG_NAME
 
 class SurveyTraverser(object):
     implements(IBrowserPublisher)
@@ -206,41 +202,35 @@ function FC_Rendered(DOMId){
     def contents(self):
         if not self.country:
             contents = self.db.getAnswersFor(self.question_id)
+
+            SINGLE_DATASET = "<entity id = '%(shortname)s' value = '%(value)s' link='%(question)s/%(shortname)s' /\" + \">"
+            def country_extractor(context, results): 
+                for key, value in SHORT_NAME_TO_ID.items():
+                    yield (SINGLE_DATASET % ({'shortname' : SHORT_NAME_TO_ID.get(key, ''), 
+                                  'value' : "%02.2f" % (results.get(int(value), 0) * 100),
+                                  'question' : context}))
+                    
             map_contents = ''.join(country_extractor('/'.join((self.context.absolute_url(), self.question_id)), contents))
                 
-            map_data_full = "var xmlMapData = \"%s\";" % self.getMapData(map_contents)
-            map_data_empty = "var xmlMapDataEmpty = \"%s\";" % self.getMapData()
-            datasets = []
+            map_data_full = "var xmlMapData = \"%s\";" % self.getXMLMapData(map_contents)
+            map_data_empty = "var xmlMapDataEmpty = \"%s\";" % self.getXMLMapData()
+            
+            
             if self.group_by:
                 chart_contents = self.db.getAnswersForAndGroupedBy(self.question_id, self.group_by)
             else:
-                keyToName = lambda x: SHORT_NAME_TO_LONG[getShortNameById(x + 1)]
+                keyToName = lambda x: ID_TO_LONG_NAME['%03i' % (x + 1)]
                 inner = {}
                 for key, value in contents.items():
                     inner[keyToName(key)] = value
                 chart_contents = {'':inner}
                 
-            for dataset in chart_contents.keys():
-                values_xml = []
-                for value in chart_contents[dataset].values():
-                    values_xml.append("<set value='%02.2f' />" % (value * 100))
-                datasets.append("<dataset showValues='0' seriesName='%s'>%s\</dataset>" % (dataset, "".join(values_xml)))
-            categories = ["<category label='%s' />" % x for x in chart_contents.values()[0].keys()]
-            charts_data = self.xml_chart_template % ("".join(categories), "".join(datasets))
+            charts_data = self.getXMLChartData(chart_contents)
             return "\n".join([map_data_full, map_data_empty, charts_data])
         else:
-            contents = self.db.getAnswersForCountry(self.question_id, self.country, self.group_by)
-            categories = []
-            for key in contents.values()[0].keys():
-                categories.append("<category label='%s' />" % key)
-            charts_data = []
-            datasets = []
-            for key, values in contents.items():
-                values_xml = "".join(["<set value='%02.2f' />" % (value * 100) for value in values.values()])
-                datasets.append("<dataset seriesName='%s'>%s\</dataset>" % (key, values_xml))
-            charts_data = self.xml_chart_template % ("".join(categories), "".join(datasets))
-            return charts_data
-    
+            chart_contents = self.db.getAnswersForCountry(self.question_id, self.country, self.group_by)
+            return self.getXMLChartData(chart_contents)
+        
     def flash_init(self):
         if not self.country:
             fusion_map = """
@@ -263,13 +253,21 @@ function FC_Rendered(DOMId){
             retval = chart_map % ('xmlChartData')
         return retval
 
-    def getMapData(self, contents=''):
+    def getXMLMapData(self, contents=''):
         params = self.getMapParams()
         map_info = self.db.getMapInfo(self.question_id)
         params.update(map_info)
         params['contents'] = contents
         return self.xml_map_template % params
     
+    def getXMLChartData(self, chart_contents):
+        categories = ["<category label='%s' />" % x for x in chart_contents.values()[0].keys()]
+        datasets = []
+        for key, values in chart_contents.items():
+            values_xml = "".join(["<set value='%02.2f' />" % (value * 100) for value in values.values()])
+            datasets.append("<dataset showValues='0' seriesName='%s'>%s\</dataset>" % (key, values_xml))
+        return self.xml_chart_template % ("".join(categories), "".join(datasets))
+            
     def getMapParams(self):
         """
         Generate a parameter map from the default parameters, or

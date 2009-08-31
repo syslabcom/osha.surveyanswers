@@ -17,7 +17,7 @@ class TestCase(ptc.PloneTestCase):
         @classmethod
         def setUp(cls):
             fiveconfigure.debug_mode = True
-            ztc.installPackage(slc.fusionmaps)
+            ztc.installPackage(osha.surveyanswers)
             fiveconfigure.debug_mode = False
 
         @classmethod

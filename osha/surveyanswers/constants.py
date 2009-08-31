@@ -1,7 +1,3 @@
-from StringIO import StringIO #@UnresolvedImport
-import csv #@UnresolvedImport
-import random #@UnresolvedImport
-
 SHORT_NAME_TO_ID = dict((
         ('AL', '001'),
         ('AD', '002'),
@@ -55,6 +51,8 @@ SHORT_NAME_TO_ID = dict((
         ('WA', '048'),
 )) 
 
+ID_TO_SHORT_NAME = dict([(x[1], x[0]) for x in SHORT_NAME_TO_ID.items()])
+
 SHORT_NAME_TO_LONG = dict((
         ('AL', 'Albania'),
         ('AD', 'Andorra'),
@@ -106,22 +104,6 @@ SHORT_NAME_TO_LONG = dict((
         ('EN', 'England'),
         ('NI', 'North Ireland'),
         ('WA', 'Wales'),
-)) 
+))
 
-SINGLE_DATASET = """
-  <entity id = '%(shortname)s' 
-          value = '%(value)s'
-          link='%(question)s/%(shortname)s' /" + ">""".replace('\n', '')
-
-def getShortNameById(id):
-    for key, value in SHORT_NAME_TO_ID.items():
-        if int(value) == id:
-            return key
-        
-def country_extractor(context, results): 
-    #data = csv.reader(StringIO(string), 'excel-tab')
-    #data.next()
-    for key, value in SHORT_NAME_TO_ID.items():
-        yield (SINGLE_DATASET % ({'shortname' : SHORT_NAME_TO_ID.get(key, ''), 
-                                  'value' : "%02.2f" % (results.get(int(value), 0) * 100),
-                                  'question' : context}))
+ID_TO_LONG_NAME = dict([(x[0], SHORT_NAME_TO_LONG[x[1]]) for x in ID_TO_SHORT_NAME])
