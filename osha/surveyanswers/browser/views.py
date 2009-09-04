@@ -219,9 +219,11 @@ function FC_Rendered(DOMId){
     """.replace("\n", "")
     xml_chart_template = """var xmlChartData = "
     <chart
+           showBorder='0'
+           bgColor='ffffff'
            showExportDataMenuItem='1'
            numberSuffix= '%%'
-           labelDisplay='STAGGER'
+           labelDisplay='ROTATE'
            staggerLines='3'>
       <categories>
         %s
