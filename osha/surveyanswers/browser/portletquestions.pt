@@ -13,7 +13,7 @@
     	<script type="text/javascript">
 jq(document).ready(function(){
 	jq('#accordion .title').click(function() {
-		jq(this).next().toggle('slow');
+		jq(this).next().slideToggle('slow');
 		return false;
 	}).next().hide();
 });
