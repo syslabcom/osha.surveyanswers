@@ -15,7 +15,7 @@
         		<a href="some_url" tal:attributes="href string: ${request/URL}?group_by=${discriminator/key}" tal:content="discriminator/value">Some discriminator</a>
         	</li>
         </ul>
-		<a href="" tal:attributes="href string: ${context/absolute_url}/download.xls?question=${view/question_id}&country=${view/country}&group_by=${request/form/group_by | nothing}">Excel Export</a>
+		<a href="" class="excel-download" tal:attributes="href string: ${context/absolute_url}/download.xls?question=${view/question_id}&country=${view/country}&group_by=${request/form/group_by | nothing}">Download as Excel</a>
         	
         <script type="text/javascript" tal:attributes="src string: ${view/absolute_url}/xml_data?question_id=${view/question_id}&country=${view/country}&group_by=${request/form/group_by | nothing}">
         </script>

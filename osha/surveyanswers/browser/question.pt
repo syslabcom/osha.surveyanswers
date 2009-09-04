@@ -29,7 +29,7 @@
 		        	</li>
 		        </ul>
 			<div style="clear:both"> </div>
-			<a href="" tal:attributes="href string: ${context/absolute_url}/download.xls?question=${view/question_id}">Excel Export</a>
+			<a href="" class="excel-download" tal:attributes="href string: ${context/absolute_url}/download.xls?question=${view/question_id}">Download as Excel</a>
 
 		</div>
         

@@ -27,10 +27,17 @@ ul.discriminators{
 	border: 1px solid #AAB1C5;
 	list-style: none;
 	padding: 1.5em;
+	margin-top: 15px;
 	}
 ul.discriminators .selected{
 	background-color: #E6E8ED;
 	border: 1px solid #AAB1C5;
 	padding: 1px 4px;
 	margin-left: -4px;
+	}
+	
+.excel-download {
+	display: list-item;
+	list-style-image: url(msexcel_icon.gif);
+	list-style-position: inside;
 	}
