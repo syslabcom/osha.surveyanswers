@@ -72,6 +72,10 @@ class SingleQuestionCountry(object):
         return self.context.context.absolute_url()
     
     @property
+    def question_text(self):
+        return self.db.getQuestion(self.question_id)['text']
+    
+    @property
     def discriminators(self):
         return [{"key" : x[0], "value" : x[1]} for x in self.db.getDiscriminators()]
         
