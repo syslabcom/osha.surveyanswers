@@ -22,6 +22,12 @@
 
 	<browser:page
 		for="osha.surveyanswers.interfaces.ISurvey"
+		name="download.xls"
+		class=".views.XLSDownload"
+		permission="zope2.View"/>
+
+	<browser:page
+		for="osha.surveyanswers.interfaces.ISurvey"
 		name="question"
 		class=".views.SingleQuestion"
 		permission="zope2.View"

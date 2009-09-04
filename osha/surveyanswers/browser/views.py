@@ -9,6 +9,11 @@ from ZPublisher.BaseRequest import DefaultPublishTraverse
 from zope.component import getMultiAdapter #@UnresolvedImport
 from osha.surveyanswers.constants import ID_TO_SHORT_NAME, SHORT_NAME_TO_ID,\
     SHORT_NAME_TO_LONG, ID_TO_LONG_NAME
+import StringIO
+from xml.sax.saxutils import escape
+
+import xlwt
+
 
 class SurveyTraverser(object):
     implements(IBrowserPublisher)
@@ -84,6 +89,50 @@ class QuestionOverView(BrowserView):
             if questions['name'] not in ['Gruppe', 'Discriminator question']:
                 questions['count'] = len(questions['questions'])
                 yield questions
+
+class XLSDownload(object):
+    implements(IBrowserView)
+    adapts(ISurvey, IBrowserRequest)
+    
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+        self.db = ISurveyDatabase(self.context)
+        
+    def __call__(self, question, country = "", group_by = ""):
+        if group_by == 'None':
+            group_by = ''
+        wb = xlwt.Workbook()
+        ws = wb.add_sheet(' ')
+        datasets = [[self.db.getQuestion(question)['text']]]
+        if not country:
+            datasets.extend([x for x in self.db.getAnswersForExport(question)])
+        else:
+            datasets.append(["Country: " + self.db.getCountryName(country)])
+            if group_by:
+                group_by_description = self.db.getQuestion(self.db.getQuestionIdFromRowName(group_by))['text']
+                group_by_row_names = self.db.getOrderedAnswerMeanings(group_by)
+            else:
+                group_by = ""
+                group_by_description = ""
+                group_by_row_names = [""]
+            raw_datasets = self.db.getAnswersForCountry(question, country, group_by)
+            row_head = [x for x in self.db.getOrderedAnswerMeanings(self.db.getAnswerRow(question))]
+            datasets.append([group_by_description] + row_head)
+            for row_key in group_by_row_names:
+                row = [row_key]
+                datasets.append(row)
+                for cell_key in row_head:
+                    row.append(raw_datasets.get(cell_key, {}).get(row_key, 0))
+        for row in range(len(datasets)):
+            row_data = datasets[row]
+            for cell in range(len(row_data)):
+                ws.write(row, cell, type(row_data[cell]) == float and "%02.2f %%" % ( 100 * row_data[cell]) or row_data[cell])
+        retval = StringIO.StringIO()
+        wb.save(retval)
+        self.request.RESPONSE.setHeader("Content-type","application/vnd.ms-excel")
+        self.request.RESPONSE.setHeader("Content-disposition","attachment;filename=statistics.xls")
+        return retval.getvalue()
     
 class SingleQuestion(object):
     implements(IBrowserView, ISingleQuestion)
@@ -108,7 +157,7 @@ class SingleQuestion(object):
     @property
     def discriminators(self):
         return [{"key" : x[0], "value" : x[1]} for x in 
-                [x for x in self.db.getDiscriminators() if x[0] in ['question_2', 'question_3']]]
+                [x for x in self.db.getDiscriminators() if x[0] in ['sec3', 'size_5']]]
 
     def absolute_url(self):
         return self.context.context.absolute_url()
@@ -154,6 +203,7 @@ function FC_Rendered(DOMId){
          animation='0'
          showCanvasBorder='0'
          showLegend='1'
+         legendCaption='%(show_which_answer)s'
          includeNameInLabels='0' 
          numberSuffix='%(number_suffix)s' 
          includeValueInLabels='1' 
@@ -168,9 +218,11 @@ function FC_Rendered(DOMId){
     </map>
     """.replace("\n", "")
     xml_chart_template = """var xmlChartData = "
-    <chart  
+    <chart
+           showExportDataMenuItem='1'
            numberSuffix= '%%'
-           labelDisplay='ROTATE'>
+           labelDisplay='STAGGER'
+           staggerLines='3'>
       <categories>
         %s
       </categories>
@@ -222,7 +274,7 @@ function FC_Rendered(DOMId){
                 sorted_keys_dataset = self.db.getOrderedAnswerMeanings(self.group_by)
             else:
                 sorted_keys_dataset = [""]
-                keyToName = lambda x: ID_TO_LONG_NAME['%03i' % (x + 1)]
+                keyToName = lambda x: ID_TO_LONG_NAME['%03i' % (x)]
                 chart_contents = {}
                 for key, value in contents.items():
                     chart_contents[keyToName(key)] = {"": value}

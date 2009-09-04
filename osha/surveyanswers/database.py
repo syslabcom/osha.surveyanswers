@@ -51,7 +51,7 @@ class SurveyDatabase(object):
         question_id which contains the numeric id of the question row in the database
         answer_row_name which contains the row name in the answers db for the given question
         """
-        all_questions = self.connection.execute(self.questions.select('')).fetchall()
+        all_questions = self.connection.execute(self.questions.select('hide_question=0')).fetchall()
         def reducer(retval, question):
             found = False
             for group in retval:
@@ -92,6 +92,7 @@ class SurveyDatabase(object):
         Return range information to beautify a map for a given question
         """
         question = self.connection.execute(self.map_data.select('question_id=:question_id').params(question_id=question_id)).fetchall()[0]
+        answer_text = self._query("select am.answer_text from questions as q, answer_meanings as am where q.id = :question_id and am.question_id = q.id and am.answer_bit & q.show_which", question_id = question_id)[0][0]
         retval = {}
         retval['rng1'] = question[2]
         retval['rng1_msg'] = question[3]
@@ -99,6 +100,7 @@ class SurveyDatabase(object):
         retval['rng2_msg'] = question[5]
         retval['rng3'] = question[6]
         retval['rng3_msg'] = question[7]
+        retval['show_which_answer'] = answer_text
          
         return retval
     
@@ -107,18 +109,46 @@ class SurveyDatabase(object):
         for country in self._query("select answer_text from answer_meanings where question_id = :question_id order by position", question_id = question_id):
             yield country[0]
             
+    def getCountryName(self, country_id):
+        return self._query("select am.answer_text from answer_meanings as am, questions as q where q.question_field = \"%s\" and am.question_id = q.id and am.answer_bit = :country" % self.country_row, country = country_id)[0][0]
+            
     def getQuestionIdFromRowName(self, row_name):
         return self._query("select id from questions where question_field = :question_field", question_field = row_name)[0][0]
     
-
+    def getAnswersForExport(self, question_id):
+        params = {'answer_row' : self.getAnswerRow(question_id), 
+                  'country_row' : self.country_row}
+        data = self._query('select r.%(country_row)s, sum(est_wei2), r.%(answer_row)s from responses as r group by r.%(answer_row)s, r.%(country_row)s' % params)
+        answer_meanings = self._query('select answer_bit, answer_text from answer_meanings where question_id = :question_id order by position', question_id = question_id)
+        countries = self._query('select am.answer_bit, am.answer_text from answer_meanings as am, questions as q where q.question_field = "%(country_row)s" and am.question_id = q.id order by position' % params)
+        datasets = {}
+        totals = {}
+        for row in data:
+            if not datasets.has_key(row[0]):
+                datasets[row[0]] = {}
+            answers = datasets[row[0]]
+            answers[row[2]] = answers.get(row[2], 0) + row[1]
+            totals[row[0]] = totals.get(row[0], 0) + row[1]
+        row_head = [x[1] for x in answer_meanings]
+        for country_id, total in totals.items():
+            row = datasets[country_id]
+            for answer_name, answer_count in row.items():
+                row[answer_name] = answer_count / float(total)
+        yield ["Country"] + row_head
+        for country in countries:
+            if not datasets.has_key(country[0]):
+                continue
+            values = datasets[country[0]]
+            yield [country[1]] + [values.get(x[0], 0) for x in answer_meanings]
+            
     def getAnswersFor(self, question_id):
         """
         Return a dictionary of relative percentages to show on map
         """
         answer_map = self.connection.engine.execute('select show_which from questions where id = :question_id', question_id=question_id).fetchall()[0][0]
         where_stmt = '%s & %s' % (self.getAnswerRow(question_id), answer_map)
-        yes = self._query('select %(country_row)s, count(*) from responses where %(where)s group by %(country_row)s order by %(country_row)s' % ({'country_row' : self.country_row, 'where' : where_stmt})) # save sql statement
-        all = self._query('select %(country_row)s, count(*) from responses group by %(country_row)s order by %(country_row)s' % {'country_row' : self.country_row})
+        yes = self._query('select %(country_row)s, sum(est_wei2) from responses where %(where)s group by %(country_row)s order by %(country_row)s' % ({'country_row' : self.country_row, 'where' : where_stmt})) # save sql statement
+        all = self._query('select %(country_row)s, sum(est_wei2) from responses group by %(country_row)s order by %(country_row)s' % {'country_row' : self.country_row})
         # Map and reduce in simple
         return dict(map(lambda ((country, yes), (i, all)): 
                             (country, 
@@ -127,11 +157,19 @@ class SurveyDatabase(object):
                          zip(yes, all)))
     
     def getAnswersForAndGroupedBy(self, question_id, group_by):
-        if group_by and not questionFilter(group_by):
-            raise AttributeError("Warning invalid value supplied for group_by: \"%s\"" % group_by)
         retval = {}
-
-        total_answers_per_country = self._query("select a.answer_text, count(r.%(country_row)s) from responses as r, answer_meanings as a WHERE r.%(country_row)s == a.answer_bit and a.question_id == 0 group by r.%(country_row)s" % {'country_row' : self.country_row})
+        #Strange, complex queries are waaay to slow
+        country_row_id = self._query("select id from questions where question_field = \"%(country_row)s\"" % {'country_row' : self.country_row})[0][0]
+        
+        country_names = {}
+        for text, id in self._query("select answer_text, answer_bit from answer_meanings where question_id = :question_id", question_id = country_row_id):
+            country_names[id] = text
+        
+        
+        total_answers_per_country = []
+        for id, count in self._query("select r.%(country_row)s, sum(r.est_wei2) from responses as r group by r.%(country_row)s" % {'country_row' : self.country_row}):
+            total_answers_per_country.append((country_names[id], count))
+        
         
         discriminator_question_id = self._query("select id from questions where question_field = :question", question = group_by)[0][0] 
         discriminator_answers = self._query("select answer_bit, answer_text from answer_meanings where question_id = :question_id", question_id = discriminator_question_id)
@@ -142,9 +180,14 @@ class SurveyDatabase(object):
         where_stmt = 'r.%s & %s' % (self.getAnswerRow(question_id), answer_map)
         group_by_stmt = "r.%s, r.%s" % (group_by, self.country_row)
         
-        query_match = "select a.answer_text, count(r.%s), r.%s from responses as r, answer_meanings as a WHERE r.%s == a.answer_bit and a.question_id == 0 and %s group by %s" %  (self.country_row, select_stmt, self.country_row, where_stmt, group_by_stmt)
+        query_match = "select r.%(country_row)s, sum(r.est_wei2), r.%(select)s from responses as r WHERE %(where)s group by %(group_by)s" %\
+          {'country_row' : self.country_row, 
+           'select' : select_stmt,
+           'where' : where_stmt,
+           'group_by' : group_by_stmt}
         
-        for (country, count, discriminator) in self._query(query_match):
+        for (country_id, count, discriminator) in self._query(query_match):
+            country = country_names[country_id]
             discriminators = retval.get(country, {})
             for(bit, name) in discriminator_answers:
                 if(discriminator & bit):
@@ -178,11 +221,11 @@ class SurveyDatabase(object):
         question_row = self.getAnswerRow(question_id)
         map_answers = self._query("select answer_bit, answer_text from answer_meanings where question_id = :question_id", question_id = question_id)
 
-        total_answers_count = float(self._query("select count(*) from responses where %s = :country" % self.country_row, country = country)[0][0])
+        total_answers_count = float(self._query("select sum(est_wei2) from responses where %s = :country" % self.country_row, country = country)[0][0])
 
         retval = {}
 
-        query_match = "select count(*), %s from responses where %s = :country group by %s" % (question_row, self.country_row, question_row)
+        query_match = "select sum(est_wei2), %s from responses where %s = :country group by %s" % (question_row, self.country_row, question_row)
         
         for (count, answer_bit) in self._query(query_match, country = country):
             for bit, text in map_answers:
@@ -202,7 +245,7 @@ class SurveyDatabase(object):
         """
         retval = {}
 
-        total_answers_count = float(self._query("select count(*) from responses where %s = :country" % self.country_row, country = country)[0][0])
+        total_answers_count = float(self._query("select sum(est_wei2) from responses where %s = :country" % self.country_row, country = country)[0][0])
 
         discriminator_question_id = self._query("select id from questions where question_field = :question", question = group_by)[0][0] 
         discriminator_answers = self._query("select answer_bit, answer_text from answer_meanings where question_id = :question_id", question_id = discriminator_question_id)
@@ -215,7 +258,7 @@ class SurveyDatabase(object):
         select_stmt = "%s" % group_by
         question_row = self.getAnswerRow(question_id)
         group_by_stmt = "%s, %s" % (question_row, group_by)
-        query_match = "select %s, count(*), %s from responses where %s = :country group by %s" % (question_row, select_stmt, self.country_row, group_by_stmt)
+        query_match = "select %s, sum(est_wei2), %s from responses where %s = :country group by %s" % (question_row, select_stmt, self.country_row, group_by_stmt)
         
         for (current_answer_bit, count, discriminator) in self._query(query_match, country = country):
             for answer_text, answer_bit in answer_map.items():

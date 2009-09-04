@@ -53,6 +53,7 @@ setup(name='osha.surveyanswers',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'xlwt',
           'archetypes.schemaextender',
           # -*- Extra requirements: -*-
       ],

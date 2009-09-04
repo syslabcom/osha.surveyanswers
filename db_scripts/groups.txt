@@ -1,0 +1,153 @@
+Contact phase
+MM001
+MM002
+MM003
+MM004
+MM005
+MM050
+MM050a
+MM051
+MM052
+MM053a 
+MM053b 
+MM053c 
+MM096
+MM097
+MM098
+MM099
+Introductory questions
+MM100 
+MM101
+MM102a 
+MM102b 
+MM103
+MM106
+General health and safety management in the establishment
+MM150
+MM152
+MM153
+MM154
+MM155
+MM156
+MM157
+MM158
+MM159
+MM161
+MM162
+MM163
+MM164
+MM166
+MM169
+MM170
+MM171
+MM172
+MM173
+MM175
+Health and safety risks in the establishment
+MM200
+MM202
+Management of psychosocial risks in the establishment
+MM250
+MM251
+MM252
+MM253
+MM256
+MM259
+MM260
+MM262
+MM263
+MM266
+MM267
+Barrier for psychosocial risk management and existing support
+MM300 
+MM301
+MM302
+MM303a
+MM303b
+MM304
+Formal employee representation in OSH issues
+MM350
+MM351
+MM353
+MM354
+MM355
+MM355NL
+MM358
+Background information on the establishment
+MM400
+MM400x
+MM401
+MM401x
+MM402
+MM403
+MM405
+MM405x
+Contact for the ER interview
+MM500
+MM501
+MM502
+MM503a
+MM503d
+MM504
+MM506
+MM507
+MM508
+Contact Phase
+ER_info_1
+ER_info_2
+ER_resp
+ER_resp_01
+ER_resp_02
+ER_resp_03
+ER_resp_06
+ER_resp_08
+ER001
+ER002
+ER003 
+ER004 
+ER005
+The role of ER in the OSH managment
+ER102
+ER103
+ER107
+Resources and training of the employee representatives in OSH issues
+ER150
+ER153
+ER154
+ER155
+ER156
+ER159
+ER160
+ER161a
+ER161b
+ER162
+General health and safety managegement
+ER200
+ER202
+ER203 
+ER205
+ER207
+ER209
+ER210
+ER211
+ER213
+ER214
+ER215
+ER215_01
+ER215_04
+ER215_05
+Occupational health and safety and psychosocial risks
+ER250
+ER252
+Psychosocial risk management
+ER300
+ER301
+ER303
+ER308
+ER309
+ER310
+Drivers and barriers for psychosocial risk management
+ER400 
+ER402
+ER403
+dummy

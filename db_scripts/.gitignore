@@ -1,0 +1,15 @@
+ESENER2009_20090821_EUOSHA.dat
+*.swp
+bin
+include
+lib
+db_setup.sql
+groups.sql
+questions.sql
+questions.txt
+questions.xls
+questions2.sql
+step1.txt
+step2.sql
+step2.txt
+step3.sql
