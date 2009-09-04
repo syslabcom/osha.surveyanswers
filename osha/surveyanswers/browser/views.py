@@ -165,7 +165,7 @@ class SingleQuestion(object):
 class FusionJS(object):
     
     default_params = dict(border_color='005879'
-                  , fill_color='D7F4FF'
+                  , fill_color='red'
                   , number_suffix=' % '
                   , label_sep_char=': '
                   , base_font_size='9'
@@ -204,15 +204,15 @@ function FC_Rendered(DOMId){
          showCanvasBorder='0'
          showLegend='1'
          legendCaption='%(show_which_answer)s'
-         includeNameInLabels='0' 
+         includeNameInLabels='1' 
          numberSuffix='%(number_suffix)s' 
-         includeValueInLabels='1' 
+         includeValueInLabels='0' 
          labelSepChar='%(label_sep_char)s' 
          baseFontSize='%(base_font_size)s'>
             <colorRange>
-        <color minValue='0' maxValue='%(rng1)i' displayValue='%(rng1_msg)s' color='A7E9BC' />
-        <color minValue='%(rng1)i' maxValue='%(rng2)i' displayValue='%(rng2_msg)s' color='FFFFCC' />
-        <color minValue='%(rng2)i' maxValue='100' displayValue='%(rng3_msg)s' color='FF9377' />
+        <color minValue='0' maxValue='%(rng1)i' displayValue='%(rng1_msg)s' color='F2F4F7' />
+        <color minValue='%(rng1)i' maxValue='%(rng2)i' displayValue='%(rng2_msg)s' color='E6E8ED' />
+        <color minValue='%(rng2)i' maxValue='100' displayValue='%(rng3_msg)s' color='AAB1C5' />
    </colorRange>
       <data>%(contents)s</data>
     </map>
