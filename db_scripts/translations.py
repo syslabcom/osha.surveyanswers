@@ -2,8 +2,72 @@ import os
 import re
 import xlrd
 country_infix = re.compile('6204(.*)TRA_final.xls')
-country_code_mapping = {'CZX' : 'cz'}
-language_mapping = {'CZX' : 'Czech'}
+country_code_mapping = {'CZX' : 'cs',
+                        'LUF' : 'ignore',
+                        'FRX' : 'fr',
+                        'EEE' : 'et',
+                        'MTM' : 'mt',
+                        'SIX' : 'sl',
+                        'SEX' : 'sv',
+                        'CYX' : 'ignore',
+                        'LUG' : 'ignore',
+                        'CHG' : 'ignore',
+                        'HRX' : 'hr',
+                        'DEX' : 'de',
+                        'ROX' : 'ro',
+                        'ITX' : 'it',
+                        'CHI' : 'ignore',
+                        'MTE' : 'ignore',
+                        'LTX' : 'lt',
+                        'NWX' : 'no',
+                        'ELX' : 'el',
+                        'NLX' : 'nl',
+                        'BEN' : 'ignore',
+                        'TRX' : 'tr',
+                        'ATX' : 'ignore',
+                        'BEF' : 'ignore',
+                        'SKX' : 'sk',
+                        'PLX' : 'pl',
+                        'EER' : 'ru',
+                        'FIS' : 'ignore',
+                        'LUL' : 'lb',
+                        'LUE' : 'ignore',
+                        'HUX' : 'hu',
+                        'IEX' : 'ignore',
+                        'FIF' : 'fi',
+                        'DKX' : 'da',
+                        'PTX' : 'pt',
+                        'CHF' : 'ignore',
+                        'ESX' : 'es',
+                        'BGX' : 'bg',
+                        'LVL' : 'lv',
+                        'LVR' : 'ignore'}
+language_mapping = {'CZX' : 'Czech',
+                    'FRX' : 'French',
+                    'EEE' : 'Estonian',
+                    'MTM' : 'Maltese',
+                    'SIX' : 'Slovenian',
+                    'SEX' : 'Swedish',
+                    'HRX' : 'Croatian',
+                    'DEX' : 'German',
+                    'ROX' : 'Romanian',
+                    'ITX' : 'Italian',
+                    'LTX' : 'Lithuanian',
+                    'NWX' : 'Norwegian',
+                    'ELX' : 'Greek',
+                    'NLX' : 'Dutch',
+                    'TRX' : 'Turkish',
+                    'SKX' : 'Slovak',
+                    'PLX' : 'Polish',
+                    'EER' : 'Russian',
+                    'LUL' : 'Luxembourgish',
+                    'HUX' : 'Hungarian',
+                    'FIF' : 'Finnish',
+                    'DKX' : 'Danish',
+                    'PTX' : 'Portuguese',
+                    'ESX' : 'Spanish',
+                    'BGX' : 'Bulgarian',
+                    'LVL' : 'Latvian'}
 
 po_template = """
 msgid ""
@@ -26,18 +90,24 @@ msgstr ""
 for filename in [x for x in os.listdir('.') if x.endswith('final.xls')]:
     country_code = country_infix.findall(filename)[0]
     country = country_code_mapping[country_code]
+
+    if country == 'ignore':
+        continue
     language = language_mapping[country_code]
     translations = {}
     xls_file = xlrd.open_workbook(filename)
     sheet = xls_file.sheet_by_name('TRANSLATION')
     for row_id in range(sheet.nrows):
         row = sheet.row(row_id)
-        if row[2] == 'Country Code':
-            import pdb;pdb.set_trace()
-        if row[2].value:
-            translations[row[2].value] = row[20].value
+        for cell_id in range(18):
+            if row[cell_id].value and row[cell_id + 36].value and row[cell_id].value != row[cell_id + 36].value:
+                translations[row[cell_id].value] = row[cell_id + 36].value
 
-    lang_file = file('osha.surveyanswers_%s.po' % country, 'w')
+    path = './locales/%s' % country
+    os.mkdir(path)
+    os.mkdir(path + '/LC_MESSAGES')
+
+    lang_file = file(path + '/LC_MESSAGES/osha.surveyanswers.po', 'w')
     lang_file.write(po_template % {'code' : country, 
                                    'language' : language})
     for key, translation in translations.items():
