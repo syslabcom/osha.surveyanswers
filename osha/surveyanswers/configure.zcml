@@ -4,7 +4,10 @@
 	xmlns:browser="http://namespaces.zope.org/browser"
 	xmlns:cmf="http://namespaces.zope.org/cmf"
 	xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="osha.surveyanswers">
+
+  <i18n:registerTranslations directory="locales" />
 
   <five:registerPackage package="." initialize=".initialize" />
 

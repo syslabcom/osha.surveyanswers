@@ -41,7 +41,8 @@ country_code_mapping = {'CZX' : 'cs',
                         'ESX' : 'es',
                         'BGX' : 'bg',
                         'LVL' : 'lv',
-                        'LVR' : 'ignore'}
+                        'LVR' : 'ignore',
+                        'UKX' : 'en'}
 language_mapping = {'CZX' : 'Czech',
                     'FRX' : 'French',
                     'EEE' : 'Estonian',
@@ -67,26 +68,30 @@ language_mapping = {'CZX' : 'Czech',
                     'PTX' : 'Portuguese',
                     'ESX' : 'Spanish',
                     'BGX' : 'Bulgarian',
-                    'LVL' : 'Latvian'}
+                    'LVL' : 'Latvian',
+                    'UKX' : 'English'}
 
 po_template = """
 msgid ""
 msgstr ""
 
-"Project-Id-Version: osha.surveyanswers\n"
-"POT-Creation-Date: 2009-09-04 23:20+0000\n"
-"PO-Revision-Date: 2009-09-04 23:22+0100\n"
-"Last-Translator: Patrick Gerken <gerken@syslab.com>\n"
-"Language-Team: Syslab.com GmbH <info@syslab.com>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"Language-Code: %(code)s\n"
-"Language-Name: %(language)s\n"
-"Preferred-Encodings: utf-8 latin1\n"
-"Domain: DOMAIN\n"
+"Project-Id-Version: osha.surveyanswers\\n"
+"POT-Creation-Date: 2009-09-04 23:20+0000\\n"
+"PO-Revision-Date: 2009-09-04 23:22+0100\\n"
+"Last-Translator: Patrick Gerken <gerken@syslab.com>\\n"
+"Language-Team: Syslab.com GmbH <info@syslab.com>\\n"
+"MIME-Version: 1.0\\n"
+"Content-Type: text/plain; charset=utf-8\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+"Plural-Forms: nplurals=1; plural=0;\\n"
+"Language-Code: %(code)s\\n"
+"Language-Name: %(language)s\\n"
+"Preferred-Encodings: utf-8 latin1\\n"
+"Domain: osha.surveyanswers\\n"
 """
+
+def sanitize(data):
+    return unicode(data.value).strip().replace('"', '\\"').replace("\n", " ")
 for filename in [x for x in os.listdir('.') if x.endswith('final.xls')]:
     country_code = country_infix.findall(filename)[0]
     country = country_code_mapping[country_code]
@@ -101,7 +106,11 @@ for filename in [x for x in os.listdir('.') if x.endswith('final.xls')]:
         row = sheet.row(row_id)
         for cell_id in range(18):
             if row[cell_id].value and row[cell_id + 36].value and row[cell_id].value != row[cell_id + 36].value:
-                translations[row[cell_id].value] = row[cell_id + 36].value
+                translations[sanitize(row[cell_id])] = sanitize(row[cell_id + 36])
+            if cell_id == 1 and (row[cell_id].value.startswith('MM') or row[cell_id].value.startswith('ER')):
+                question = sanitize(row[2])
+            if cell_id == 3 and row[cell_id].value:
+                translations[question + " " + sanitize(row[cell_id])] = translations.get(question, question) + " " + sanitize(row[cell_id + 36])
 
     path = './locales/%s' % country
     os.mkdir(path)

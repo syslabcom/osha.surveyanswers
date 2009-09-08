@@ -14,6 +14,8 @@ from xml.sax.saxutils import escape
 
 import xlwt
 
+from osha.surveyanswers import OshaMessageFactory as _
+
 
 class SurveyTraverser(object):
     implements(IBrowserPublisher)
@@ -89,9 +91,11 @@ class QuestionOverView(BrowserView):
         
     @property
     def all_questions(self):
+        import pdb;pdb.set_trace()
         for questions in self.db.getAllQuestions():
             if questions['name'] not in ['Gruppe', 'Discriminator question']:
                 questions['count'] = len(questions['questions'])
+                import pdb;pdb.set_trace()
                 yield questions
 
 class XLSDownload(object):
@@ -152,7 +156,7 @@ class SingleQuestion(object):
         
     @property
     def question_text(self):
-        return self.db.getQuestion(self.question_id)['text']
+        return _(self.db.getQuestion(self.question_id)['text'])
     
     @property
     def countries(self):
@@ -160,7 +164,7 @@ class SingleQuestion(object):
     
     @property
     def discriminators(self):
-        return [{"key" : x[0], "value" : x[1]} for x in 
+        return [{"key" : x[0], "value" : _(x[1])} for x in 
                 [x for x in self.db.getDiscriminators() if x[0] in ['sec3', 'size_5']]]
 
     def absolute_url(self):
@@ -327,6 +331,8 @@ function FC_Rendered(DOMId){
         map_info = self.db.getMapInfo(self.question_id)
         params.update(map_info)
         params['contents'] = contents
+        for key in ['show_which_answer', 'rng1_msg', 'rng2_msg', 'rng3_msg']:
+            params[key] = _(params[key])
         return self.xml_map_template % params
     
     def getXMLChartData(self, chart_contents, sorted_categories, sorted_dataset):

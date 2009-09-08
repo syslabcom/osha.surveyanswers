@@ -6,7 +6,7 @@ from plone.app.portlets.portlets import base
 
 from Acquisition import aq_inner #@UnresolvedImport
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFPlone import PloneMessageFactory as _
+from osha.surveyanswers import OshaMessageFactory as _
 from osha.surveyanswers.interfaces import IQuestionsPortlet, ISurveyDatabase
 
 class Assignment(base.Assignment):
@@ -37,9 +37,13 @@ class Renderer(base.Renderer):
         
     @property
     def all_questions(self):
+        self.context.getCanonicalLanguage()
         for questions in self.db.getAllQuestions():
+            print _(questions['name'])
             if questions['name'] not in ['Gruppe', 'Discriminator question']:
                 questions['count'] = len(questions['questions'])
+                for question in questions['questions']:
+                    question['text'] = _(question['text'])
                 yield questions
         
     def render(self):
