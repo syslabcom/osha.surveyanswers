@@ -26,16 +26,44 @@ class SurveyDatabase(object):
     
     def __init__(self, context):
         self.context = context 
-        self.db_name = context.getProperty('db_name')
-        db_util = getUtility(IDatabase, self.db_name)
-        connection = db_util.connection 
-        meta = sa.MetaData()
-        meta.bind = connection
-        self.connection = connection
-        self.responses = sa.Table('responses', meta, autoload=True)
-        self.questions = sa.Table('questions', meta, autoload=True)
-        self.map_data = sa.Table('map_data', meta, autoload=True)
-        self.answer_meanings = sa.Table('answer_meanings', meta, autoload=True)
+
+    @property
+    def responses(self):
+        if not hasattr(self, '_responses'):
+            self._responses = sa.Table('responses', self.meta, autoload=True)
+        return self._responses
+    
+    @property
+    def questions(self):
+        if not hasattr(self, '_questions'):
+            self._questions = sa.Table('questions', self.meta, autoload=True)
+        return self._questions
+    
+    @property
+    def map_data(self):
+        if not hasattr(self, '_map_data'):
+            self._map_data = sa.Table('map_data', self.meta, autoload=True)
+        return self._map_data 
+    
+    @property
+    def connection(self):
+        if not hasattr(self, '_connection'):
+            db_util = getUtility(IDatabase, "osha.database")
+            self._connection = db_util.connection
+        return self._connection
+
+    @property
+    def meta(self):
+        if not hasattr(self, '_meta'):
+            self._meta = sa.MetaData()
+            self.meta.bind = self.connection
+        return self._meta
+        
+    @property
+    def answer_meanings(self):
+        if not hasattr(self, '_answer_meanings'):
+            self._answer_meanings = sa.Table('answer_meanings', self.meta, autoload=True)
+        return self._answer_meanings
         
     def _query(self, stmt, **kwargs):
         return self.connection.engine.execute(stmt, **kwargs).fetchall()

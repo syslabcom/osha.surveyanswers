@@ -91,11 +91,9 @@ class QuestionOverView(BrowserView):
         
     @property
     def all_questions(self):
-        import pdb;pdb.set_trace()
         for questions in self.db.getAllQuestions():
             if questions['name'] not in ['Gruppe', 'Discriminator question']:
                 questions['count'] = len(questions['questions'])
-                import pdb;pdb.set_trace()
                 yield questions
 
 class XLSDownload(object):
