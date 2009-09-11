@@ -96,8 +96,11 @@ class SurveyDatabase(object):
         """
         Return whether a question with the given question_id exists
         """
-        question_exists = self.connection.execute(self.questions.select('id=:question').params(question=question_id)).fetchall() 
-        return question_exists
+        try:
+            question_exists = self.connection.execute(self.questions.select('id=:question').params(question=int(question_id))).fetchall() 
+            return question_exists
+        except ValueError:
+            return False
     
     def getQuestion(self, question_id):
         """
