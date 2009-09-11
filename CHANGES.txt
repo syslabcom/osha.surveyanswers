@@ -1,6 +1,12 @@
 osha.surveyanswers Changelog
 ============================
 
+osha.surveyanswers 1.3 (2009-09-10)
+-----------------------------------
+
+- Some improvements in translations (gerken)
+- More stable adapters (gerken)
+
 osha.surveyanswers 1.2 (2009-09-08)
 -----------------------------------
 
