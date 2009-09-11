@@ -39,7 +39,6 @@ class Renderer(base.Renderer):
     def all_questions(self):
         self.context.getCanonicalLanguage()
         for questions in self.db.getAllQuestions():
-            print _(questions['name'])
             if questions['name'] not in ['Gruppe', 'Discriminator question']:
                 questions['count'] = len(questions['questions'])
                 for question in questions['questions']:
