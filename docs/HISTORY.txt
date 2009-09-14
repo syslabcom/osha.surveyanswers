@@ -1,8 +1,38 @@
-Changelog
-=========
+osha.surveyanswers Changelog
+============================
 
-0.1 - Unreleased
-----------------
+osha.surveyanswers 1.3.2 (2009-09-14)
+------------------
 
-* Initial release
+- Make it work with postgres (gerken)
 
+osha.surveyanswers 1.3.1 (2009-09-10)
+------------------
+
+- Slightly improved error handling (gerken)
+
+osha.surveyanswers 1.3 (2009-09-10)
+-----------------------------------
+
+- Some improvements in translations (gerken)
+- More stable adapters (gerken)
+
+osha.surveyanswers 1.2 (2009-09-08)
+-----------------------------------
+
+- Much more working. Translations in part (gerken)
+
+osha.surveyanswers 1.1 (2009-06-10)
+-----------------------------------
+
+- I screwed up the first release, here goes another one (thomasw)
+
+osha.surveyanswers 1.0 (2009-06-10)
+-----------------------------------
+
+- First release (thomasw)
+
+osha.surveyanswers 0.1 (2008-03-31)
+-----------------------------------
+
+- Initial creation
