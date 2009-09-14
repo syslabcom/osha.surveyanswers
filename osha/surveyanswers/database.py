@@ -141,7 +141,7 @@ class SurveyDatabase(object):
             yield country[0]
             
     def getCountryName(self, country_id):
-        return self._query("select am.answer_text from answer_meanings as am, questions as q where q.question_field = \'%s\' and am.question_id = q.id and am.answer_bit = %(country)s" % self.country_row, country = country_id)[0][0]
+        return self._query("select am.answer_text from answer_meanings as am, questions as q where q.question_field = \'%s\' and am.question_id = q.id and am.answer_bit = %%(country)s" % self.country_row, country = country_id)[0][0]
             
     def getQuestionIdFromRowName(self, row_name):
         return self._query("select id from questions where question_field = %(question_field)s", question_field = row_name)[0][0]
@@ -151,7 +151,7 @@ class SurveyDatabase(object):
                   'country_row' : self.country_row}
         data = self._query('select r.%(country_row)s, sum(est_wei2), r.%(answer_row)s from responses as r group by r.%(answer_row)s, r.%(country_row)s' % params)
         answer_meanings = self._query('select answer_bit, answer_text from answer_meanings where question_id = %(question_id)s order by position', question_id = question_id)
-        countries = self._query('select am.answer_bit, am.answer_text from answer_meanings as am, questions as q where q.question_field = "%(country_row)s" and am.question_id = q.id order by position' % params)
+        countries = self._query('select am.answer_bit, am.answer_text from answer_meanings as am, questions as q where q.question_field = \'%(country_row)s\' and am.question_id = q.id order by position' % params)
         datasets = {}
         totals = {}
         for row in data:
