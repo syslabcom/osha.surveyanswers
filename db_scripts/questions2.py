@@ -68,7 +68,7 @@ for row_id in range(sheet.nrows):
 
 for key, (answers, question_text) in questions.items():
     try:
-        print ("update questions set question = \"%s\" where question_field = \"%s\";" % (question_text, key)).encode('ascii', 'replace')
+        print ("update questions set question = '%s' where question_field = '%s';" % (question_text, key)).encode('ascii', 'replace')
     except:
         import pdb;pdb.set_trace()
     i = 0
@@ -77,6 +77,6 @@ for key, (answers, question_text) in questions.items():
         if key2 == 0:
             no_answer_msg_exists = False
         i += 1
-        print ("insert into answer_meanings (question_id, answer_bit, answer_text, position) values ((select id from questions where question_field = \"%s\"), %i, \"%s\", %i);" % (key, 2 ** key2, answer, i)).encode("ascii", 'replace')
+        print ("insert into answer_meanings (question_id, answer_bit, answer_text, position) values ((select id from questions where question_field = '%s'), %i, '%s', %i);" % (key, 2 ** key2, answer.replace('\'', '\\\''), i)).encode("ascii", 'replace')
     if no_answer_msg_exists:
-        print "insert into answer_meanings (question_id, answer_bit, answer_text, position) values ((select id from questions where question_field = \"%s\"), 1, \"No answer given\", 99);" % key
+        print "insert into answer_meanings (question_id, answer_bit, answer_text, position) values ((select id from questions where question_field = '%s'), 1, 'No answer given', 99);" % key

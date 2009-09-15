@@ -119,7 +119,7 @@ ID_TO_LONG_NAME = dict([(x[0], SHORT_NAME_TO_LONG[x[1]]) for x in ID_TO_SHORT_NA
 
 import random
 
-tmpl1 = 'create table responses (id INTEGER PRIMARY KEY, %s);\n'
+tmpl1 = 'create table responses (id SERIAL PRIMARY KEY, %s);\n'
 tmpl2 = 'insert into responses (%s) values (%s);\n'
 
 bias = 0
@@ -139,44 +139,44 @@ class Bla:
 bla = Bla()
 
 out = file('db_setup.sql', 'w')
-out.write('drop table if exists responses;\n')
+out.write('drop table responses;\n')
 out.write(tmpl1 % ', '.join(['question_%i INTEGER' % x for x in range(100)]))
 for i in range(1000):
     out.write(tmpl2 % (', '.join(['question_%i' % x for x in range(100)]), ', '.join([bla.biased_rand() for x in range(100)])))
 
-out.write('drop table if exists questions;\n')
-out.write('create table questions(id INTEGER PRIMARY KEY, question_field String, question String, question_group String, is_country INTEGER, is_designator INTEGER, type INTEGER, show_which INTEGER, show_which_text STRING, hide_question INTEGER);\n')
-out.write('drop table if exists answer_meanings;\n')
-out.write('create table answer_meanings(id INTEGER PRIMARY KEY, question_id INTEGER, answer_bit INTEGER, answer_text STRING, position INTEGER);\n')
-out.write('drop table if exists map_data;\n')
-out.write('create table map_data(id INTEGER PRIMARY KEY, question_id INTEGER, rng1_num INTEGER, rng1 STRING, rng2_num INTEGER, rng2 STRING, rng3_num INTEGER, rng3 STRING);\n')
-out.write('insert into questions (question_field, question, question_group, is_country, is_designator, type, show_which, "show_which_text", hide_question) values ("question_0", "country", "group country", 1, 0, 0, 1, "Show which text", 0);\n')
+out.write('drop table questions;\n')
+out.write('create table questions(id SERIAL PRIMARY KEY, question_field TEXT, question TEXT, question_group TEXT, is_country INTEGER, is_designator INTEGER, type INTEGER, show_which INTEGER, show_which_text TEXT, hide_question INTEGER);\n')
+out.write('drop table answer_meanings;\n')
+out.write('create table answer_meanings(id SERIAL PRIMARY KEY, question_id INTEGER, answer_bit INTEGER, answer_text TEXT, position INTEGER);\n')
+out.write('drop table map_data;\n')
+out.write('create table map_data(id SERIAL PRIMARY KEY, question_id INTEGER, rng1_num INTEGER, rng1 TEXT, rng2_num INTEGER, rng2 TEXT, rng3_num INTEGER, rng3 TEXT);\n')
+out.write('insert into questions (question_field, question, question_group, is_country, is_designator, type, show_which, show_which_text, hide_question) values (\'question_0\', \'country\', \'group country\', 1, 0, 0, 1, \'Show which text\', 0);\n')
 for i in range(1, 49):
     country = ID_TO_LONG_NAME.get('%03i' % i)
-    out.write('insert into answer_meanings (question_id, answer_bit, answer_text, position) values (0, %i, "%s", %i);\n' % (i, country, i))
+    out.write('insert into answer_meanings (question_id, answer_bit, answer_text, position) values (0, %i, \'%s\', %i);\n' % (i, country, i))
 
 getGroup = lambda: random.sample(['Group%i' % x for x in range(1, 8)], 1)[0]
 def addType1(question):
     rand = lambda: random.sample(('yes', 'no', 'maybe'), 1)[0]
     position = 0
     for answer_bit, answer_text in [(1, 'yes'),(2, 'maybe'),(4, 'no')]:
-        out.write('insert into answer_meanings (question_id, answer_bit, answer_text, position) values(%i, %i, "%s", %i);\n' % (question, answer_bit, answer_text, position))
+        out.write('insert into answer_meanings (question_id, answer_bit, answer_text, position) values(%i, %i, \'%s\', %i);\n' % (question, answer_bit, answer_text, position))
         position += 1
-    out.write('insert into map_data (question_id, rng1_num, rng1, rng2_num, rng2, rng3_num, rng3) values(%i, %i, "%s", %i, "%s", %i, "%s");\n' % (question, 20, "Small agreement", 50, "Medium agreement", 80, "High agreement"))
+    out.write('insert into map_data (question_id, rng1_num, rng1, rng2_num, rng2, rng3_num, rng3) values(%i, %i, \'%s\', %i, \'%s\', %i, \'%s\');\n' % (question, 20, "Small agreement", 50, "Medium agreement", 80, "High agreement"))
 
 def addType2(question):
     position = 0
     for answer_bit in [1,2,4,8,16]:
-        out.write('insert into answer_meanings (question_id, answer_bit, answer_text, position) values(%i, %i, "answer %i", %i);\n' % (question, answer_bit, answer_bit, position))
+        out.write('insert into answer_meanings (question_id, answer_bit, answer_text, position) values(%i, %i, \'answer %i\', %i);\n' % (question, answer_bit, answer_bit, position))
         position += 1
-    out.write('insert into map_data (question_id, rng1_num, rng1, rng2_num, rng2, rng3_num, rng3) values(%i, %i, "%s", %i, "%s", %i, "%s");\n' % (question, 20, "Small agreement", 50, "Medium agreement", 80, "High agreement"))
+    out.write('insert into map_data (question_id, rng1_num, rng1, rng2_num, rng2, rng3_num, rng3) values(%i, %i, \'%s\', %i, \'%s\', %i, \'%s\');\n' % (question, 20, "Small agreement", 50, "Medium agreement", 80, "High agreement"))
 
 def addType3(question):
     position = 0
     for answer_bit, answer_text in [(1,'up to one'), (2, 'up to two'), (4, 'up to three'), (8, 'up to four'), (16, 'up to five')]:
-        out.write('insert into answer_meanings (question_id, answer_bit, answer_text, position) values(%i, %i, "%s", %i);\n' % (question, answer_bit, answer_text, position))
+        out.write('insert into answer_meanings (question_id, answer_bit, answer_text, position) values(%i, %i, \'%s\', %i);\n' % (question, answer_bit, answer_text, position))
         position += 1
-    out.write('insert into map_data (question_id, rng1_num, rng1, rng2_num, rng2, rng3_num, rng3) values(%i, %i, "%s", %i, "%s", %i, "%s");\n' % (question, 20, "Small agreement", 50, "Medium agreement", 80, "High agreement"))
+    out.write('insert into map_data (question_id, rng1_num, rng1, rng2_num, rng2, rng3_num, rng3) values(%i, %i, \'%s\', %i, \'%s\', %i, \'%s\');\n' % (question, 20, "Small agreement", 50, "Medium agreement", 80, "High agreement"))
 
 types = {}
 types['0'] = addType1
@@ -186,12 +186,12 @@ types['2'] = addType3
 for i in range(1, 11):
     question_type = random.sample('012', 1)[0]
     question_name = ' '.join(random.sample(('foo', 'bar', 'baz', 'foobar'), 3))
-    out.write('insert into questions (question_field, question, question_group, is_country, is_designator, type, show_which, "show_which_text", hide_question) values ("question_%i", "%s", "%s", 0, 1, "%s", 1, "show which text", 0);\n' % (i, question_name, "Discriminator question", question_type))
+    out.write('insert into questions (question_field, question, question_group, is_country, is_designator, type, show_which, show_which_text, hide_question) values (\'question_%i\', \'%s\', \'%s\', 0, 1, \'%s\', 1, \'show which text\', 0);\n' % (i, question_name, "Discriminator question", question_type))
     types[question_type](i)
 
 for i in range(10, 100):
     question_type = random.sample('012', 1)[0]
     question_name = ' '.join(random.sample(('foo', 'bar', 'baz', 'foobar', 'foobaz', 'barbaz'), 6)) 
-    out.write('insert into questions (question_field, question, question_group, is_country, is_designator, type, show_which, "show_which_text", hide_question) values ("question_%i", "%s", "%s", 0, 0, "%s", 1, "Show which text", 0);\n' % (i, question_name, getGroup(), question_type))
+    out.write('insert into questions (question_field, question, question_group, is_country, is_designator, type, show_which, show_which_text, hide_question) values (\'question_%i\', \'%s\', \'%s\', 0, 0, \'%s\', 1, \'Show which text\', 0);\n' % (i, question_name, getGroup(), question_type))
     types[question_type](i)
 

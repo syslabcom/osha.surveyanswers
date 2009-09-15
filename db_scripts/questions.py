@@ -57,13 +57,13 @@ for question in questions:
         show_which = '2',
         show_which_text = 'yes', 
         hide = question[3])
-    print 'insert into questions (question_field, question, question_group, is_country, is_designator, type, show_which, show_which_text, hide_question) values("%(question_field)s", "%(question)s", "%(question_group)s", %(is_country)s, %(is_designator)s, %(type)s, %(show_which)s, "%(show_which_text)s", %(hide)s);' % options
+    print 'insert into questions (question_field, question, question_group, is_country, is_designator, type, show_which, show_which_text, hide_question) values(\'%(question_field)s\', \'%(question)s\', \'%(question_group)s\', %(is_country)s, %(is_designator)s, %(type)s, %(show_which)s, \'%(show_which_text)s\', %(hide)s);' % options
     if options['is_country'] == '1':
-        print 'update answer_meanings set question_id = (select id from questions where question_field = "%s") where question_id = 0;' % options['question_field']
-        print 'delete from answer_meanings where question_id != (select id from questions where question_field = "%s");' % options['question_field']
+        print 'update answer_meanings set question_id = (select id from questions where question_field = \'%s\') where question_id = 0;' % options['question_field']
+        print 'delete from answer_meanings where question_id != (select id from questions where question_field = \'%s\');' % options['question_field']
 
-print 'drop table if exists responses;'
-print 'create table responses (id INTEGER PRIMARY KEY, %s);' % (", ".join(["%s INTEGER" % x[0] for x in questions]))
+print 'drop table responses;'
+print 'create table responses (id SERIAL PRIMARY KEY, %s);' % (", ".join(["%s INTEGER" % x[0] for x in questions[:-4]] + ["%s FLOAT" % x[0] for x in questions[-4:]]))
 for line in file('ESENER2009_20090821_EUOSHA.dat'):
     sql_question = []
     sql_answer = []
@@ -84,5 +84,5 @@ for line in file('ESENER2009_20090821_EUOSHA.dat'):
             except:
                 pass
         sql_answer.append(answer)
-    print 'insert into responses(%s) values (%s);' % (", ".join(sql_question), ", ".join(['"%s"' % x for x in sql_answer]))
+    print 'insert into responses(%s) values (%s);' % (", ".join(sql_question), ", ".join(['\'%s\'' % x for x in sql_answer]))
     

@@ -1,35 +1,35 @@
 #delete db
 #in buildout, run make_db.py
-#in buildout, run db_tool db < db_setup.sql
-db_tool = sqlite3
-rm ~/projects/osha_git/buildout/surveyanswers
+#in buildout, run $DBTOOL db < db_setup.sql
+export PGPASSWORD="postgres"
+DBTOOL="psql -d global_portal_db -h 127.0.0.1 -U postgres -f "
+PYTHON="./bin/python"
+$PYTHON make_db.py
 echo .
-python make_db.py
+$DBTOOL db_setup.sql
 echo .
-db_tool ~/projects/osha_git/buildout/surveyanswers < db_setup.sql
+$PYTHON questions.py > questions.sql
 echo .
-python questions.py > questions.sql
+$DBTOOL questions.sql
 echo .
-db_tool ~/projects/osha_git/buildout/surveyanswers < questions.sql
+$PYTHON questions2.py > questions2.sql
 echo .
-./bin/python questions2.py > questions2.sql
+$DBTOOL questions2.sql
 echo .
-db_tool ~/projects/osha_git/buildout/surveyanswers < questions2.sql
+$PYTHON groups.py > groups.sql
 echo .
-python groups.py > groups.sql
+$DBTOOL groups.sql
 echo .
-db_tool ~/projects/osha_git/buildout/surveyanswers < groups.sql
+$DBTOOL step1.sql | grep '|' > step1.txt
 echo .
-db_tool ~/projects/osha_git/buildout/surveyanswers < step1.sql > step1.txt
+$PYTHON step2.py > step2.sql
 echo .
-python step2.py > step2.sql
+$DBTOOL step2.sql  | egrep '[0-9]' | grep -v row > step2.txt
 echo .
-db_tool ~/projects/osha_git/buildout/surveyanswers < step2.sql > step2.txt
+$PYTHON step3.py > step3.sql
 echo .
-python step3.py > step3.sql
+$DBTOOL step3.sql
 echo .
-db_tool ~/projects/osha_git/buildout/surveyanswers < step3.sql
-echo .
-db_tool ~/projects/osha_git/buildout/surveyanswers < special.sql
+$DBTOOL special.sql
 echo .
 
