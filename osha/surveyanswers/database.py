@@ -181,15 +181,24 @@ class SurveyDatabase(object):
         """
         answer_map = self.connection.engine.execute('select show_which from questions where id = %(question_id)s', question_id=question_id).fetchall()[0][0]
         where_stmt = '%s & %s = %s' % (self.getAnswerRow(question_id), answer_map, answer_map)
-        yes = self._query('select %(country_row)s, sum(est_wei2) from responses where %(where)s group by %(country_row)s order by %(country_row)s' % ({'country_row' : self.country_row, 'where' : where_stmt})) # save sql statement
+        yes_intermed = self._query('select %(country_row)s, sum(est_wei2) from responses where %(where)s group by %(country_row)s order by %(country_row)s' % ({'country_row' : self.country_row, 'where' : where_stmt})) # save sql statement
         all = self._query('select %(country_row)s, sum(est_wei2) from responses group by %(country_row)s order by %(country_row)s' % {'country_row' : self.country_row})
+        yes = []
+        for one_of_all in all:
+            found = False
+            for one_of_yes in yes_intermed:
+                if one_of_all[0] == one_of_yes[0]:
+                    found = True
+                    yes.append(one_of_yes)
+            if not found:
+                yes.append((one_of_all[0], 0))
         # Map and reduce in simple
         return dict(map(lambda ((country, yes), (i, all)): 
                             (country, 
                              (float(yes) / all)
                             ),
                          zip(yes, all)))
-    
+  
     def getAnswersForAndGroupedBy(self, question_id, group_by):
         retval = {}
         #Strange, complex queries are waaay to slow
