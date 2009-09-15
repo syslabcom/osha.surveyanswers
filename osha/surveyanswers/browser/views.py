@@ -75,7 +75,7 @@ class SingleQuestionCountry(object):
     
     @property
     def question_text(self):
-        return self.db.getQuestion(self.question_id)['text']
+        return _(self.db.getQuestion(self.question_id)['text'])
     
     @property
     def discriminators(self):
