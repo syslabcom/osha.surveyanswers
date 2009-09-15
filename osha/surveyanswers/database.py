@@ -123,7 +123,10 @@ class SurveyDatabase(object):
         Return range information to beautify a map for a given question
         """
         question = self.connection.execute(self.map_data.select('question_id=:question_id').params(question_id=question_id)).fetchall()[0]
-        answer_text = self._query("select am.answer_text from questions as q, answer_meanings as am where q.id = %(question_id)s and am.question_id = q.id and am.answer_bit & q.show_which = q.show_which", question_id = question_id)[0][0]
+        try:
+            answer_text = self._query("select am.answer_text from questions as q, answer_meanings as am where q.id = %(question_id)s and am.question_id = q.id and am.answer_bit & q.show_which = q.show_which", question_id = question_id)[0][0]
+        except IndexError:
+            answer_text = self._query("select am.answer_text from questions as q, answer_meanings as am where q.id = %(question_id)s and am.question_id = q.id and am.answer_bit & 1 = 1", question_id = question_id)[0][0]
         retval = {}
         retval['rng1'] = question[2]
         retval['rng1_msg'] = question[3]
