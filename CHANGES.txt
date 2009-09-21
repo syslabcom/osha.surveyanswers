@@ -1,6 +1,12 @@
 osha.surveyanswers Changelog
 ============================
 
+1.4.1 (unreleased)
+------------------
+
+- We now ignore answers where no answer was given
+  These questions were actually never asked (gerken)
+
 osha.surveyanswers 1.4.0 (2009-09-15)
 -------------------------------------
 
@@ -11,12 +17,12 @@ osha.surveyanswers 1.4.0 (2009-09-15)
 - Updated all DB Scripts for usage with postgres. No compatibility with sqlite retained. Therefor a bigger release (gerken)
 
 osha.surveyanswers 1.3.2 (2009-09-14)
--------------------------------------
+------------------
 
 - Make it work with postgres (gerken)
 
 osha.surveyanswers 1.3.1 (2009-09-10)
--------------------------------------
+------------------
 
 - Slightly improved error handling (gerken)
 
