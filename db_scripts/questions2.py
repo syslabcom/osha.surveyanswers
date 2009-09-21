@@ -15,6 +15,9 @@ for row_id in range(sheet.nrows):
                 multi_questions_prefix = row[1].value
                 multi_question_question = row[2].value
                 multi_questions = {}
+            elif sheet.row(row_id + 4)[5].value == '%':
+                new_state = 'start_percentquestion'
+                questions[row[1].value] = ({1:'in %'}, row[2].value)
             else:
                 question = {}
                 questions[row[1].value] = (question, row[2].value)
@@ -48,6 +51,8 @@ for row_id in range(sheet.nrows):
                 import pdb;pdb.set_trace()
         else:
             new_state = 'end_question'
+    elif state == 'start_percentquestion':
+        new_state = 'end_question'
     elif state == 'start_multiquestion_answers_jump_one_line':
         new_state = 'start_multiquestion_answers'
     elif state == 'start_multiquestion_answers':
@@ -66,6 +71,11 @@ for row_id in range(sheet.nrows):
     if new_state != state:
         state = new_state
 
+
+#We just added the new state percent_questions and i have to think now how to
+#do the end of the state machine
+#Also, I found out how to get all the voices out of sql in a fast manner:
+# select sum(MM401 * est_wei2) / sum(100 * est_wei2), country from responses where MM401 <= 100 group by country;
 for key, (answers, question_text) in questions.items():
     try:
         print ("update questions set question = '%s' where question_field = '%s';" % (question_text, key)).encode('ascii', 'replace')
@@ -74,4 +84,4 @@ for key, (answers, question_text) in questions.items():
     i = 0
     for key2, answer in answers.items():
         i += 1
-        print ("insert into answer_meanings (question_id, answer_bit, answer_text, position) values ((select id from questions where question_field = '%s'), %i, '%s', %i);" % (key, 2 ** key2, answer.replace('\'', '\\\''), i)).encode("ascii", 'replace')
+        print ("insert into answer_meanings (question_id, answer_bit, answer_text, position) values ((select id from questions where question_field = '%s'), %i, '%s', %i);" % (key, 2 ** key2, answer.replace('\'', '\'\''), i)).encode("ascii", 'replace')

@@ -19,10 +19,12 @@ class SurveyDatabase(object):
     ANSWER_ROW_ID = 1
     NAME_ROW = 2
     GROUP_ROW = 3
+    TYPE_ROW = 6 
     country_row = 'country'
     questionDicter = lambda ign, x: {'text' : x[SurveyDatabase.NAME_ROW], 
                                 'question_id': x[SurveyDatabase.ID_ROW],
-                                'answer_row_name' : x[SurveyDatabase.ANSWER_ROW_ID]}
+                                'answer_row_name' : x[SurveyDatabase.ANSWER_ROW_ID],
+                                'type' : x[SurveyDatabase.TYPE_ROW]}
     
     def __init__(self, context):
         self.context = context 
@@ -150,8 +152,13 @@ class SurveyDatabase(object):
         return self._query("select id from questions where question_field = %(question_field)s", question_field = row_name)[0][0]
     
     def getAnswersForExport(self, question_id):
+        type = self.getQuestion(question_id)['type']
         params = {'answer_row' : self.getAnswerRow(question_id), 
                   'country_row' : self.country_row}
+        if type == 2:
+            for dataset in self._query('select am.answer_text, sum(r.%(answer_row)s * est_wei2) / sum(100 * est_wei2) from responses as r, answer_meanings am where r.%(answer_row)s <= 100 and am.question_id = (select id from questions where question_field = \'%(country_row)s\') and am.answer_bit = r.country group by am.answer_text, am.position order by am.position;' % params):
+                yield dataset
+            return
         data = self._query('select r.%(country_row)s, sum(est_wei2), r.%(answer_row)s from responses as r group by r.%(answer_row)s, r.%(country_row)s' % params)
         answer_meanings = self._query('select answer_bit, answer_text from answer_meanings where question_id = %(question_id)s order by position', question_id = question_id)
         countries = self._query('select am.answer_bit, am.answer_text from answer_meanings as am, questions as q where q.question_field = \'%(country_row)s\' and am.question_id = q.id order by position' % params)
@@ -180,12 +187,16 @@ class SurveyDatabase(object):
         """
         Return a dictionary of relative percentages to show on map
         """
+        answer_row = self.getAnswerRow(question_id)
+        if self.getQuestion(question_id)['type'] == 2:
+            return dict(self._query('select country, sum(%(answer_row)s * est_wei2) / sum(100 * est_wei2) from responses where %(answer_row)s <= 100 group by country' %
+                {'answer_row' : answer_row}))
         answer_map = self.connection.engine.execute('select show_which from questions where id = %(question_id)s', question_id=question_id).fetchall()[0][0]
-        where_stmt = '%s & %s = %s' % (self.getAnswerRow(question_id), answer_map, answer_map)
+        where_stmt = '%s & %s = %s' % (answer_row, answer_map, answer_map)
         yes_intermed = self._query('select %(country_row)s, sum(est_wei2) from responses where %(where)s group by %(country_row)s order by %(country_row)s' % ({'country_row' : self.country_row, 'where' : where_stmt})) # save sql statement
         all = self._query('select %(country_row)s, sum(est_wei2) from responses where %(question_row)s != 1 group by %(country_row)s order by %(country_row)s' % \
             {'country_row' : self.country_row, 
-            'question_row' : self.getAnswerRow(question_id)})
+            'question_row' : answer_row})
         yes = []
         for one_of_all in all:
             found = False
@@ -205,6 +216,7 @@ class SurveyDatabase(object):
     def getAnswersForAndGroupedBy(self, question_id, group_by):
         retval = {}
         question_row = self.getAnswerRow(question_id)
+        question_type = self.getQuestion(question_id)['type']
         #Strange, complex queries are waaay to slow
         country_row_id = self._query("select id from questions where question_field = \'%(country_row)s\'" % {'country_row' : self.country_row})[0][0]
         
@@ -214,9 +226,16 @@ class SurveyDatabase(object):
         
         
         total_answers_per_country = []
-        for id, count in self._query("select r.%(country_row)s, sum(r.est_wei2) from responses as r where %(question_row)s != 1 group by r.%(country_row)s" % \
-            {'country_row' : self.country_row,
-             'question_row' : question_row}):
+        if type == 1:
+            total_query_result =  self._query("select r.%(country_row)s, sum(r.est_wei2) from responses as r where %(question_row)s != 1 group by r.%(country_row)s" % \
+                {'country_row' : self.country_row,
+                 'question_row' : question_row})
+        else:
+            total_query_result =  self._query("select r.%(country_row)s, sum(100 * r.est_wei2) from responses as r where %(question_row)s <= 100 group by r.%(country_row)s" % \
+                {'country_row' : self.country_row,
+                 'question_row' : question_row})
+            
+        for id, count in total_query_result:
             total_answers_per_country.append((country_names[id], count))
         
         
@@ -225,14 +244,18 @@ class SurveyDatabase(object):
 
         answer_map = self.connection.engine.execute('select show_which from questions where id = %(question_id)s', question_id=question_id).fetchall()[0][0]
 
-        select_stmt = "%s" % group_by
-        where_stmt = 'r.%s & %s = %s' % (question_row, answer_map, answer_map)
+        if type == '1':
+            where_stmt = 'r.%s & %s = %s' % (question_row, answer_map, answer_map)
+            what_stmt = 'r.%s, sum(r.est_wei2), %s' % (self.country_row, group_by)
+        else:
+            where_stmt = 'r.%s <= 100' % question_row
+            what_stmt = 'r.%s, sum(r.est_wei2 * %s), %s' % (self.country_row, question_row, group_by)
         group_by_stmt = "r.%s, r.%s" % (group_by, self.country_row)
         
-        query_match = "select r.%(country_row)s, sum(r.est_wei2), r.%(select)s from responses as r WHERE %(where)s group by %(group_by)s" %\
+        query_match = "select %(what)s from responses as r WHERE %(where)s group by %(group_by)s" %\
           {'country_row' : self.country_row, 
-           'select' : select_stmt,
            'where' : where_stmt,
+           'what' : what_stmt,
            'group_by' : group_by_stmt}
         
         for (country_id, count, discriminator) in self._query(query_match):
@@ -267,7 +290,12 @@ class SurveyDatabase(object):
         the value another dictionary, key is the discriminator answer, and 
         value the percentage for this answer combination
         """
+        type = self.getQuestion(question_id)['type']
         question_row = self.getAnswerRow(question_id)
+        if type == 2:
+            return {'in %' : {'':self._query("select sum(%(question_row)s * est_wei2) / sum(100 * est_wei2) from responses where %(question_row)s <= 100 and country = \'%(country)s\'" % \
+                {'question_row' : question_row, 
+                 'country' : country})[0][0]}}
         map_answers = self._query("select answer_bit, answer_text from answer_meanings where question_id = %(question_id)s", question_id = question_id)
 
         total_answers_count = float(self._query("select sum(est_wei2) from responses where %s = %%(country)s and %s != 1" % (self.country_row, question_row), country = country)[0][0] or 0)
@@ -293,8 +321,14 @@ class SurveyDatabase(object):
         value the percentage for this answer combination
         """
         retval = {}
+        type = self.getQuestion(question_id)['type']
         
         question_row = self.getAnswerRow(question_id)
+
+        if type == 2:
+            return {'in %' : dict(self._query('select am.answer_text, sum(r.%(question_row)s * r.est_wei2) / sum(100 * r.est_wei2) from responses  as r, answer_meanings as am where r.%(question_row)s <= 100 and am.question_id = (select id from questions where question_field = \'%(group_by)s\') and am.answer_bit & r.%(group_by)s = am.answer_bit group by am.answer_text' % (\
+                {'question_row' : question_row, 
+                 'group_by' : group_by})))}
 
         total_answers_count = float(self._query("select sum(est_wei2) from responses where %s != 1 and %s = %%(country)s" % (question_row, self.country_row), country = country)[0][0])
 
