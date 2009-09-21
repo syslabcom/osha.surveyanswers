@@ -75,6 +75,9 @@ for line in file('ESENER2009_20090821_EUOSHA.dat'):
         answer = answer.replace(',', '')
         if answer == '':
             answer = 0
+        if question[0] not in ['MM401', 'MM405', 'MM400', 'rev1_1di']:
+            if answer == '0':
+                import pdb;pdb.set_trace()
         if question[0] == 'country':
             answer = str(country_mapping[int(answer)])
         else:

@@ -72,11 +72,6 @@ for key, (answers, question_text) in questions.items():
     except:
         import pdb;pdb.set_trace()
     i = 0
-    no_answer_msg_exists = True
     for key2, answer in answers.items():
-        if key2 == 0:
-            no_answer_msg_exists = False
         i += 1
         print ("insert into answer_meanings (question_id, answer_bit, answer_text, position) values ((select id from questions where question_field = '%s'), %i, '%s', %i);" % (key, 2 ** key2, answer.replace('\'', '\\\''), i)).encode("ascii", 'replace')
-    if no_answer_msg_exists:
-        print "insert into answer_meanings (question_id, answer_bit, answer_text, position) values ((select id from questions where question_field = '%s'), 1, 'No answer given', 99);" % key
