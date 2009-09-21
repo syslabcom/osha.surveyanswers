@@ -31,8 +31,8 @@ country_mapping = {
 14:39,
 43:45,
 15:42,
-51:46, # WRONG!!! Just mapped to russia
-52:17, # WRONG!!! Just mapped to iceland
+51:40,
+52:30,
 }
 questions = []
 finder = re.compile('([^ ]+) +[^ ]+ +([^ ]+) +([^ ]+).*([01]+)')

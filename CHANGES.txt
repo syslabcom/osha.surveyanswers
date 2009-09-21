@@ -7,6 +7,7 @@ osha.surveyanswers Changelog
 - We now ignore answers where no answer was given
   These questions were actually never asked (gerken)
 - Now with the real meanings of categories (sec3, size_5) (gerken)
+- Complete country mapping no answers. Norway and Switzerland added (gerken)
 
 osha.surveyanswers 1.4.0 (2009-09-15)
 -------------------------------------
