@@ -1,7 +1,7 @@
  Changelog
 ==========
 
-1.5.0 (2009-09-21)
+1.5.1 (2009-09-21)
 ------------------
 
 - We now ignore answers where no answer was given
