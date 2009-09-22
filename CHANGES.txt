@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5.3 (unreleased)
+1.6.0 (2009-09-22)
 ------------------
 
 - Added support for questions with too few answers (gerken)
