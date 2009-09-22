@@ -15,6 +15,7 @@ Changelog
 - Now with the real meanings of categories (sec3, size_5) (gerken)
 - Complete country mapping no answers. Norway and Switzerland added (gerken)
 - Added support for % questions (gerken)
+- Added support for questions with too few answers (gerken)
 
 1.4.0 (2009-09-15)
 ------------------

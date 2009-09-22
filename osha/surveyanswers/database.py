@@ -159,8 +159,33 @@ class SurveyDatabase(object):
             for dataset in self._query('select am.answer_text, sum(r.%(answer_row)s * est_wei2) / sum(100 * est_wei2) from responses as r, answer_meanings am where r.%(answer_row)s <= 100 and am.question_id = (select id from questions where question_field = \'%(country_row)s\') and am.answer_bit = r.country group by am.answer_text, am.position order by am.position;' % params):
                 yield dataset
             return
+        elif type == 1:
+            answer_meanings = self._query('select answer_bit, answer_text from answer_meanings where question_id = %(question_id)s order by position', question_id = question_id)
+            yield [""] + [x[1] for x in answer_meanings]
+            retval = []
+            answers_per_country = {}
+            for count, country, answer, sum in self._query('select count(r1.%(answer_row)s) as count, (select am.answer_text from answer_meanings as am, questions as q where q.question_field = \'%(country_row)s\' and q.id = am.question_id and am.id = r1.%(country_row)s),(select am.answer_text from answer_meanings as am, questions as q where q.question_field = \'%(answer_row)s\' and q.id = am.question_id and am.answer_bit = r1.%(answer_row)s), sum(r1.est_wei2) / (select sum(r2.est_wei2) from responses as r2 where r2.%(country_row)s = r1.%(country_row)s and r2.%(answer_row)s != 1) from responses as r1, answer_meanings as am1, answer_meanings as am2 where r1.%(answer_row)s != 1  and am1.question_id = (select id from questions where question_field = \'%(country_row)s\') and am1.answer_bit = r1.%(country_row)s and am2.question_id = (select id from questions where question_field = \'%(answer_row)s\') and am2.answer_bit = r1.%(answer_row)s group by r1.%(country_row)s, am1.position, r1.%(answer_row)s, am2.position order by am1.position, am2.position;' % params):
+                
+                if country not in answers_per_country:
+                    answers_per_country[country] = 0
+                answers_per_country[country] += count
+                found = False
+                for dataset in retval:
+                    answered_country = dataset[0]
+                    if answered_country == country:
+                        dataset.append(sum)
+                        found = True
+                if not found:
+                    retval.append([country, sum])
+            for dataset in retval:
+                country = dataset[0]
+                if answers_per_country[country] > 20:
+                    yield dataset
+            return
+
+            
+
         data = self._query('select r.%(country_row)s, sum(est_wei2), r.%(answer_row)s from responses as r group by r.%(answer_row)s, r.%(country_row)s' % params)
-        answer_meanings = self._query('select answer_bit, answer_text from answer_meanings where question_id = %(question_id)s order by position', question_id = question_id)
         countries = self._query('select am.answer_bit, am.answer_text from answer_meanings as am, questions as q where q.question_field = \'%(country_row)s\' and am.question_id = q.id order by position' % params)
         datasets = {}
         totals = {}
@@ -192,8 +217,11 @@ class SurveyDatabase(object):
             return dict(self._query('select country, sum(%(answer_row)s * est_wei2) / sum(100 * est_wei2) from responses where %(answer_row)s <= 100 group by country' %
                 {'answer_row' : answer_row}))
         answer_map = self.connection.engine.execute('select show_which from questions where id = %(question_id)s', question_id=question_id).fetchall()[0][0]
-        where_stmt = '%s & %s = %s' % (answer_row, answer_map, answer_map)
-        yes_intermed = self._query('select %(country_row)s, sum(est_wei2) from responses where %(where)s group by %(country_row)s order by %(country_row)s' % ({'country_row' : self.country_row, 'where' : where_stmt})) # save sql statement
+        where_stmt = 'r1.%s & %s = %s' % (answer_row, answer_map, answer_map)
+        yes_intermed = self._query('select r1.%(country_row)s, sum(r1.est_wei2), (select count(r2.id) from responses as r2 where r2.%(answer_row)s != 1 and r2.%(country_row)s = r1.%(country_row)s) from responses as r1 where %(where)s group by r1.%(country_row)s order by r1.%(country_row)s' % \
+            ({'country_row' : self.country_row, 
+              'answer_row' : answer_row,
+              'where' : where_stmt})) # save sql statement
         all = self._query('select %(country_row)s, sum(est_wei2) from responses where %(question_row)s != 1 group by %(country_row)s order by %(country_row)s' % \
             {'country_row' : self.country_row, 
             'question_row' : answer_row})
@@ -201,9 +229,9 @@ class SurveyDatabase(object):
         for one_of_all in all:
             found = False
             for one_of_yes in yes_intermed:
-                if one_of_all[0] == one_of_yes[0]:
+                if one_of_all[0] == one_of_yes[0] and one_of_yes[2] > 20:
                     found = True
-                    yes.append(one_of_yes)
+                    yes.append(one_of_yes[:2])
             if not found:
                 yes.append((one_of_all[0], 0))
         # Map and reduce in simple
@@ -214,9 +242,28 @@ class SurveyDatabase(object):
                          zip(yes, all)))
   
     def getAnswersForAndGroupedBy(self, question_id, group_by):
+        
         retval = {}
         question_row = self.getAnswerRow(question_id)
         question_type = self.getQuestion(question_id)['type']
+
+        if question_type == 1:
+            answers_per_country = {}
+            for count, country, answer, sum in self._query('select (select count(r4.id) from responses as r4 where r4.%(question_row)s != 1 and r1.country = r4.country), (select am.answer_text from answer_meanings as am, questions as q where q.question_field = \'%(country_row)s\' and q.id = am.question_id and am.id = r1.country), (select am.answer_text from answer_meanings as am, questions as q where q.question_field = \'%(group_row)s\' and am.question_id = q.id and am.answer_bit & r1.%(group_row)s = am.answer_bit), sum(r1.est_wei2) / (select sum(r2.est_wei2) from responses as r2 where r2.country = r1.country and r2.%(question_row)s != 1) from responses as r1 where r1.%(question_row)s = (select show_which from questions where question_field = \'%(question_row)s\') group by r1.country, r1.%(group_row)s;' % \
+        
+                {'country_row' : self.country_row,
+                 'question_row' : question_row,
+                 'group_row' : group_by}):
+                if country not in answers_per_country:
+                    answers_per_country[country] = count
+                if country not in retval:
+                    retval[country] = {}
+                per_country = retval[country]
+                per_country[answer] = sum
+            for country, count in answers_per_country.items():
+                if count <= 20:
+                    retval.pop(country)
+            return retval
         #Strange, complex queries are waaay to slow
         country_row_id = self._query("select id from questions where question_field = \'%(country_row)s\'" % {'country_row' : self.country_row})[0][0]
         

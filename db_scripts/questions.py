@@ -54,7 +54,7 @@ for question in questions:
         question_group = random.sample(groups, 1)[0],
         is_country = str(question[0] == 'country' and '1' or '0'),
         is_designator = str(question[0] in ('sec3', 'size_5') and '1' or '0'),
-        type = question[0] in percent_questions and '2' or '0',
+        type = question[0] in percent_questions and '2' or '1',
         show_which = question[0] in percent_questions and '0' or '2',
         show_which_text = 'yes', 
         hide = question[3])
