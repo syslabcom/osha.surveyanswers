@@ -34,14 +34,14 @@ country_mapping = {
 51:40,
 52:30,
 }
-percent_questions = ['MM401', 'MM405', 'MM400', 'rev1_1di']
+percent_questions = ['mm401', 'mm405', 'mm400', 'rev1_1di']
 questions = []
 finder = re.compile('([^ ]+) +[^ ]+ +([^ ]+) +([^ ]+).*([01]+)')
 for line in file('questions.txt'):
     data = list(finder.findall(line)[0])
     data[0] = data[0].replace(".", "")
-    data[1] = int(data[1])
-    data[2] = int(data[2]) + 1
+    data[1] = int(data[1]) - 1
+    data[2] = int(data[2])
     questions.append(data)
 
 groups = ['group %i' % i for i in range(10)]
@@ -54,8 +54,8 @@ for question in questions:
         question_group = random.sample(groups, 1)[0],
         is_country = str(question[0] == 'country' and '1' or '0'),
         is_designator = str(question[0] in ('sec3', 'size_5') and '1' or '0'),
-        type = question[0] in percent_questions and '2' or '1',
-        show_which = question[0] in percent_questions and '0' or '2',
+        type = question[0].lower() in percent_questions and '2' or '1',
+        show_which = question[0].lower() in percent_questions and '0' or '2',
         show_which_text = 'yes', 
         hide = question[3])
     print 'insert into questions (question_field, question, question_group, is_country, is_designator, type, show_which, show_which_text, hide_question) values(\'%(question_field)s\', \'%(question)s\', \'%(question_group)s\', %(is_country)s, %(is_designator)s, %(type)s, %(show_which)s, \'%(show_which_text)s\', %(hide)s);' % options
@@ -64,8 +64,9 @@ for question in questions:
         print 'delete from answer_meanings where question_id != (select id from questions where question_field = \'%s\');' % options['question_field']
 
 print 'drop table responses;'
-print 'create table responses (id SERIAL PRIMARY KEY, %s);' % (", ".join(["%s %s" % (x[0], x[0] in percent_questions and 'FLOAT' or 'INTEGER') for x in questions[:-4]] + ["%s FLOAT" % x[0] for x in questions[-4:]]))
-for line in file('ESENER2009_20090821_EUOSHA.dat'):
+print 'create table responses (id SERIAL PRIMARY KEY, %s);' % (", ".join(["%s %s" % (x[0], x[0].lower() in percent_questions and 'FLOAT' or 'INTEGER') for x in questions[:-4]] + ["%s FLOAT" % x[0] for x in questions[-4:]]))
+counter = 0
+for line in file('ESENER2009_20090924_EUOSHA.dat'):
     sql_question = []
     sql_answer = []
     for question in questions:
@@ -80,7 +81,7 @@ for line in file('ESENER2009_20090821_EUOSHA.dat'):
             answer = str(country_mapping[int(answer)])
         else:
             try:
-                if question[0] not in percent_questions:
+                if question[0].lower() not in percent_questions + ['country2']:
                     answer = str(2**int(answer))
                 else:
                     answer = '%02.2f' % float(answer)
