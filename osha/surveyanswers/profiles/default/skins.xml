@@ -10,7 +10,7 @@
          meta_type="Filesystem Directory View"
          directory="osha.surveyanswers:skins/surveyanswers"/>
  
- <skin-path name="Plone Default">
+ <skin-path name="OSHA Plone Theme">
   <layer insert-after="custom" 
          name="surveyanswers"/>
  </skin-path>
