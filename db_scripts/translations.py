@@ -3,44 +3,64 @@ import re
 import xlrd
 country_infix = re.compile('6204(.*)TRA_final.xls')
 country_code_mapping = {'CZX' : 'cs',
+                        'CZE' : 'cs',
                         'LUF' : 'ignore',
                         'FRX' : 'fr',
+                        'FRE' : 'fr',
                         'EEE' : 'et',
+                        'EST' : 'es',
                         'MTM' : 'mt',
                         'SIX' : 'sl',
+                        'SLV' : 'sl',
                         'SEX' : 'sv',
+                        'SWE' : 'sv',
                         'CYX' : 'ignore',
                         'LUG' : 'ignore',
                         'CHG' : 'ignore',
                         'HRX' : 'hr',
                         'DEX' : 'de',
+                        'GER' : 'de',
                         'ROX' : 'ro',
+                        'ROM' : 'ro',
                         'ITX' : 'it',
+                        'ITA' : 'it',
                         'CHI' : 'ignore',
                         'MTE' : 'ignore',
                         'LTX' : 'lt',
+                        'LIT' : 'lt',
                         'NWX' : 'no',
                         'ELX' : 'el',
+                        'GRE' : 'el',
                         'NLX' : 'nl',
+                        'DUT' : 'nl',
                         'BEN' : 'ignore',
                         'TRX' : 'tr',
                         'ATX' : 'ignore',
                         'BEF' : 'ignore',
                         'SKX' : 'sk',
+                        'SLK' : 'sk',
                         'PLX' : 'pl',
+                        'POL' : 'pl',
                         'EER' : 'ru',
                         'FIS' : 'ignore',
                         'LUL' : 'lb',
                         'LUE' : 'ignore',
                         'HUX' : 'hu',
+                        'HUN' : 'hu',
                         'IEX' : 'ignore',
                         'FIF' : 'fi',
+                        'FIN' : 'fi',
                         'DKX' : 'da',
+                        'DAN' : 'da',
                         'PTX' : 'pt',
+                        'POR' : 'pt',
                         'CHF' : 'ignore',
                         'ESX' : 'es',
+                        'SPA' : 'es',
                         'BGX' : 'bg',
+                        'BUL' : 'bg',
                         'LVL' : 'lv',
+                        'LAT' : 'lv',
                         'LVR' : 'ignore',
                         'UKX' : 'en'}
 language_mapping = {'CZX' : 'Czech',
@@ -123,7 +143,26 @@ for filename in [x for x in os.listdir('.') if x.endswith('final.xls')]:
         lang_file.write(('msgid "%s"\n' % key).encode('utf-8'))
         lang_file.write(('msgstr "%s"\n' % translation).encode('utf-8'))
 
+xls_file = xlrd.open_workbook('question_group_translations.xls')
+sheet = xls_file.sheet_by_name('Sheet1')
 
-        
+translations = sheet.row(0)
+originals = {}
+for row_id in range(1, sheet.nrows):
+    originals[sheet.cell(row_id, 1).value] = row_id
+
+for translation_column in range(2, sheet.ncols):
+    key = translations[translation_column].value
+    if key == 'MAL':
+        continue
+    lang_code = country_code_mapping[key]
+    if lang_code == 'ignore':
+        raise key
+    lang_file = file('./locales/%s/LC_MESSAGES/osha.surveyanswers.po' % lang_code, 'a')
+    for original, translation_row in originals.items():
+        translation = sheet.cell(translation_row, translation_column).value
+        lang_file.write(('msgid "%s"\n' % original).encode('utf-8'))
+        lang_file.write(('msgstr "%s"\n' % translation).encode('utf-8'))
 
     
+
