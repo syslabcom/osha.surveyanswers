@@ -58,7 +58,7 @@ MM262
 MM263
 MM266
 MM267
-Barrier for psychosocial risk management and existing support
+Barriers for psychosocial risk management and existing support
 MM300 
 MM301
 MM302
@@ -106,7 +106,7 @@ ER002
 ER003 
 ER004 
 ER005
-The role of ER in the OSH managment
+The role of ER in the OSH management
 ER102
 ER103
 ER107
