@@ -1,11 +1,11 @@
+from Acquisition import aq_inner #@UnresolvedImport
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.component import getMultiAdapter #@UnresolvedImport
 from zope.formlib import form
 from zope.interface import implements
 
 from plone.app.portlets.portlets import base
 
-from Acquisition import aq_inner #@UnresolvedImport
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from osha.surveyanswers import OshaMessageFactory as _
 from osha.surveyanswers.interfaces import IQuestionsPortlet, ISurveyDatabase
 
@@ -43,6 +43,7 @@ class Renderer(base.Renderer):
                 questions['count'] = len(questions['questions'])
                 for question in questions['questions']:
                     question['text'] = _(question['text'])
+                questions['name'] = _(questions['name'])
                 yield questions
         
     def render(self):

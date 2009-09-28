@@ -1,21 +1,20 @@
+from xml.sax.saxutils import escape
+import StringIO
+
 from Products.Five.browser import BrowserView
-from zope.component import adapts #@UnresolvedImport
+from zope.component import adapts, getMultiAdapter
 from zope.interface import implements
 from zope.publisher.interfaces.browser import IBrowserRequest, IBrowserPublisher,\
     IBrowserView
-from osha.surveyanswers.interfaces import ISurvey, ISingleQuestion,\
-    ISurveyDatabase
 from ZPublisher.BaseRequest import DefaultPublishTraverse
-from zope.component import getMultiAdapter #@UnresolvedImport
-from osha.surveyanswers.constants import ID_TO_SHORT_NAME, SHORT_NAME_TO_ID,\
-    SHORT_NAME_TO_LONG, ID_TO_LONG_NAME
-import StringIO
-from xml.sax.saxutils import escape
 
 import xlwt
 
 from osha.surveyanswers import OshaMessageFactory as _
-
+from osha.surveyanswers.constants import ID_TO_SHORT_NAME, SHORT_NAME_TO_ID,\
+    SHORT_NAME_TO_LONG, ID_TO_LONG_NAME
+from osha.surveyanswers.interfaces import ISurvey, ISingleQuestion,\
+    ISurveyDatabase
 
 class SurveyTraverser(object):
     implements(IBrowserPublisher)
