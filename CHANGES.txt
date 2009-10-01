@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.7.1 (unreleased)
+1.8.0 (2009-10-02)
 ------------------
 
 - New translation for question groups (gerken)
