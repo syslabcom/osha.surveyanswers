@@ -10,7 +10,9 @@ Changelog
 1.7.0 (2009-09-28)
 ------------------
 
-- New import scripts for final data
+- New import scripts for final data (gerken)
+- New translation for question groups (gerken)
+- Fixed an issue with the right layer of our skin (gerken)
 
 
 1.6.0 (2009-09-22)
