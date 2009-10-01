@@ -13,7 +13,9 @@ Changelog
 - New import scripts for final data (gerken)
 - New translation for question groups (gerken)
 - Fixed an issue with the right layer of our skin (gerken)
-
+- Changed algorithm for calculating percentage with grouped results (gerken)
+- Added caching (gerken)
+- Added prime script to prime the cache (gerken)
 
 1.6.0 (2009-09-22)
 ------------------

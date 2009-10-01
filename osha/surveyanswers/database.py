@@ -249,7 +249,7 @@ class SurveyDatabase(object):
 
         if question_type == 1:
             answers_per_country = {}
-            for count, country, answer, sum in self._query('select (select count(r4.id) from responses as r4 where r4.%(question_row)s != 1 and r1.country = r4.country), (select am.answer_text from answer_meanings as am, questions as q where q.question_field = \'%(country_row)s\' and q.id = am.question_id and am.id = r1.country), (select am.answer_text from answer_meanings as am, questions as q where q.question_field = \'%(group_row)s\' and am.question_id = q.id and am.answer_bit & r1.%(group_row)s = am.answer_bit), sum(r1.est_wei2) / (select sum(r2.est_wei2) from responses as r2 where r2.country = r1.country and r2.%(question_row)s != 1) from responses as r1 where r1.%(question_row)s = (select show_which from questions where question_field = \'%(question_row)s\') group by r1.country, r1.%(group_row)s;' % \
+            for count, country, answer, sum in self._query('select (select count(r4.id) from responses as r4 where r4.%(question_row)s != 1 and r1.country = r4.country), (select am.answer_text from answer_meanings as am, questions as q where q.question_field = \'%(country_row)s\' and q.id = am.question_id and am.id = r1.country), (select am.answer_text from answer_meanings as am, questions as q where q.question_field = \'%(group_row)s\' and am.question_id = q.id and am.answer_bit & r1.%(group_row)s = am.answer_bit), sum(r1.est_wei2) / (select sum(r2.est_wei2) from responses as r2 where r2.country = r1.country and r2.%(question_row)s != 1 and r2.%(group_row)s = r1.%(group_row)s) from responses as r1 where r1.%(question_row)s = (select show_which from questions where question_field = \'%(question_row)s\') group by r1.country, r1.%(group_row)s;' % \
         
                 {'country_row' : self.country_row,
                  'question_row' : question_row,
@@ -377,7 +377,9 @@ class SurveyDatabase(object):
                 {'question_row' : question_row, 
                  'group_by' : group_by})))}
 
-        total_answers_count = float(self._query("select sum(est_wei2) from responses where %s != 1 and %s = %%(country)s" % (question_row, self.country_row), country = country)[0][0])
+        total_answers_count_per_sep = {}
+        for (count, sep) in self._query("select sum(est_wei2), (select answer_text from answer_meanings where answer_bit = %s and question_id = (select id from questions where question_field = '%s')) from responses where %s != 1 and %s = %%(country)s group by %s" % (group_by, group_by, question_row, self.country_row, group_by), country = country):
+            total_answers_count_per_sep[sep] = float(count)
 
         discriminator_question_id = self._query("select id from questions where question_field = %(question)s", question = group_by)[0][0] 
         discriminator_answers = self._query("select answer_bit, answer_text from answer_meanings where question_id = %(question_id)s", question_id = discriminator_question_id)
@@ -404,7 +406,7 @@ class SurveyDatabase(object):
         
         for discriminators in retval.values():
             for key in discriminators.keys():
-                discriminators[key] = discriminators[key] / float(total_answers_count)
+                discriminators[key] = discriminators[key] / float(total_answers_count_per_sep[key])
                 
         return retval
 

@@ -246,6 +246,7 @@ function FC_Rendered(DOMId){
         self.db = ISurveyDatabase(self.context)
 
     def __call__(self):
+        self.request.RESPONSE.setHeader('Cache-control', 'max-age=32140800')
         retval = []
         self.question_id = self.request.form['question_id']
         self.country = self.request.form.get('country', '')
