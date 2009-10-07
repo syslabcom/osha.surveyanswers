@@ -170,7 +170,7 @@ class SingleQuestion(object):
 class FusionJS(object):
     
     default_params = dict(border_color='005879'
-                  , fill_color='red'
+                  , fill_color='ffffff'
                   , number_suffix=' % '
                   , label_sep_char=': '
                   , base_font_size='9'
@@ -209,7 +209,7 @@ function FC_Rendered(DOMId){
          showCanvasBorder='0'
          showLegend='1'
          legendCaption='%(show_which_answer)s'
-         includeNameInLabels='1' 
+         includeNameInLabels='0' 
          numberSuffix='%(number_suffix)s' 
          includeValueInLabels='0' 
          labelSepChar='%(label_sep_char)s' 
@@ -263,13 +263,17 @@ function FC_Rendered(DOMId){
         if not self.country:
             contents = self.db.getAnswersFor(self.question_id)
 
-            SINGLE_DATASET = "<entity id = '%(shortname)s' value = '%(value)s' link='%(question)s/%(shortname)s' /\" + \">"
+            SINGLE_DATASET = "<entity id = '%(shortid)s' displayValue='%(shortname)s' value = '%(value)s' link='%(question)s/%(shortid)s' /\" + \">"
             def country_extractor(context, results):
                 all_countries = SHORT_NAME_TO_ID.items()
                 for key, value in all_countries:
-                    yield (SINGLE_DATASET % ({'shortname' : SHORT_NAME_TO_ID.get(key, ''), 
-                                  'value' : "%02.2f" % (results.get(int(value), 0) * 100),
-                                  'question' : context}))
+                    if results.get(int(value), None) == None:
+                        continue
+                    yield (SINGLE_DATASET % (\
+                    {'shortname' :key,
+                     'shortid' : SHORT_NAME_TO_ID.get(key, ''), 
+                     'value' : "%02.2f" % (results.get(int(value), 0) * 100),
+                     'question' : context}))
                     
             map_contents = ''.join(country_extractor('/'.join((self.context.absolute_url(), self.question_id)), contents))
                 
