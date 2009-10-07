@@ -2,7 +2,7 @@ import re
 import random
 
 country_mapping = {
-12:1,
+12:3,
 1:5,
 31:7,
 46:8,

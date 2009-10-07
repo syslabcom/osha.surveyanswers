@@ -4,7 +4,8 @@ Changelog
 1.8.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fixed country mapping error (gerken)
+- Removed two more questions from import (gerken)
 
 
 1.8.0 (2009-10-02)
