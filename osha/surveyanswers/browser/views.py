@@ -227,6 +227,7 @@ function FC_Rendered(DOMId){
            showBorder='0'
            bgColor='ffffff'
            showExportDataMenuItem='1'
+           yAxisMaxValue='100'
            numberSuffix= '%%'
            labelDisplay='ROTATE'
            staggerLines='3'>

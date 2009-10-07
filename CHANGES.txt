@@ -8,6 +8,7 @@ Changelog
 - Removed two more questions from import (gerken)
 - Countries that do not participate don't have two letter codes and are white
   now (gerken)
+- Ensuring now that on charts the yAxis never goes above 100% (gerken)
 
 
 1.8.0 (2009-10-02)
