@@ -1,4 +1,4 @@
-start_url = 'http://127.0.0.1:5040/test/esener/'
+start_url = 'http://test.osha.europa.eu/en/esener/'
 
 from BeautifulSoup import BeautifulSoup
 from multiprocessing import Pool, Queue
@@ -10,11 +10,17 @@ link_queue = Queue()
 def followLink():
     try:
         while True:
+            print 1
             url, country = link_queue.get(False, 1)
+            print 2
             browser = Browser()
+            print 3
             browser.open(url)
+            print 4
             browser.getLink('Company Size').click()
+            print 5
             browser.getLink('Sector Type').click()
+            print 6, browser.url
             if not country:
                 for i in range(60):
                     link_queue.put((url + '/%03i' % i, True))
@@ -30,7 +36,7 @@ if __name__ == '__main__':
     for link in all_links:
         link_queue.put((link['href'], False))
 
-    processes = 4
+    processes = 1
     pool = Pool(processes=processes)
     for i in range(processes):
         pool.apply_async(followLink)

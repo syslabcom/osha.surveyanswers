@@ -5,6 +5,17 @@ div.surveyanswers div.group{
 	border-width: 1px;
 }
 
+div.surveyanswers div.questions{
+    position: absolute;
+    width: 64%;
+    left: 17%;
+}
+
+div.surveyanswers div.inner_questions{
+    background-color: red;
+    z-index:3;
+}
+
 div.surveyanswers ul{
 	margin: 0;
 	}
