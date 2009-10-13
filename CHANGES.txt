@@ -4,7 +4,7 @@ Changelog
 1.8.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Changed JS, questions pop up differently now (gerken)
 
 
 1.8.1 (2009-10-07)
