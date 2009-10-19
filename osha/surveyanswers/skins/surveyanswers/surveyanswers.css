@@ -6,7 +6,8 @@ div.surveyanswers div.group{
 }
 
 div.surveyanswers div.questions {
-	border:1px solid #C4C2C2;
+	border-left:1px solid #C4C2C2;
+	border-right:1px solid #C4C2C2;
 	left:16.8%;
 	position:absolute;
 	top:3%;
