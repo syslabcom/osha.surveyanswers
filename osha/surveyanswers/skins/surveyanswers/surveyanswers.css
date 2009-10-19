@@ -5,25 +5,33 @@ div.surveyanswers div.group{
 	border-width: 1px;
 }
 
-div.surveyanswers div.questions{
-    position: absolute;
-    width: 64%;
-    left: 17%;
+div.surveyanswers div.questions {
+	left:16%;
+	position:absolute;
+	top:3.5%;
+	width:67.2%;
 }
-
+.documentEditable {
+	bottom:30px;
+	margin:0 1em;
+	position:relative;
+}
 div.surveyanswers div.inner_questions{
-    background-color: red;
+    background-color: #F2F4F7;
     z-index:3;
 }
 
 div.surveyanswers ul{
 	margin: 0;
 	}
-div.surveyanswers li{
-	list-style: None;
-	border-color: #AAB1C5;
-	border-bottom-style: solid;
-	border-width: 1px;
+div.surveyanswers li {
+	border-bottom:1px solid #AAB1C5;
+	border-color:#AAB1C5;
+	border-width:1px;
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	padding:0 1em;
 }
 
 div.surveyanswers_country{
@@ -52,3 +60,10 @@ ul.discriminators .selected{
 	list-style-image: url(msexcel_icon.gif);
 	list-style-position: inside;
 	}
+#portal-column-one {
+	float:left;
+	margin:0 0 0 -84%;
+	overflow:hidden;
+	padding:0 0.6em;
+	width:15%;
+}
