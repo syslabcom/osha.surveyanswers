@@ -5,7 +5,7 @@ Changelog
 ------------------
 
 - Changed JS, questions pop up differently now (gerken)
-
+- Nice styling (pecek)
 
 1.8.1 (2009-10-07)
 ------------------
