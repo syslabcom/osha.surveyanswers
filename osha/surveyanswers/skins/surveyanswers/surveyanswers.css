@@ -6,8 +6,6 @@ div.surveyanswers div.group{
 }
 
 div.surveyanswers div.questions {
-	border-left:1px solid #C4C2C2;
-	border-right:1px solid #C4C2C2;
 	left:16.8%;
 	position:absolute;
 	top:3%;
@@ -19,6 +17,9 @@ div.surveyanswers div.questions {
 	position:relative;
 }
 div.surveyanswers div.inner_questions{
+	border-top:1px solid #C4C2C2;
+	border-left:1px solid #C4C2C2;
+	border-right:1px solid #C4C2C2;
     background-color: #F2F4F7;
     z-index:3;
 }
@@ -33,7 +34,8 @@ div.surveyanswers li {
 	list-style-image:none;
 	list-style-position:outside;
 	list-style-type:none;
-	padding:0 1em;
+	padding:0 1em 4px;
+    margin-bottom: 0;
 }
 
 div.surveyanswers_country{
