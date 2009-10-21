@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.8.2 (unreleased)
+1.9.0 (2009-10-21)
 ------------------
 
 - Changed JS, questions pop up differently now (gerken)
