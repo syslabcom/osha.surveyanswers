@@ -1,0 +1,46 @@
+/*
+  <dtml-with base_properties> (do not remove this)
+  <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either)
+*/
+
+
+/* 
+    Create a file called subsite.css with the contents of this file if you want the show the 
+    survey results inside a subsite.
+*/
+
+div#portal-breadcrumbs a, div#portal-breadcrumbs span{
+display:none;
+}
+
+div#portal-breadcrumbs{
+  height: 10px;
+}
+
+div#osha-campaignarea
+{
+  display: none;
+}
+
+.dropdown {
+display:none;
+}
+
+#portal-column-two {
+display:none;
+}
+
+#footeractions-wrapper {
+display:none;
+}
+
+div.documentContent{
+padding-right:0 !important;
+padding-left:0 !important;
+}
+
+div.surveyContent{
+padding:0 1em 2em !important;
+}
+/* </dtml-with> */
+
