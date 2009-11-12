@@ -1,0 +1,81 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha"> 
+
+<div metal:fill-slot="style_slot" >
+  <style type="text/css">
+    div#portal-breadcrumbs, div#portal-network
+      {display: none;}
+  </style>
+</div>
+<div metal:fill-slot="columns_wrapper"
+    tal:define="portal_type python:here.getPortalTypeName().lower().replace(' ', '_');
+            base_macros here/base/macros;
+            view_template python:'%s_view' % portal_type;
+            view_macros python:path('here/%s/macros|nothing' % view_template);
+            header_macro view_macros/header | header_macro | base_macros/header;
+            text here/getText;
+            errors python:request.get('errors', {})">
+
+      
+    
+    <div id="portal-columns">
+      <div id="content-column-background">     
+          <div id="reset-column">
+          <div id="right-column-background">
+              
+              <div class="content-column clearfix">
+                    <div id="portal-column-content">
+                    <div id="region-content"
+                         class="documentContent">
+
+                      <span id="contentTopLeft"></span>
+                      <span id="contentTopRight"></span>
+              
+                      <a name="documentContent"></a>
+
+                      <div metal:use-macro="here/global_statusmessage/macros/portal_message">
+                        Portal status message
+                      </div>
+
+                    <metal:use_header use-macro="header_macro" />
+
+
+        <p class="documentDescription">
+            <metal:field use-macro="python:here.widget('description', mode='view')">
+            Description
+            </metal:field>
+        </p>
+
+
+        <p tal:condition="python: not text and is_editable"
+           i18n:translate="no_body_text"
+           class="discreet">
+            This item does not have any body text, click the edit tab to change it.
+        </p>
+
+        <metal:field use-macro="python:here.widget('text', mode='view')">
+        Body text
+        </metal:field>
+
+                </div>
+
+
+
+                    </div>
+              <div id="portal-column-one" >
+                <div class="visualPadding">
+                    <tal:block replace="structure provider:plone.leftcolumn" />
+                  &nbsp;
+                </div>
+              </div>
+
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+  </div>
+
+</html>
