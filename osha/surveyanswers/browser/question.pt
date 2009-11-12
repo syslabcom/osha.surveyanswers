@@ -4,7 +4,8 @@
         </script>
         <script language="JavaScript" src="FusionCharts.js">
         </script>
-    
+
+    <div class="surveyContent">
         <a href="back" tal:attributes="href context/absolute_url">Go Back</a>
 		<h4 tal:content="view/question_text"></h4>
 		<div>
@@ -36,5 +37,6 @@
         
         <script type="text/javascript" tal:attributes="src string: ${view/absolute_url}/xml_data?question_id=${view/question_id}&group_by=${request/form/group_by | nothing}">
         </script>
+    </div>
     </body>
 </html>
