@@ -49,12 +49,6 @@
     	editview=".portlet.EditForm"
     />
 
-    <browser:page
-        for="*"
-        name="surveyresults_popup"
-        class=".surveyresults_popup.ResultsPopoupView"
-        permission="zope2.View"
-    />
 
 
 </configure>
