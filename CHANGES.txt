@@ -4,7 +4,7 @@ Changelog
 1.9.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- deactivated stylesfile, they are now handled in subsite.css in /sub/esener (conflicting statements removed) (pilz)
 
 
 1.9.0 (2009-10-21)
