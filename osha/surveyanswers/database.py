@@ -81,7 +81,7 @@ class SurveyDatabase(object):
         question_id which contains the numeric id of the question row in the database
         answer_row_name which contains the row name in the answers db for the given question
         """
-        all_questions = self.connection.execute(self.questions.select('hide_question=0')).fetchall()
+        all_questions = self.connection.execute(self.questions.select('hide_question=0').order_by('question_field')).fetchall()
         def reducer(retval, question):
             found = False
             for group in retval:
