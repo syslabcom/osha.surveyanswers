@@ -1,6 +1,6 @@
 <html metal:use-macro="context/@@standard_macros/page">
     <body metal:fill-slot="body">
-            <script language="JavaScript" src="FusionMaps.js">
+        <script language="JavaScript" src="FusionMaps.js">
         </script>
         <script language="JavaScript" src="FusionCharts.js">
         </script>
