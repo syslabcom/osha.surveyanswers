@@ -30,7 +30,8 @@
 		        	</li>
 		        </ul>
 			<div style="clear:both"> </div>
-			<a href="" class="excel-download" tal:attributes="href string: ${context/absolute_url}/download.xls?question=${view/question_id}">Download as Excel</a>
+			<a href="" tal:condition="python: request.form.has_key('group_by')" class="excel-download" tal:attributes="href string:${context/absolute_url}/download.xls?question=${view/question_id}&group_by=${request/form/group_by | nothing}">Download as Excel</a>
+			<a href="" tal:condition="not: python: request.form.has_key('group_by')" class="excel-download" tal:attributes="href string:${context/absolute_url}/download.xls?question=${view/question_id}">Download as Excel</a>
 
 		</div>
         

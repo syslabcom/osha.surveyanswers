@@ -111,7 +111,28 @@ class XLSDownload(object):
         ws = wb.add_sheet(' ')
         datasets = [[self.db.getQuestion(question)['text']]]
         if not country:
-            datasets.extend([x for x in self.db.getAnswersForExport(question)])
+            if group_by:
+                data = self.db.getAnswersForAndGroupedBy(question, group_by)
+                headers = data.values()[0].keys()
+                headers.sort()
+                datasets.append(["All values refer to the answer %s" % self.db.getMapInfo(question)['show_which_answer']])
+                datasets.append([""] + headers)
+                countries = data.keys()
+                countries.sort()
+                for country in countries:
+                    values = data[country]
+                    datasets.append([country] + [values[x] for x in headers])
+            else:
+                data = self.db.getAnswersFor(question)
+                datasets.append(['Country',_(self.db.getMapInfo(question)['show_which_answer'])])
+                tmp_keys = data.keys()
+                for key in tmp_keys:
+                    data[ID_TO_LONG_NAME['%03i' % key]] = data.pop(key)
+                countries = data.keys()
+                countries.sort()
+                for country in countries:
+                    datasets.append([country, data[country]])
+            #datasets.extend([x for x in self.db.getAnswersForExport(question)])
         else:
             datasets.append(["Country: " + self.db.getCountryName(country)])
             if group_by:
