@@ -334,6 +334,7 @@ function FC_Rendered(DOMId){
             var fmap = new FusionMaps("%s", "Map1Id", "750", "400", "0", "1");
             fmap.setDataXML(xmlMapDataEmpty);
             fmap.render("mapdiv");
+            jq('#Map1Id').attr('wmode', 'opaque');
             """ % self.getMapParams()['map_name'] 
             chart_map = """
             var myChart = new FusionCharts("MSColumn2D.swf", "myChartId", "900", "300", "0", "1");

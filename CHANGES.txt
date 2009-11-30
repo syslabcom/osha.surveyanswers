@@ -8,6 +8,7 @@ Changelog
 - added question number in question overview, order question according to that
   number (gerken)
 - totally changed excel for question views (gerken)
+- Resolved issue with flash overlapping menu (gerken)
 
 
 1.9.0 (2009-10-21)
