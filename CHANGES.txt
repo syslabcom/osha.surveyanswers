@@ -4,6 +4,7 @@ Changelog
 1.9.1 (unreleased)
 ------------------
 
+- Added EUPL license (deroiste)
 - deactivated stylesfile, they are now handled in subsite.css in /sub/esener (conflicting statements removed) (pilz)
 - added question number in question overview, order question according to that
   number (gerken)
