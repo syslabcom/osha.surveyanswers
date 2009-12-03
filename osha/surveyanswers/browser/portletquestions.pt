@@ -4,9 +4,10 @@
             <div class="inner_questions" id='123' tal:attributes="id string:surveyanswers_groupquestions_${repeat/group/number}">
                 <ul>
                     <li tal:repeat="question group/questions">
-                	    <a href="" tal:content="string:
-                        ${question/answer_row_name} ${question/text}" tal:attributes="href string:${here/absolute_url}/${question/question_id}">Country</a>
-            	   	</li>
+                        <a href="" tal:attributes="href string:${here/absolute_url}/${question/question_id}">
+                            <span tal:omit-tag="nothing" tal:content="question/answer_row_name">MM100</span> <span tal:omit-tag="" tal:content="question/text">Your question here</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </tal:group>
