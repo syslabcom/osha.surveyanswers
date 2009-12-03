@@ -38,12 +38,16 @@ jq(document).ready(function(){
         }
 
         if (state == 'new'){
+	    jq('#Map1Id').hide();
+	    jq('#myChartId').hide();
             jq(new_id).toggle('slow', function(){
                 surveyanswers_active = new_id;
             });
         }
 
         if (state == 'off'){
+	    jq('#Map1Id').show();
+	    jq('#myChartId').show();
             jq(new_id).toggle('slow', function(){
                 surveyanswers_active = 0;
             });
