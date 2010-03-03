@@ -1,82 +1,85 @@
-/*
 div.surveyanswers div.group{
-	background-color: #E6E8ED;
-	border-color: #AAB1C5;
-	border-style: solid;
-	border-width: 1px;
+    background-color: #E6E8ED;
+    /*border-color: #AAB1C5;*/
+    border-style: solid;
+    border-width: 1px;
 }
 
 div.surveyanswers div.questions {
-	left:16.8%;
-	position:absolute;
-	top:3%;
-	width:66.2%;
+    left:16.8%;
+    position:absolute;
+    top:3%;
+    width:66.2%;
 }
-.documentEditable {
-	bottom:30px;
-	margin:0 1em;
-	position:relative;
-}
+
 div.surveyanswers div.inner_questions{
-	border-top:1px solid #C4C2C2;
-	border-left:1px solid #C4C2C2;
-	border-right:1px solid #C4C2C2;
-    background-color: #F2F4F7;
+display:block;
+margin-left:-9px;
+position:relative;
+top:15px;
+    border-top:1px solid #C4C2C2;
+    border-left:1px solid #C4C2C2;
+    border-right:1px solid #C4C2C2;
+    background-color: #FDF0E8;
     z-index:3;
 }
 
 div.surveyanswers ul{
-	margin: 0;
-	}
+    margin: 0;
+    }
 div.surveyanswers li {
-	border-bottom:1px solid #AAB1C5;
-	border-color:#AAB1C5;
-	border-width:1px;
-	list-style-image:none;
-	list-style-position:outside;
-	list-style-type:none;
-	padding:0 1em 4px;
+    border-bottom:1px solid #F1BA8D;
+    /*border-color: :#F1BA8D;*/
+    border-width:1px;
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    padding:0 1em 4px;
     margin-bottom: 0;
 }
 
 div.surveyanswers_country{
-	padding-top: 4em;
-	}
-	
+    padding-top: 4em;
+    }
+
 div.surveyanswers_country div.chart{
-	float:left;
-	}
-ul.discriminators{
-	float:left;
-	border: 1px solid #AAB1C5;
-	list-style: none;
-	padding: 1.5em;
-	margin-top: 15px;
-	}
-ul.discriminators .selected{
-	background-color: #E6E8ED;
-	border: 1px solid #AAB1C5;
-	padding: 1px 4px;
-	margin-left: -4px;
-	}
-	
-.excel-download {
-	display: list-item;
-	list-style-image: url(msexcel_icon.gif);
-	list-style-position: inside;
-	}
-#portal-column-one {
-	float:left;
-	margin:0 0 0 -84%;
-	overflow:hidden;
-	padding:0 0.6em;
-	width:15%;
+    float:left;
+    }
+
+div.surveyanswers_country ul.discriminators{
+    float:left;
+    border: 1px solid #AAB1C5;
+    list-style: none;
+    padding: 1.5em;
+    margin-top: 15px;
+    }
+
+div.surveyanswers_country ul.discriminators .selected{
+    background-color: #E6E8ED;
+    border: 1px solid #AAB1C5;
+    padding: 1px 4px;
+    margin-left: -4px;
+    }
+
+div.surveyanswers_country .excel-download {
+    display: list-item;
+    list-style-image: url(msexcel_icon.gif);
+    list-style-position: inside;
+    }
+
+.surveyanswers ul.questionslvl1 li.title, div.inner_questions li {
+    border-bottom:1px dotted #C4C2C2;
+    background-color: #FDF0E8;
+    font-size:110%;
+    font-weight:Normal;
+    padding:0 0 0.2em;
+    cursor: pointer;
 }
 
-.surveyanswers h4 {
-border-bottom:1px dotted #C4C2C2;
-font-size:110%;
-font-weight:bold;
-padding:0 0 0.2em;
+div.inner_questions a{
+    display:block;
 }
-*/
+
+.surveyanswers ul.questionslvl1 li.title:hover, div.inner_questions li:hover {
+    background-color: #EDE0D8;
+}

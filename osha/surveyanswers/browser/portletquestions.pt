@@ -12,15 +12,19 @@
             </div>
         </tal:group>
     </div>
-   	<tal:group tal:repeat="group view/all_questions">
-        <h4 class="title" href="#" id="123" tal:attributes="id string:surveyanswers_groupname_${repeat/group/number}"><tal:span tal:replace="group/name">Name</tal:span> (<tal:span tal:replace="group/count">4</tal:span>)</h4>
-    </tal:group>
+    <ul class="questionslvl1">
+        <li class="title" href="#" id="123"
+            tal:repeat="group view/all_questions"
+            tal:attributes="id string:surveyanswers_groupname_${repeat/group/number}">
+            <tal:span tal:replace="group/name">Name</tal:span> (<tal:span tal:replace="group/count">4</tal:span>)
+        </li>
+    </ul>
 </div>
 <script type="text/javascript">
 jq(document).ready(function(){
     surveyanswers_active = 0;
     jq('.surveyanswers div.inner_questions').hide();
-    jq('.surveyanswers h4.title').click(function() {
+    jq('.surveyanswers ul.questionslvl1 li.title').click(function() {
         var new_id = '#surveyanswers_groupquestions_' + this.id.split('_')[2]
         var state = 'change';
         if (new_id == surveyanswers_active){
