@@ -331,9 +331,9 @@ function FC_Rendered(DOMId){
     def flash_init(self):
         if not self.country:
             fusion_map = """
-            var fmap = new FusionMaps("%s", "Map1Id", "750", "400", "0", "1");
-            fmap.setDataXML(xmlMapDataEmpty);
+            fmap = new FusionMaps("%s", "Map1Id", "750", "400", "0", "1");
             fmap.render("mapdiv");
+            fmap.setDataXML(xmlMapDataEmpty);
             """ % self.getMapParams()['map_name'] 
             chart_map = """
             var myChart = new FusionCharts("MSColumn2D.swf", "myChartId", "900", "300", "0", "1");
