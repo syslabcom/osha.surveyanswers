@@ -9,9 +9,7 @@
 		<h4 tal:content="view/question_text"></h4>
 		<div class="surveyanswers_country">
 	        <div class="chart" id="chartdiv" align="center">
-            	The
-            	chart will appear within this DIV. This text will be replaced by the
-            	chart.
+                <img src="indicator.gif" alt="" />
         	</div>
 	        <ul class="discriminators">
 		        	<li>

@@ -15,9 +15,7 @@
 		</div>
 		<div class="surveyanswers_country">
 	        <div id="chartdiv" class="chart" align="center">
-            	The
-            	chart will appear within this DIV. This text will be replaced by the
-            	chart.
+                <img src="indicator.gif" alt="" />
         	</div>
 		        <ul class="discriminators">
 		        	<li>

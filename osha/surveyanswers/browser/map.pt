@@ -5,12 +5,10 @@
         <script language="JavaScript" src="++resource++surveyanswers_js/FusionCharts.js">
         </script>
         <div class="not_drilled_down" id="mapdiv" align="center">
-            FusionMaps.
+            <img src="indicator.gif" alt=""/>
         </div>
         <div class="drilled_down" tal:repeat="chart_id view/countries" tal:attributes="id chart_id" id="chartdiv-013" style="display: None;" align="center">
-            The
-            chart will appear within this DIV. This text will be replaced by the
-            chart.
+            <img src="indicator.gif" alt=""/>
         </div>
         <script type="text/javascript" tal:attributes="src string: ${context/absolute_url}/xml_datax?question_id=${view/question_id}">
         </script>
