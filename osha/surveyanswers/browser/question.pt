@@ -1,4 +1,6 @@
-<html metal:use-macro="context/@@standard_macros/page">
+<html metal:use-macro="context/@@standard_macros/page"
+      i18n:domain="osha.surveyanswers"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n">
     <body metal:fill-slot="body">
         <script language="JavaScript" src="FusionMaps.js">
         </script>
@@ -6,7 +8,7 @@
         </script>
 
     <div class="surveyContent">
-        <a href="back" tal:attributes="href context/absolute_url">Go Back</a>
+        <a href="back" i18n:translate="" tal:attributes="href context/absolute_url">Go Back</a>
 		<h1 tal:content="view/question_text"></h1>
 		<div>
 	        <div class="not_drilled_down" id="mapdiv" align="center">
@@ -19,7 +21,7 @@
         	</div>
 		        <ul class="discriminators">
 		        	<li>
-		        		<a href="some_url" tal:condition="not: python: request.form.has_key('group_by')" tal:attributes="href string: ${request/URL}" class="selected">Ungrouped</a>
+		        		<a href="some_url" tal:condition="not: python: request.form.has_key('group_by')" tal:attributes="href string: ${request/URL}" i18n:translate="" class="selected">Ungrouped</a>
 		        		<a href="some_url" i18n:translate="" tal:condition="python: request.form.has_key('group_by')" tal:attributes="href string: ${request/URL}">Ungrouped</a>
 					</li>
 		        	<li tal:repeat="discriminator view/discriminators">
@@ -28,8 +30,8 @@
 		        	</li>
 		        </ul>
 			<div style="clear:both"> </div>
-			<a href="" tal:condition="python: request.form.has_key('group_by')" class="excel-download" tal:attributes="href string:${context/absolute_url}/download.xls?question=${view/question_id}&group_by=${request/form/group_by | nothing}">Download data as excel</a>
-			<a href="" tal:condition="not: python: request.form.has_key('group_by')" class="excel-download" tal:attributes="href string:${context/absolute_url}/download.xls?question=${view/question_id}">Download data as excel</a>
+			<a href="" tal:condition="python: request.form.has_key('group_by')" class="excel-download" i18n:translate="" tal:attributes="href string:${context/absolute_url}/download.xls?question=${view/question_id}&group_by=${request/form/group_by | nothing}">Download data as excel</a>
+			<a href="" tal:condition="not: python: request.form.has_key('group_by')" class="excel-download" i18n:translate="" tal:attributes="href string:${context/absolute_url}/download.xls?question=${view/question_id}">Download data as excel</a>
 
 		</div>
         
