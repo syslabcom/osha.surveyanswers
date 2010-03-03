@@ -1,6 +1,7 @@
 from xml.sax.saxutils import escape
 import StringIO
 
+from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from zope.component import adapts, getMultiAdapter
 from zope.interface import implements
@@ -11,8 +12,9 @@ from ZPublisher.BaseRequest import DefaultPublishTraverse
 import xlwt
 
 from osha.surveyanswers import OshaMessageFactory as _
+
 from osha.surveyanswers.constants import ID_TO_SHORT_NAME, SHORT_NAME_TO_ID,\
-    SHORT_NAME_TO_LONG, ID_TO_LONG_NAME
+    SHORT_NAME_TO_LONG, ID_TO_LONG_NAME, LONG_TO_TRANSLATED
 from osha.surveyanswers.interfaces import ISurvey, ISingleQuestion,\
     ISurveyDatabase
 
@@ -64,6 +66,9 @@ class SingleQuestionCountry(object):
         self.context = context
         self.request = request
         self.db = ISurveyDatabase(self.context)
+        self.translate = lambda x:\
+            getToolByName(self.context, 'translation_service').\
+            translate(x, context=self.context)
 
     def init(self, question_id, country):
         self.question_id = question_id
@@ -78,7 +83,7 @@ class SingleQuestionCountry(object):
     
     @property
     def discriminators(self):
-        return [{"key" : x[0], "value" : x[1]} for x in self.db.getDiscriminators()]
+        return [{"key" : x[0], "value" : self.translate(_(x[1]))} for x in self.db.getDiscriminators()]
         
 class QuestionOverView(BrowserView):
     implements(IBrowserView)
@@ -103,7 +108,10 @@ class XLSDownload(object):
         self.context = context
         self.request = request
         self.db = ISurveyDatabase(self.context)
-        
+        self.translate = lambda x:\
+            getToolByName(self.context, 'translation_service').\
+            translate(x, context=self.context)
+
     def __call__(self, question, country = "", group_by = ""):
         if group_by == 'None':
             group_by = ''
@@ -127,7 +135,7 @@ class XLSDownload(object):
                 datasets.append(['Country',_(self.db.getMapInfo(question)['show_which_answer'])])
                 tmp_keys = data.keys()
                 for key in tmp_keys:
-                    data[ID_TO_LONG_NAME['%03i' % key]] = data.pop(key)
+                    data[self.translate(LONG_TO_TRANSLATED(ID_TO_LONG_NAME['%03i' % key]))] = data.pop(key)
                 countries = data.keys()
                 countries.sort()
                 for country in countries:
@@ -168,6 +176,9 @@ class SingleQuestion(object):
         self.context = context
         self.request = request
         self.db = ISurveyDatabase(self.context)
+        self.translate = lambda x:\
+            getToolByName(self.context, 'translation_service').\
+            translate(x, context=self.context)
         
     def init(self, question_id):
         self.question_id = question_id
@@ -182,7 +193,8 @@ class SingleQuestion(object):
     
     @property
     def discriminators(self):
-        return [{"key" : x[0], "value" : _(x[1])} for x in 
+        import pdb;pdb.set_trace()
+        return [{"key" : x[0], "value" : self.translate(_(x[1]))} for x in 
                 [x for x in self.db.getDiscriminators() if x[0] in ['sec3', 'size_5']]]
 
     def absolute_url(self):
@@ -266,6 +278,9 @@ function FC_Rendered(DOMId){
         self.context = context
         self.request = request
         self.db = ISurveyDatabase(self.context)
+        self.translate = lambda x:\
+            getToolByName(self.context, 'translation_service').\
+            translate(x, context=self.context)
 
     def __call__(self):
         self.request.RESPONSE.setHeader('Cache-control', 'max-age=32140800')
@@ -308,7 +323,7 @@ function FC_Rendered(DOMId){
                 sorted_keys_dataset = self.db.getOrderedAnswerMeanings(self.group_by)
             else:
                 sorted_keys_dataset = [""]
-                keyToName = lambda x: ID_TO_LONG_NAME['%03i' % (x)]
+                keyToName = lambda x: self.translate(ID_TO_LONG_NAME['%03i' % (x)])
                 chart_contents = {}
                 for key, value in contents.items():
                     chart_contents[keyToName(key)] = {"": value}
@@ -356,17 +371,17 @@ function FC_Rendered(DOMId){
         params.update(map_info)
         params['contents'] = contents
         for key in ['show_which_answer', 'rng1_msg', 'rng2_msg', 'rng3_msg']:
-            params[key] = _(params[key])
+            params[key] = self.translate(_(params[key]))
         return self.xml_map_template % params
     
     def getXMLChartData(self, chart_contents, sorted_categories, sorted_dataset):
         sorted_categories_non_empty = [x for x in sorted_categories if x in chart_contents.keys()]
-        categories = ["<category label='%s' />" % x for x in sorted_categories_non_empty]
+        categories = ["<category label='%s' />" % self.translate(LONG_TO_TRANSLATED.get(x, x)) for x in sorted_categories_non_empty]
         datasets = []
         for key in sorted_dataset:
             values = [chart_contents[x].get(key, 0) for x in sorted_categories_non_empty]
             values_xml = "".join(["<set value='%02.2f' />" % (value * 100) for value in values])
-            datasets.append("<dataset showValues='0' seriesName='%s'>%s\</dataset>" % (key, values_xml))
+            datasets.append("<dataset showValues='0' seriesName='%s'>%s\</dataset>" % (self.translate(_(key)), values_xml))
         return self.xml_chart_template % ("".join(categories), "".join(datasets))
             
     def getMapParams(self):

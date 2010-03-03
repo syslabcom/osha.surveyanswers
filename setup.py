@@ -56,6 +56,7 @@ setup(name='osha.surveyanswers',
       install_requires=[
           'setuptools',
           'xlwt',
+          'Products.OSHATranslations',
           'archetypes.schemaextender',
           # -*- Extra requirements: -*-
       ],
