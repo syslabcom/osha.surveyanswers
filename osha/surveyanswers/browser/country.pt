@@ -6,7 +6,7 @@
         </script>
     <div class="surveyContent">
     	<a href="back" tal:attributes="href string: ${context/absolute_url}/${view/question_id}">Go Back</a>
-		<h4 tal:content="view/question_text"></h4>
+		<h1 tal:content="view/question_text"></h1>
 		<div class="surveyanswers_country">
 	        <div class="chart" id="chartdiv" align="center">
                 <img src="indicator.gif" alt="" />

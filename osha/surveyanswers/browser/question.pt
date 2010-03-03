@@ -7,7 +7,7 @@
 
     <div class="surveyContent">
         <a href="back" tal:attributes="href context/absolute_url">Go Back</a>
-		<h4 tal:content="view/question_text"></h4>
+		<h1 tal:content="view/question_text"></h1>
 		<div>
 	        <div class="not_drilled_down" id="mapdiv" align="center">
             	FusionMaps.

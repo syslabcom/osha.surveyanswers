@@ -83,3 +83,11 @@ div.inner_questions a{
 .surveyanswers ul.questionslvl1 li.title:hover, div.inner_questions li:hover {
     background-color: #EDE0D8;
 }
+
+div.surveyContent h1{
+    border-bottom:medium none;
+    font-size:125%;
+    font-weight:bold;
+    padding:0 1em;
+    text-decoration:underline;
+}
