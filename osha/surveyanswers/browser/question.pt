@@ -10,7 +10,7 @@
 		<h1 tal:content="view/question_text"></h1>
 		<div>
 	        <div class="not_drilled_down" id="mapdiv" align="center">
-            	FusionMaps.
+                <img src="indicator.gif" alt="" />
         	</div>
 		</div>
 		<div class="surveyanswers_country">
