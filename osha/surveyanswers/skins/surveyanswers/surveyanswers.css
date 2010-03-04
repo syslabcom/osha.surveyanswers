@@ -68,8 +68,6 @@ div.surveyanswers_country .excel-download {
     }
 
 .surveyanswers ul.questionslvl1 li.title, div.inner_questions li {
-    border-bottom:1px dotted #C4C2C2;
-    background-color: #FDF0E8;
     font-size:110%;
     font-weight:Normal;
     padding:0 0 0.2em;
@@ -81,7 +79,11 @@ div.inner_questions a{
 }
 
 .surveyanswers ul.questionslvl1 li.title:hover, div.inner_questions li:hover {
-    background-color: #EDE0D8;
+    background-color: #C5CBD8;
+}
+
+.surveyanswers ul.questionslvl1 li.title:selected, div.inner_questions li:selected {
+    background:#C5CBD8;
 }
 
 div.surveyContent h1{
