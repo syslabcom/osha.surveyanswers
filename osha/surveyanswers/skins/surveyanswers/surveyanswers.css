@@ -43,15 +43,23 @@ div.surveyanswers_country{
     }
 
 div.surveyContent ul.discriminators{
-    float:left;
+    display: block;
     border: 1px solid #AAB1C5;
     list-style: none;
     padding: 1.5em;
     margin-top: 15px;
+    width: 10em;
+    margin-left: 0;
+    margin-bottom: 0.5em;
     }
+
+div.surveyContent div.right_box{
+    float: left;
+}
 
 div.surveyContent div#mapdiv{
     float:left;
+    width:760px;
 }
 
 div.surveyanswers_country ul.discriminators .selected{
@@ -61,7 +69,7 @@ div.surveyanswers_country ul.discriminators .selected{
     margin-left: -4px;
     }
 
-div.surveyanswers_country .excel-download {
+div.surveyContent .excel-download {
     display: list-item;
     list-style-image: url(msexcel_icon.gif);
     list-style-position: inside;
