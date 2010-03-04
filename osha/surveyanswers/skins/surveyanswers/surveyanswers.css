@@ -42,13 +42,17 @@ div.surveyanswers_country{
     padding-top: 4em;
     }
 
-div.surveyanswers_country ul.discriminators{
+div.surveyContent ul.discriminators{
     float:left;
     border: 1px solid #AAB1C5;
     list-style: none;
     padding: 1.5em;
     margin-top: 15px;
     }
+
+div.surveyContent div#mapdiv{
+    float:left;
+}
 
 div.surveyanswers_country ul.discriminators .selected{
     background-color: #E6E8ED;
