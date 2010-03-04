@@ -193,7 +193,6 @@ class SingleQuestion(object):
     
     @property
     def discriminators(self):
-        import pdb;pdb.set_trace()
         return [{"key" : x[0], "value" : self.translate(_(x[1]))} for x in 
                 [x for x in self.db.getDiscriminators() if x[0] in ['sec3', 'size_5']]]
 
