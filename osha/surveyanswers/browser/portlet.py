@@ -30,6 +30,11 @@ class Renderer(base.Renderer):
         self.anonymous = portal_state.anonymous()
         self.portal_url = portal_state.portal_url()
         self.typesToShow = portal_state.friendly_types()
+	path_info = self.request.get('PATH_INFO')
+	try:
+	    self.selected_question_id = int(path_info.split('/')[-1])
+	except ValueError:
+	    self.selected_question_id = ''
 
         plone_tools = getMultiAdapter((context, self.request), name=u'plone_tools')
         self.catalog = plone_tools.catalog()
@@ -41,11 +46,17 @@ class Renderer(base.Renderer):
         for questions in self.db.getAllQuestions():
             if questions['name'] not in ['Gruppe', 'Discriminator question']:
                 questions['count'] = len(questions['questions'])
+		questions['selected'] = 0
                 for question in questions['questions']:
+		    if question['question_id'] == self.selected_question_id:
+		        question['selected'] = 1
+			questions['selected'] = 1
+		    else:
+		        question['selected'] = 0
                     question['text'] = _(question['text'])
                 questions['name'] = _(questions['name'])
                 yield questions
-        
+
     def render(self):
         return self._template()
 
