@@ -20,16 +20,33 @@ top:15px;
     border-top:1px solid #C4C2C2;
     border-left:1px solid #C4C2C2;
     border-right:1px solid #C4C2C2;
-    background-color: #FDF0E8;
+    background-color: #F7F7F7;
     z-index:3;
 }
 
 body.section-sub-esener #portal-column-two {
-    display: None;
+    display: none;
+}
+
+body.section-sub-esener #portal-column-one {
+    margin: 4em 0 0 -100%;
+}
+
+body.section-sub-esener #portal-column-content {
+    width: 84%;
+}
+
+body.section-sub-esener #portal-breadcrumbs {
+    display: none;
+}
+
+body.section-sub-esener div.content-column {
+    margin-top: 2em;
 }
 
 div.surveyanswers ul{
     margin: 0;
+    padding: 0 0.5em;
     }
 div.surveyanswers li {
     border-bottom:1px solid #F1BA8D;
@@ -62,8 +79,8 @@ div.surveyContent div.right_box{
 }
 
 div.surveyContent div#mapdiv{
-    float:left;
-    width:760px;
+    float: left;
+    width: 550px;
 }
 
 div.surveyanswers_country ul.discriminators .selected{
@@ -96,9 +113,6 @@ div.inner_questions a{
     background-color: #C5CBD8;
 }
 
-.surveyanswers ul.questionslvl1 li.title:selected, div.inner_questions li:selected {
-    background:#C5CBD8;
-}
 
 div.surveyContent h1{
     border-bottom:medium none;
