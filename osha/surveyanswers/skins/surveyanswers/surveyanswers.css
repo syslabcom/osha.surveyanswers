@@ -115,6 +115,9 @@ div.inner_questions a{
     background-color: #C5CBD8;
 }
 
+.surveyanswers ul.questionslvl1 li.title.selected, div.inner_questions li.selected{
+    background-color: #C5CBD8;
+}   
 
 div.surveyContent h1{
     border-bottom:medium none;
