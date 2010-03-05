@@ -24,6 +24,10 @@ top:15px;
     z-index:3;
 }
 
+body.section-sub-esener #portal-column-two {
+    display: None;
+}
+
 div.surveyanswers ul{
     margin: 0;
     }
