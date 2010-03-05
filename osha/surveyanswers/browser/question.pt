@@ -11,7 +11,7 @@
         <a href="back" i18n:translate="" tal:attributes="href context/absolute_url">Go Back</a>
 		<h1 tal:content="view/question_text"></h1>
 		<div>
-	        <div class="not_drilled_down" id="mapdiv" align="center">
+	        <div class="not_drilled_down" id="mapdiv">
                 <img src="indicator.gif" alt="" />
         	</div>
             <div class="right_box">
@@ -30,7 +30,7 @@
             </div>
 		</div>
 		<div class="surveyanswers_country">
-	        <div id="chartdiv" class="chart" align="center">
+	        <div id="chartdiv" class="chart"> 
                 <img src="indicator.gif" alt="" />
         	</div>
 			<div style="clear:both"> </div>
