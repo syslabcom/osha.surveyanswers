@@ -3,7 +3,8 @@
         <tal:group tal:repeat="group view/all_questions">
             <div class="inner_questions" id='123' tal:attributes="id string:surveyanswers_groupquestions_${repeat/group/number}">
                 <ul>
-                    <li tal:repeat="question group/questions">
+                    <li tal:repeat="question group/questions"
+		      tal:attributes="class python:question['selected'] and 'selected' or ''">
                         <a href="" tal:attributes="href string:${here/absolute_url}/${question/question_id}">
                             <span tal:omit-tag="nothing" tal:content="question/answer_row_name">MM100</span> <span tal:omit-tag="" tal:content="question/text">Your question here</span>
                         </a>
@@ -15,7 +16,8 @@
     <ul class="questionslvl1">
         <li class="title" href="#" id="123"
             tal:repeat="group view/all_questions"
-            tal:attributes="id string:surveyanswers_groupname_${repeat/group/number}">
+            tal:attributes="id string:surveyanswers_groupname_${repeat/group/number};
+	      class python:group['selected'] and 'title selected' or 'title'">
             <tal:span tal:replace="group/name">Name</tal:span> (<tal:span tal:replace="group/count">4</tal:span>)
         </li>
     </ul>
