@@ -76,6 +76,8 @@ div.surveyContent .excel-download {
     }
 
 .surveyanswers ul.questionslvl1 li.title, div.inner_questions li {
+    border-bottom:1px dotted #C6C6C6;
+    background-color: #F7F7F7;
     font-size:110%;
     font-weight:Normal;
     padding:0 0 0.2em;
