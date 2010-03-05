@@ -345,7 +345,7 @@ function FC_Rendered(DOMId){
     def flash_init(self):
         if not self.country:
             fusion_map = """
-            fmap = new FusionMaps("%s", "Map1Id", "750", "400", "0", "1");
+            fmap = new FusionMaps("%s", "Map1Id", "500", "400", "0", "1");
             fmap.render("mapdiv");
             fmap.setDataXML(xmlMapDataEmpty);
             """ % self.getMapParams()['map_name'] 
