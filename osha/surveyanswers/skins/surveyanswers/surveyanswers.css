@@ -29,11 +29,11 @@ body.section-sub-esener #portal-column-two {
 }
 
 body.section-sub-esener #portal-column-one {
-    margin: 4em 0 0 -100%;
+    margin: 4em 0 0 -90%;
 }
 
 body.section-sub-esener #portal-column-content {
-    width: 84%;
+    width: 74%;
 }
 
 body.section-sub-esener #portal-breadcrumbs {
@@ -66,7 +66,8 @@ div.surveyanswers_country{
 div.surveyContent ul.discriminators{
     display: block;
     border: 1px solid #AAB1C5;
-    list-style: none;
+    list-style-type: none!important;
+    list-style-image: none!important;
     padding: 1.5em;
     margin-top: 15px;
     width: 10em;
@@ -83,7 +84,7 @@ div.surveyContent div#mapdiv{
     width: 550px;
 }
 
-div.surveyanswers_country ul.discriminators .selected{
+div.right_box ul.discriminators .selected{
     background-color: #E6E8ED;
     border: 1px solid #AAB1C5;
     padding: 1px 4px;
