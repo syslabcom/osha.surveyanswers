@@ -135,7 +135,7 @@ class XLSDownload(object):
                 datasets.append(['Country',_(self.db.getMapInfo(question)['show_which_answer'])])
                 tmp_keys = data.keys()
                 for key in tmp_keys:
-                    data[self.translate(LONG_TO_TRANSLATED(ID_TO_LONG_NAME['%03i' % key]))] = data.pop(key)
+                    data[self.translate(LONG_TO_TRANSLATED[ID_TO_LONG_NAME['%03i' % key]])] = data.pop(key)
                 countries = data.keys()
                 countries.sort()
                 for country in countries:
