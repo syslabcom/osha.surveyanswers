@@ -29,6 +29,7 @@
     			<a href="" tal:condition="not: python: request.form.has_key('group_by')" class="excel-download" i18n:translate="" tal:attributes="href string:${context/absolute_url}/download.xls?question=${view/question_id}">Download data as excel</a>
             </div>
 		</div>
+		<div class="visualClear"></div>
 		<div class="surveyanswers_country">
 	        <div id="chartdiv" class="chart"> 
                 <img src="indicator.gif" alt="" />
