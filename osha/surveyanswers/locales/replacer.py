@@ -12,6 +12,7 @@ langdirs = [x for x in os.listdir('.') if len(x)==2]
 for ld in langdirs:
   path = "%s/%s/LC_MESSAGES" %(cwd, ld)
   print path
+  cnt = 0
   fh = open("%s/%s" %(path, fname), 'r')
   data = fh.read()
   fh.close()
@@ -21,8 +22,10 @@ for ld in langdirs:
   for li in lines:
     if li.find(bad) > 0 and li.startswith('msgid'):
       li = li.replace(bad, good)
+      cnt += 1
     new_lines.append(li)
 
-    fh = open("%s/%s" %(path, fname), 'w')
-    fh.write('\n'.join(new_lines))
-    fh.close()
+  fh = open("%s/%s" %(path, fname), 'w')
+  fh.write('\n'.join(new_lines))
+  fh.close()
+  print "%d replacements done" %cnt
