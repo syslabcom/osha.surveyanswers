@@ -1,4 +1,8 @@
-from Products.OSHATranslations import OSHAMessageFactory as _
+try:
+    from Products.OSHATranslations import OSHAMessageFactory as _
+except ImportError:
+    def _(x):
+        return x
 SHORT_NAME_TO_ID = dict((
         ('AL', '001'),
         ('AD', '002'),

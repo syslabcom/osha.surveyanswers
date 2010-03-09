@@ -237,6 +237,7 @@ function FC_Rendered(DOMId){
     xml_map_template = """
     <map borderColor='%(border_color)s' 
          fillColor='%(fill_color)s' 
+         connectorAlpha='0'
          animation='0'
          showCanvasBorder='0'
          showLegend='1'
