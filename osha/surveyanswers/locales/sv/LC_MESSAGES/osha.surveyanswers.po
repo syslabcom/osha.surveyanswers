@@ -1031,7 +1031,7 @@ msgid "Which of the following reasons prompted your establishment to deal with p
 msgstr "Vilka av följande anledningar gjorde att man tog tag i psykosociala risker på din arbetsplats? Påtryckningar från Arbetsmiljöverket"
 msgid "More training would be desirable"
 msgstr "Mer utbildning skulle vara önskvärd"
-msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress"
+msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress "
 msgstr "För vart och ett av följande, tala om för mig om det är ett stort problem, ett visst problem eller inget problem på din arbetsplatsarbetsplats. Arbetsrelaterad stress"
 msgid "Regularly"
 msgstr "Regelbundet"

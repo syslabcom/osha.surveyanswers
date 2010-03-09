@@ -1137,7 +1137,7 @@ msgid "Which of the following reasons prompted your establishment to deal with p
 msgstr "Quais das seguintes razões levaram o seu estabelecimento a lidar com os riscos psicossociais? Pressão da Inspecção do Trabalho"
 msgid "More training would be desirable"
 msgstr "Seria desejável mais formação"
-msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress"
+msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress "
 msgstr "Para cada um dos seguintes problemas, diga-me se é uma preocupação importante, pouco importante ou não é uma preocupação no seu estabelecimento Stresse relacionado com o trabalho"
 msgid "Regularly"
 msgstr "Regularmente"

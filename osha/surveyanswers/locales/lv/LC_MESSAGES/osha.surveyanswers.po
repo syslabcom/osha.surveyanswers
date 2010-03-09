@@ -1031,7 +1031,7 @@ msgid "Which of the following reasons prompted your establishment to deal with p
 msgstr "Kurš no šiem iemesliem mudināja jūsu uzņēmuma vienībā risināt ar psihosociālajiem riskiem saistītus jautājumus? Spiediens no Valsts darba inspekcijas puses"
 msgid "More training would be desirable"
 msgstr "Būtu nepieciešama vēl papildus apmācība"
-msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress"
+msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress "
 msgstr "Par katru no šiem faktoriem, sakiet, lūdzu, vai Jūsu uzņēmuma vienībā tiem tiek pievērsta liela uzmanība, zināma uzmanība vai netiek pievērsta uzmanība nemaz? Stress, kas saistīts ar darba pienākumu izpildi"
 msgid "Regularly"
 msgstr "Regulāri"

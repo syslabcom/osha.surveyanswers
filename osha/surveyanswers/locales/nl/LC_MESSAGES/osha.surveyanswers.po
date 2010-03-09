@@ -1033,7 +1033,7 @@ msgid "Which of the following reasons prompted your establishment to deal with p
 msgstr "Welke van de volgende redenen zijn voor uw vestiging aanleiding geweest om psychosociale risico's aan te pakken? Druk vanwege de Arbeidsinspectie"
 msgid "More training would be desirable"
 msgstr "Meer training is wenselijk"
-msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress"
+msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress "
 msgstr "Kunt u mij voor elk van de volgende arborisico's zeggen of het een groot, een middelgroot of helemaal geen punt van zorg vormt in uw vestiging? Werkgerelateerde stress"
 msgid "Regularly"
 msgstr "Regelmatig"

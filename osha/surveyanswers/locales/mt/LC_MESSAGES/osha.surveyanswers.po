@@ -939,7 +939,7 @@ msgid "Which of the following reasons prompted your establishment to deal with p
 msgstr "Liema mir-raġunijiet li ġejjin wasslu biex il-post tax- xogħol tiegħek   jittratta riskji psikosoċjali? Pressjoni mill-ispettorat tax-xogħol"
 msgid "More training would be desirable"
 msgstr "Aktar taħriġ huwa mixtieq"
-msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress"
+msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress "
 msgstr "Għal kull waħda mill-kwistjonijiet li ġejjin, jekk jogħġbok għidli jekk hijiex ta' tħassib kbir, ta' xi tħassib jew ta' l-ebda tħassib fl-istabbiliment tiegħek Stress relatat max-xogħol"
 msgid "Regularly"
 msgstr "Regolarment"

@@ -1119,7 +1119,7 @@ msgid "Which of the following reasons prompted your establishment to deal with p
 msgstr "Který z následujících důvodů přiměl Váš podnik k tomu, aby se řešila psychosociální rizika? Tlak ze strany {inspektorátu práce}*"
 msgid "More training would be desirable"
 msgstr "Bylo by potřeba vVíce školení"
-msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress"
+msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress "
 msgstr "U každého z následujících témat mi prosím sdělte, zda se mu ve Vašem podniku věnuje velká pozornost, částečná pozornost nebo vůbec žádná pozornost. Stres související s prací"
 msgid "Regularly"
 msgstr "Pravidelně"

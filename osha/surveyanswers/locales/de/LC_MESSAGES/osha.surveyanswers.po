@@ -1035,7 +1035,7 @@ msgid "Which of the following reasons prompted your establishment to deal with p
 msgstr "Welcher der folgenden Gründe hat Ihren Betrieb dazu veranlasst, sich mit psychosozialen Risiken zu befassen? Auflagen seitens der {Gewerbeaufsicht oder der Berufsgenossenschaft}*"
 msgid "More training would be desirable"
 msgstr "Weitere Schulungsmaßnahmen wären wünschenswert"
-msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress"
+msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress "
 msgstr "Bitte sagen Sie mir für jeden der folgenden Aspekte, ob dies in Ihrem Betrieb ein wichtiges Thema, ein weniger wichtiges Thema oder gar kein Thema ist. Arbeitsbedingter Stress"
 msgid "Regularly"
 msgstr "Regelmäßig"

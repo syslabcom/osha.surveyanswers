@@ -1167,7 +1167,7 @@ msgid "Which of the following reasons prompted your establishment to deal with p
 msgstr "Ποιοι από τους ακόλουθους λόγους παρακίνησαν την επιχείρησή σας να ασχοληθείτε με τους ψυχοκοινωνικούς κινδύνους; Πίεση από το {Σώμα Επιθεώρησης Εργασίας (Σ.ΕΠ.Ε)}*"
 msgid "More training would be desirable"
 msgstr "Θα ήταν επιθυμητή περισσότερη εκπαίδευση"
-msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress"
+msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress "
 msgstr "Για κάθε ένα από τα ακόλουθα ζητήματα, πείτε μου σας παρακαλώ αν  απασχολεί σε σημαντικό βαθμό, σε κάποιο βαθμό ή καθόλου την επιχείρησή σας. Άγχος στην εργασία"
 msgid "Regularly"
 msgstr "Τακτικά"

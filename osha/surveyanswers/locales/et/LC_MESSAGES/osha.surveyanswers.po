@@ -1129,7 +1129,7 @@ msgid "Which of the following reasons prompted your establishment to deal with p
 msgstr "Milline järgmistest põhjustest ajendas teie ettevõtet psühholoogiliste ja sotsiaalsete riskidega tegelema? Tööinspektsiooni surve"
 msgid "More training would be desirable"
 msgstr "Soovitav oleks rohkem koolitust"
-msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress"
+msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress "
 msgstr "Palun öelge iga järgmise valdkonna kohta, kas see valmistab teie ettevõttele suurt muret, mõningal määral muret või ei valmista üldse muret. Tööga seotud stress"
 msgid "Regularly"
 msgstr "Regulaarselt"

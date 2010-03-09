@@ -1043,7 +1043,7 @@ msgid "Which of the following reasons prompted your establishment to deal with p
 msgstr "Hvilke af følgende grunde fik jeres virksomhed til at gøre noget ved psykosociale risici? Påtale fra Arbejdstilsynet"
 msgid "More training would be desirable"
 msgstr "Ville gerne have mere uddannelse"
-msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress"
+msgid "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Work-related stress "
 msgstr "Kan du fortælle mig for hvert af følgende områder, om det vækker stor bekymring, en vis bekymring eller overhovedet ingen bekymring i jeres virksomhed. Arbejdsrelateret stress"
 msgid "Regularly"
 msgstr "Regelmæssigt"
