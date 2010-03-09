@@ -657,7 +657,7 @@ msgid "Interviewer: Read out definition if necessary: Bullying or harassment occ
 msgstr "Interviewer: Read out definition if necessary: Bullying jew fastidju jseħħu meta wieħed jew aktar mill-ħaddiema jew maniġers huma abużżati, umiljati jew attakati minn kollegi jew superjuri"
 msgid "Yes, agrees"
 msgstr "Iva, jaqbel"
-msgid "Have you used information or support from external sources on how to deal with psychosocial risks at work?"
+msgid "Have you used information or support from external sources on how to deal with psychosocial risks at work? "
 msgstr "Inti użajt informazzjoni jew appoġġ minn sorsi esterni dwar kif titratta ma' riskji psikosoċjali fuq ix-xogħol?"
 msgid "On which of the following issues are you regularly kept informed by your management? On sickness and absenteeism rates"
 msgstr "Fuq liema mil-kwistjonijiet li ġejjin inti regolarment tiġi aġġornat mill-management tiegħek? Ir-rati ta' mard u nuqqas mix-xogħol"
