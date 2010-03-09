@@ -31,36 +31,36 @@ class Renderer(base.Renderer):
         self.portal_url = portal_state.portal_url()
         self.typesToShow = portal_state.friendly_types()
 
-	# save the question id of the current question
-	# Due to apache rewriting, we cannot use PATH_INFO, but must contruct the path manually
-	# first, get the URL and snip the SERVER_URL off
-	path = self.request.get('URL')[len(self.request.get('SERVER_URL'))+1:]
-	# then pre-pend VirtualURL components if present
-	elems = [x for x in self.request.get('VirtualRootPhysicalPath', [''])] + path.split('/')
-	# The question id is the last or last-but-one element
-	selected_question_id = elems[len(context.getPhysicalPath())-len(elems)]
-	try:
-	    self.selected_question_id = int(selected_question_id)
-	except ValueError:
-	    self.selected_question_id = ''
+    # save the question id of the current question
+    # Due to apache rewriting, we cannot use PATH_INFO, but must contruct the path manually
+    # first, get the URL and snip the SERVER_URL off
+    path = self.request.get('URL')[len(self.request.get('SERVER_URL'))+1:]
+    # then pre-pend VirtualURL components if present
+    elems = [x for x in self.request.get('VirtualRootPhysicalPath', [''])] + path.split('/')
+    # The question id is the last or last-but-one element
+    selected_question_id = elems[len(context.getPhysicalPath())-len(elems)]
+    try:
+        self.selected_question_id = int(selected_question_id)
+    except ValueError:
+        self.selected_question_id = ''
 
         plone_tools = getMultiAdapter((context, self.request), name=u'plone_tools')
         self.catalog = plone_tools.catalog()
         self.db = ISurveyDatabase(self.context)
-        
+
     @property
     def all_questions(self):
         self.context.getCanonicalLanguage()
         for questions in self.db.getAllQuestions():
             if questions['name'] not in ['Gruppe', 'Discriminator question']:
                 questions['count'] = len(questions['questions'])
-		questions['selected'] = 0
+        questions['selected'] = 0
                 for question in questions['questions']:
-		    if question['question_id'] == self.selected_question_id:
-		        question['selected'] = 1
-			questions['selected'] = 1
-		    else:
-		        question['selected'] = 0
+            if question['question_id'] == self.selected_question_id:
+                question['selected'] = 1
+            questions['selected'] = 1
+            else:
+                question['selected'] = 0
                     question['text'] = _(question['text'])
                 questions['name'] = _(questions['name'])
                 yield questions
