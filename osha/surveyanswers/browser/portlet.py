@@ -54,13 +54,13 @@ class Renderer(base.Renderer):
         for questions in self.db.getAllQuestions():
             if questions['name'] not in ['Gruppe', 'Discriminator question']:
                 questions['count'] = len(questions['questions'])
-        questions['selected'] = 0
+                questions['selected'] = 0
                 for question in questions['questions']:
-            if question['question_id'] == self.selected_question_id:
-                question['selected'] = 1
-            questions['selected'] = 1
-            else:
-                question['selected'] = 0
+                    if question['question_id'] == self.selected_question_id:
+                        question['selected'] = 1
+                        questions['selected'] = 1
+                    else:
+                        question['selected'] = 0
                     question['text'] = _(question['text'])
                 questions['name'] = _(questions['name'])
                 yield questions
