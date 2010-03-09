@@ -1,6 +1,7 @@
 #!/opt/python/python-2.4/bin/python
 
 import os
+from popen2 import popen3
 bad = "’"
 good = "?"
 
@@ -29,3 +30,9 @@ for ld in langdirs:
   fh.write('\n'.join(new_lines))
   fh.close()
   print "%d replacements done" %cnt
+
+  cmd = "msgfmt -C %s/%s" %(path, fname)
+  stout, stdin, stderr = popen3(cmd) 
+  err = stderr.read()
+  if err:
+    print "ERROR in the po file:\n%s" %err
