@@ -31,18 +31,18 @@ class Renderer(base.Renderer):
         self.portal_url = portal_state.portal_url()
         self.typesToShow = portal_state.friendly_types()
 
-    # save the question id of the current question
-    # Due to apache rewriting, we cannot use PATH_INFO, but must contruct the path manually
-    # first, get the URL and snip the SERVER_URL off
-    path = self.request.get('URL')[len(self.request.get('SERVER_URL'))+1:]
-    # then pre-pend VirtualURL components if present
-    elems = [x for x in self.request.get('VirtualRootPhysicalPath', [''])] + path.split('/')
-    # The question id is the last or last-but-one element
-    selected_question_id = elems[len(context.getPhysicalPath())-len(elems)]
-    try:
-        self.selected_question_id = int(selected_question_id)
-    except ValueError:
-        self.selected_question_id = ''
+        # save the question id of the current question
+        # Due to apache rewriting, we cannot use PATH_INFO, but must contruct the path manually
+        # first, get the URL and snip the SERVER_URL off
+        path = self.request.get('URL')[len(self.request.get('SERVER_URL'))+1:]
+        # then pre-pend VirtualURL components if present
+        elems = [x for x in self.request.get('VirtualRootPhysicalPath', [''])] + path.split('/')
+        # The question id is the last or last-but-one element
+        selected_question_id = elems[len(context.getPhysicalPath())-len(elems)]
+        try:
+            self.selected_question_id = int(selected_question_id)
+        except ValueError:
+            self.selected_question_id = ''
 
         plone_tools = getMultiAdapter((context, self.request), name=u'plone_tools')
         self.catalog = plone_tools.catalog()
