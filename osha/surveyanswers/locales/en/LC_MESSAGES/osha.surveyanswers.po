@@ -111,7 +111,7 @@ msgid "For each of the following issues, please tell me whether it is of major c
 msgstr "For each of the following issues, please tell me whether it is of major concern, some concern or no concern at all in your establishment. Accidents"
 msgid "Which of the following actions have been taken as a follow-up to these checks? Changes to equipment or working environment"
 msgstr "Which of the following actions have been taken as a follow-up to these checks? Changes to equipment or working environment"
-msgid "Have you used health and safety information from any of the following bodies or institutions?  Official institutes for health and safety at work"
+msgid "Have you used health and safety information from any of the following bodies or institutions?  Official institutes for health and safety at work "
 msgstr "Has your establishment used health and safety information from any of the following bodies or institutions? Official institutes for health and safety at work"
 msgid "Which of the following areas are routinely considered in these checks? Irregular or long working hours"
 msgstr "Which of the following areas are routinely considered during these checks? Irregular or long working hours"

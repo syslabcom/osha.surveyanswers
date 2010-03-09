@@ -79,7 +79,7 @@ msgid "Are there any particular reasons why these checks are not regularly carri
 msgstr "¿Hay alguna razón particular por la que dichos controles no se realicen con regularidad? Por favor, dígame cuáles de las siguientes afirmaciones se pueden aplicar a su establecimiento (si hay alguna): Las evaluaciones de riesgo llevan demasiado tiempo o salen muy caras"
 msgid "Employers? organisations"
 msgstr "Las organizaciones empresariales"
-msgid "Have you used health and safety information from any of the following bodies or institutions?  Official institutes for health and safety at work"
+msgid "Have you used health and safety information from any of the following bodies or institutions?  Official institutes for health and safety at work "
 msgstr "¿Ha utilizado su establecimiento la información sobre seguridad y salud de alguno de los organismos o instituciones siguientes? Institutos oficiales de seguridad y salud en el trabajo"
 msgid "Are there any particular reasons for not having developed such a policy, management system or action plan so far? Please tell me which of the following statements ? if any ? apply to the situation in your establishment?"
 msgstr "¿Hay alguna razón en particular por la que no se haya desarrollado una política, sistema de gestión o plan de acción hasta ahora? Por favor, dígame de las afirmaciones siguientes, si alguna se aplica a la situación del establecimiento."
