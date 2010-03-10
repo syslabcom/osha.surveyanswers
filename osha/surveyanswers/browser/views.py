@@ -349,6 +349,10 @@ function FC_Rendered(DOMId){
                     chart_contents[keyToName(key)] = {"": value}
                 
             sorted_keys_category = self.db.getOrderedAnswerMeanings(self.db.country_row)
+            # sort countries by their abbreviation
+            sorted_keys_category = [x for x in sorted_keys_category]
+            sorted_keys_category.sort(lambda x,y: cmp(
+                LONG_TO_TRANSLATED.get(x,x), LONG_TO_TRANSLATED.get(y,y)))
                 
             charts_data = self.getXMLChartData(chart_contents, sorted_keys_category, sorted_keys_dataset)
             return "\n".join([map_data_full, map_data_empty, charts_data])
