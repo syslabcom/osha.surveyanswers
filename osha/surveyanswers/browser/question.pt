@@ -27,8 +27,8 @@
                         tal:content="discriminator/value" i18n:translate="">Some discriminator</a>
                     </li>
                 </ul>
-                <a href="" tal:condition="python: request.form.has_key('group_by')" class="excel-download" i18n:translate="" tal:attributes="href string:${context/absolute_url}/download.xls?question=${view/question_id}&group_by=${request/form/group_by | nothing}">Download data as excel</a>
-                <a href="" tal:condition="not: python: request.form.has_key('group_by')" class="excel-download" i18n:translate="" tal:attributes="href string:${context/absolute_url}/download.xls?question=${view/question_id}">Download data as excel</a>
+                <a href="" class="excel-download" i18n:translate="" tal:attributes="href
+               string:${context/absolute_url}/download.xls?question=${view/question_id}&group_by=${request/form/group_by | nothing}">Download data as excel</a>
             </div>
         </div>
         <div class="visualClear"></div>
