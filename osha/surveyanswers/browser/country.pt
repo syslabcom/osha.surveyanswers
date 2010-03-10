@@ -16,12 +16,14 @@
             </div>
             <ul class="discriminators">
                     <li>
-                        <a href="some_url" tal:condition="not: python: request.form.has_key('group_by')" tal:attributes="href string: ${request/URL}" class="selected">Ungrouped</a>
-                        <a href="some_url" tal:condition="python: request.form.has_key('group_by')" tal:attributes="href string: ${request/URL}">Ungrouped</a>
+                        <a href="some_url" tal:attributes="class python: not request.form.has_key('group_by')
+                           and 'selected' or ''; href string: ${request/URL}" i18n:translate="">Ungrouped</a>
                     </li>
                     <li tal:repeat="discriminator view/discriminators">
-                        <a href="some_url" tal:condition="not: python: request.get('group_by', 'invalid') == discriminator['key']" tal:attributes="href string: ${request/URL}?group_by=${discriminator/key}" tal:content="discriminator/value">Some discriminator</a>
-                        <a href="some_url" tal:condition="python: request.get('group_by', 'invalid') == discriminator['key']"      tal:attributes="href string: ${request/URL}?group_by=${discriminator/key}" tal:content="discriminator/value" class="selected">Some discriminator</a>
+                        <a href="some_url" tal:attributes="class python: request.get('group_by', 'invalid') ==
+                        discriminator['key'] and 'selected' or '';
+                        href string: ${request/URL}?group_by=${discriminator/key}"
+                        tal:content="discriminator/value" i18n:translate="">Some discriminator</a>
                     </li>
             </ul>
             <div style="clear:both"> </div>
