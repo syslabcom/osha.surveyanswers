@@ -379,7 +379,7 @@ function FC_Rendered(DOMId){
             retval = fusion_map + chart_map
         else:
             chart_map = """
-            var myChart = new FusionCharts("MSColumn2D.swf", "myChartId", "900", "600", "0", "1");
+            var myChart = new FusionCharts("MSColumn2D.swf", "myChartId", "900", "300", "0", "1");
             myChart.setDataXML(%s);
             myChart.render("chartdiv");
             """
