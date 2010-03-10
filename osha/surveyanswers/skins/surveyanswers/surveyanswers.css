@@ -80,6 +80,10 @@ div.surveyContent ul.discriminators{
     margin-bottom: 0.5em;
     }
 
+div.surveyContent div.surveyanswers_detail ul.discriminators{
+    margin-left: 4em;
+}
+
 div.surveyContent div.right_box{
     float: left;
 }
@@ -102,6 +106,10 @@ div.surveyContent .excel-download {
     list-style-image: url(msexcel_icon.gif);
     list-style-position: inside;
     }
+
+div.surveyContent div.surveyanswers_detail .excel-download {
+    margin-left: 4em;
+}
 
 .surveyanswers ul.questionslvl1 li.title, div.inner_questions li {
     border-bottom:1px dotted #C6C6C6;
