@@ -80,6 +80,10 @@ class SingleQuestionCountry(object):
     @property
     def question_text(self):
         return _(self.db.getQuestion(self.question_id)['text'])
+
+    @property
+    def country_name(self):
+        return LONG_TO_TRANSLATED[ID_TO_LONG_NAME[self.country]]
     
     @property
     def discriminators(self):

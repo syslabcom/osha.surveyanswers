@@ -127,3 +127,13 @@ div.surveyContent h1{
     padding:0 1em;
     text-decoration: none;
 }
+
+div.surveyContent h2{
+    border-bottom:medium none;
+    font-size:100%;
+    font-weight:bold;
+    font-style: italic;
+    padding:0 1em;
+    text-decoration: none;
+}
+
