@@ -85,7 +85,8 @@ div.surveyContent div#mapdiv{
     width: 550px;
 }
 
-div.right_box ul.discriminators .selected{
+div.right_box ul.discriminators .selected,
+div.surveyanswers_country ul.discriminators .selected{
     background-color: #E6E8ED;
     border: 1px solid #AAB1C5;
     padding: 1px 4px;
