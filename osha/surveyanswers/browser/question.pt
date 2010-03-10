@@ -9,36 +9,36 @@
 
     <div class="surveyContent">
         <a href="back" i18n:translate="" tal:attributes="href context/absolute_url">Go Back</a>
-		<h1 tal:content="view/question_text"></h1>
-		<div>
-	        <div class="not_drilled_down" id="mapdiv">
+        <h1 tal:content="view/question_text"></h1>
+        <div>
+            <div class="not_drilled_down" id="mapdiv">
                 <img src="indicator.gif" alt="" />
-        	</div>
-            <div class="right_box">
-		        <ul class="discriminators">
-		        	<li>
-		        		<a href="some_url" tal:condition="not: python: request.form.has_key('group_by')" tal:attributes="href string: ${request/URL}" i18n:translate="" class="selected">Ungrouped</a>
-		        		<a href="some_url" i18n:translate="" tal:condition="python: request.form.has_key('group_by')" tal:attributes="href string: ${request/URL}">Ungrouped</a>
-					</li>
-		        	<li tal:repeat="discriminator view/discriminators">
-		        		<a href="some_url" tal:condition="not: python: request.get('group_by', 'invalid') == discriminator['key']" tal:attributes="href string: ${request/URL}?group_by=${discriminator/key}" tal:content="discriminator/value">Some discriminator</a>
-		        		<a href="some_url" tal:condition="python: request.get('group_by', 'invalid') == discriminator['key']"      tal:attributes="href string: ${request/URL}?group_by=${discriminator/key}" tal:content="discriminator/value" class="selected">Some discriminator</a>
-		        	</li>
-		        </ul>
-    			<a href="" tal:condition="python: request.form.has_key('group_by')" class="excel-download" i18n:translate="" tal:attributes="href string:${context/absolute_url}/download.xls?question=${view/question_id}&group_by=${request/form/group_by | nothing}">Download data as excel</a>
-    			<a href="" tal:condition="not: python: request.form.has_key('group_by')" class="excel-download" i18n:translate="" tal:attributes="href string:${context/absolute_url}/download.xls?question=${view/question_id}">Download data as excel</a>
             </div>
-		</div>
-		<div class="visualClear"></div>
-		<div class="surveyanswers_country">
-	        <div id="chartdiv" class="chart"> 
+            <div class="right_box">
+                <ul class="discriminators">
+                    <li>
+                        <a href="some_url" tal:condition="not: python: request.form.has_key('group_by')" tal:attributes="href string: ${request/URL}" i18n:translate="" class="selected">Ungrouped</a>
+                        <a href="some_url" i18n:translate="" tal:condition="python: request.form.has_key('group_by')" tal:attributes="href string: ${request/URL}">Ungrouped</a>
+                    </li>
+                    <li tal:repeat="discriminator view/discriminators">
+                        <a href="some_url" tal:condition="not: python: request.get('group_by', 'invalid') == discriminator['key']" tal:attributes="href string: ${request/URL}?group_by=${discriminator/key}" tal:content="discriminator/value">Some discriminator</a>
+                        <a href="some_url" tal:condition="python: request.get('group_by', 'invalid') == discriminator['key']"      tal:attributes="href string: ${request/URL}?group_by=${discriminator/key}" tal:content="discriminator/value" class="selected">Some discriminator</a>
+                    </li>
+                </ul>
+                <a href="" tal:condition="python: request.form.has_key('group_by')" class="excel-download" i18n:translate="" tal:attributes="href string:${context/absolute_url}/download.xls?question=${view/question_id}&group_by=${request/form/group_by | nothing}">Download data as excel</a>
+                <a href="" tal:condition="not: python: request.form.has_key('group_by')" class="excel-download" i18n:translate="" tal:attributes="href string:${context/absolute_url}/download.xls?question=${view/question_id}">Download data as excel</a>
+            </div>
+        </div>
+        <div class="visualClear"></div>
+        <div class="surveyanswers_country">
+            <div id="chartdiv" class="chart">
                 <img src="indicator.gif" alt="" />
-        	</div>
-			<div style="clear:both"> </div>
+            </div>
+            <div style="clear:both"> </div>
 
-		</div>
-        
-        
+        </div>
+
+
         <script type="text/javascript" tal:attributes="src string: ${view/absolute_url}/xml_data?question_id=${view/question_id}&group_by=${request/form/group_by | nothing}">
         </script>
     </div>
