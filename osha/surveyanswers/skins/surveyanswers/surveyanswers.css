@@ -64,6 +64,10 @@ div.surveyanswers_country{
     padding-top: 4em;
     }
 
+div.surveyanswers_detail{
+    padding-top: 1em;
+    }
+
 div.surveyContent ul.discriminators{
     display: block;
     border: 1px solid #AAB1C5;
