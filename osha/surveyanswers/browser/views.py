@@ -273,7 +273,23 @@ function FC_Rendered(DOMId){
       </categories>
         %s
 </chart>";
-""".replace("\n", "")   
+""".replace("\n", "")
+
+    xml_detail_template = """var xmlChartData = "
+    <chart
+           showBorder='0'
+           bgColor='ffffff'
+           showExportDataMenuItem='1'
+           yAxisMaxValue='100'
+           numberSuffix= '%%'
+           labelDisplay='STAGGER'
+           staggerLines='2'>
+      <categories>
+        %s
+      </categories>
+        %s
+</chart>";
+""".replace("\n", "") 
               
     
     extractors = {}
@@ -336,6 +352,7 @@ function FC_Rendered(DOMId){
                 
             charts_data = self.getXMLChartData(chart_contents, sorted_keys_category, sorted_keys_dataset)
             return "\n".join([map_data_full, map_data_empty, charts_data])
+        # We are on a country
         else:
             if self.group_by:
                 sorted_keys_dataset = self.db.getOrderedAnswerMeanings(self.group_by)
@@ -345,7 +362,7 @@ function FC_Rendered(DOMId){
             
             sorted_keys_category = self.db.getOrderedAnswerMeanings(self.db.getAnswerRow(self.question_id))
             chart_contents = self.db.getAnswersForCountry(self.question_id, self.country, self.group_by)
-            return self.getXMLChartData(chart_contents, sorted_keys_category, sorted_keys_dataset)
+            return self.getXMLDetailData(chart_contents, sorted_keys_category, sorted_keys_dataset)
         
     def flash_init(self):
         if not self.country:
@@ -387,6 +404,16 @@ function FC_Rendered(DOMId){
             values_xml = "".join(["<set value='%02.2f' />" % (value * 100) for value in values])
             datasets.append("<dataset showValues='0' seriesName='%s'>%s\</dataset>" % (self.translate(_(key)), values_xml))
         return self.xml_chart_template % ("".join(categories), "".join(datasets))
+
+    def getXMLDetailData(self, chart_contents, sorted_categories, sorted_dataset):
+        sorted_categories_non_empty = [x for x in sorted_categories if x in chart_contents.keys()]
+        categories = ["<category label='%s' />" % self.translate(x) for x in sorted_categories_non_empty]
+        datasets = []
+        for key in sorted_dataset:
+            values = [chart_contents[x].get(key, 0) for x in sorted_categories_non_empty]
+            values_xml = "".join(["<set value='%02.2f' />" % (value * 100) for value in values])
+            datasets.append("<dataset showValues='0' seriesName='%s'>%s\</dataset>" % (self.translate(_(key)), values_xml))
+        return self.xml_detail_template % ("".join(categories), "".join(datasets))
             
     def getMapParams(self):
         """
