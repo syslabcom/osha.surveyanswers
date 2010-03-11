@@ -14,7 +14,8 @@
             <div class="chart" id="chartdiv">
                 <img src="indicator.gif" alt="" />
             </div>
-            <ul class="discriminators">
+            <div class="right_box" id="discriminators_box">
+                <ul class="discriminators">
                     <li>
                         <a href="some_url" tal:attributes="class python: not request.form.has_key('group_by')
                            and 'selected' or ''; href string: ${request/URL}" i18n:translate="">Ungrouped</a>
@@ -25,9 +26,9 @@
                         href string: ${request/URL}?group_by=${discriminator/key}"
                         tal:content="discriminator/value" i18n:translate="">Some discriminator</a>
                     </li>
-            </ul>
-            <div style="clear:both"> </div>
-            <a href="" class="excel-download" i18n:translate="" tal:attributes="href string: ${context/absolute_url}/download.xls?question=${view/question_id}&country=${view/country}&group_by=${request/form/group_by | nothing}">Download data as excel</a>
+                </ul>
+                <a href="" class="excel-download" i18n:translate="" tal:attributes="href string: ${context/absolute_url}/download.xls?question=${view/question_id}&country=${view/country}&group_by=${request/form/group_by | nothing}">Download data as excel</a>
+            </div>
         </div>
 
         <script type="text/javascript" tal:attributes="src string: ${view/absolute_url}/xml_data?question_id=${view/question_id}&country=${view/country}&group_by=${request/form/group_by | nothing}">

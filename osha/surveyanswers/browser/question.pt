@@ -14,7 +14,7 @@
             <div class="not_drilled_down" id="mapdiv">
                 <img src="indicator.gif" alt="" />
             </div>
-            <div class="right_box">
+            <div class="right_box" id="discriminators_box">
                 <ul class="discriminators">
                     <li>
                         <a href="some_url" tal:attributes="class python: not request.form.has_key('group_by')
