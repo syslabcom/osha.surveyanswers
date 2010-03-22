@@ -10,6 +10,16 @@ Changelog
   number (gerken)
 - totally changed excel for question views (gerken)
 - Resolved issue with flash overlapping menu (gerken)
+- make sure the highlighting for the "discriminators" box works (thomasw)
+- manually fixed tons of translations that have an awkward format in the database,
+  such as trailing space or substituted M$ character (thomasw)
+- Disabled the translation of country names, since they appear in vertical labels,
+  and FusionCharts con only display ASCII for that (thomasw)
+- Improved lay-out of map and floating discriminators box, less space used (thomasw)
+- Added highlighting in menue based on currently selected question
+- The labels on the single-country view are no longer vertical, since they might
+  contain non-ASCII (thomasw)
+- sort the countries in the chart by their abbreviation #932 (thomasw)
 
 
 1.9.0 (2009-10-21)
