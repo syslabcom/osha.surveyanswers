@@ -31,6 +31,12 @@ msgstr ""
 msgid "Ungrouped"
 msgstr ""
 
+msgid "Company Size"
+msgstr ""
+
+msgid "Sector Type"
+msgstr ""
+
 #: Grouping by Company size
 msgid "1 to 9 employees"
 msgstr ""
@@ -44,7 +50,7 @@ msgstr ""
 msgid "50 to 249 employees"
 msgstr ""
 
-msgid "250 to 599 employees"
+msgid "250 to 499 employees"
 msgstr ""
 
 msgid "500 or more employees"
@@ -72,7 +78,7 @@ msgid "Major concern"
 msgstr ""
 
 #: question 164/031
-msgid "Some concern"
+msgid "Some concern "
 msgstr ""
 
 #: question 164/031
