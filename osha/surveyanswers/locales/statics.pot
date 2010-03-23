@@ -1,0 +1,152 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-03-03 16:24+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: osha.surveyanswers\n"
+
+#: osha.surveyanswers/osha/surveyanswers/browser/country.pt:27
+#: osha.surveyanswers/osha/surveyanswers/browser/question.pt:33
+msgid "Download data as excel"
+msgstr ""
+
+#: osha.surveyanswers/osha/surveyanswers/browser/country.pt:10
+#: osha.surveyanswers/osha/surveyanswers/browser/question.pt:11
+msgid "Go Back"
+msgstr ""
+
+#: osha.surveyanswers/osha/surveyanswers/browser/question.pt:24
+msgid "Ungrouped"
+msgstr ""
+
+#: Grouping by Company size
+msgid "1 to 9 employees"
+msgstr ""
+
+msgid "10 to 19 employees"
+msgstr ""
+
+msgid "20 to 49 employees"
+msgstr ""
+
+msgid "50 to 249 employees"
+msgstr ""
+
+msgid "250 to 599 employees"
+msgstr ""
+
+msgid "500 or more employees"
+msgstr ""
+
+msgid "No answer"
+msgstr ""
+
+#: question 122/031
+msgid "No answer (SPONTANEOUS)"
+msgstr ""
+
+#: Gropung by sector type
+msgid "Production sector"
+msgstr ""
+
+msgid "Private Services"
+msgstr ""
+
+msgid "Public Services"
+msgstr ""
+
+#: question 164/031
+msgid "Major concern"
+msgstr ""
+
+#: question 164/031
+msgid "Some concern"
+msgstr ""
+
+#: question 164/031
+msgid "No concern"
+msgstr ""
+
+#: question 164/031
+msgid "DK/ NA"
+msgstr ""
+
+#: question 147/031
+msgid "Major"
+msgstr ""
+
+#: question 147/031
+msgid "Minor"
+msgstr ""
+
+#: question 121/031
+msgid "Regularly"
+msgstr ""
+
+#: question 121/031
+msgid "Occasionally"
+msgstr ""
+
+#: question 121/031
+msgid "Practically never"
+msgstr ""
+
+#: question 121/031
+msgid "DK/ NA (SPONTANEOUS)"
+msgstr ""
+
+#: question 122/031
+msgid "Very high"
+msgstr ""
+
+#: question 122/031
+msgid "Quite high"
+msgstr ""
+
+#: question 122/031
+msgid "Quite low"
+msgstr ""
+
+#: question 179/031
+msgid "Work-related stress is not an issue in our establishment (SPONTANEOUS)"
+msgstr ""
+
+#: question 181/031
+msgid "Work-related violence is not an issue in our establishment (SPONTANEOUS)"
+msgstr ""
+
+#: question 180/031
+msgid "These problems are not an issue in our establishment (SPONTANEOUS)"
+msgstr ""
+
+#: question 188/031
+msgid "Long or irregular working hours are not an issue in our establishment (SPONTANEOUS)"
+msgstr ""
+
+#: question 200/031
+msgid "More difficult"
+msgstr ""
+
+#: question 200/031
+msgid "Less difficult"
+msgstr ""
+
+#: question 200/031
+msgid "No difference"
+msgstr ""
+
+#: question 218
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr ""
