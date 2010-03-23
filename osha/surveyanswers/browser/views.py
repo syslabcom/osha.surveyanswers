@@ -411,7 +411,7 @@ function FC_Rendered(DOMId){
 
     def getXMLDetailData(self, chart_contents, sorted_categories, sorted_dataset):
         sorted_categories_non_empty = [x for x in sorted_categories if x in chart_contents.keys()]
-        categories = ["<category label='%s' />" % self.translate(x) for x in sorted_categories_non_empty]
+        categories = ["<category label='%s' />" % self.translate(_(x)) for x in sorted_categories_non_empty]
         datasets = []
         for key in sorted_dataset:
             values = [chart_contents[x].get(key, 0) for x in sorted_categories_non_empty]
