@@ -35,7 +35,7 @@ msgid "How often does this committee or working group meet? Is this usually seve
 msgstr "Miten usein tämä komitea tai työryhmä kokoontuu? Kokoontuuko se yleensä useita kertoja kuukaudessa, kerran kuukaudessa, useita kertoja vuodessa, kerran vuodessa vai harvemmin?"
 msgid "(ONLY IF ER300_02=1) A redesign of the work area"
 msgstr "(VAIN, JOS ER300_02 = 1) Työtilan uudelleenjärjestely"
-msgid "Some concern"
+msgid "Some concern "
 msgstr "Jonkinasteinen huolenaihe"
 msgid "Minor"
 msgstr "Pieni"
