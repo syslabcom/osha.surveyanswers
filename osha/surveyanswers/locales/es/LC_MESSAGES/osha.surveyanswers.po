@@ -37,7 +37,7 @@ msgid "How often does this committee or working group meet? Is this usually seve
 msgstr "¿Con qué frecuencia se reúne este comité o grupo de trabajo? ¿Suele ser varias veces al mes, una vez al mes, varias veces al año, una vez al año o menos de una vez al año?"
 msgid "(ONLY IF ER300_02=1) A redesign of the work area"
 msgstr "(SÓLO SI ER300_02=1)  Rediseño de la zona de trabajo"
-msgid "Some concern"
+msgid "Some concern "
 msgstr "Cierta preocupación"
 msgid "Minor"
 msgstr "Menor"
