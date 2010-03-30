@@ -1,0 +1,67 @@
+
+msgid ""
+msgstr ""
+
+"Project-Id-Version: osha.surveyanswers\n"
+"POT-Creation-Date: 2009-09-04 23:20+0000\n"
+"PO-Revision-Date: 2009-09-04 23:22+0100\n"
+"Last-Translator: Patrick Gerken <gerken@syslab.com>\n"
+"Language-Team: Syslab.com GmbH <info@syslab.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: tr\n"
+"Language-Name: Turkish\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: osha.surveyanswers\n"
+
+#: osha.surveyanswers/osha/surveyanswers/browser/country.pt:27
+#: osha.surveyanswers/osha/surveyanswers/browser/question.pt:33
+msgid "Download data as excel"
+msgstr ""
+
+#: osha.surveyanswers/osha/surveyanswers/browser/country.pt:10
+#: osha.surveyanswers/osha/surveyanswers/browser/question.pt:11
+msgid "Go Back"
+msgstr ""
+
+#: osha.surveyanswers/osha/surveyanswers/browser/question.pt:24
+msgid "Ungrouped"
+msgstr ""
+
+msgid "Company Size"
+msgstr ""
+
+msgid "Sector Type"
+msgstr ""
+
+#: Grouping by sector type
+msgid "Production sector"
+msgstr ""
+
+msgid "Private Services"
+msgstr ""
+
+msgid "Public Services"
+msgstr ""
+
+#: question 218
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr ""
+
+#: Question-group labels
+msgid "General health and safety management in the establishment"
+msgstr ""
+
+msgid "Health and safety risks in the establishment"
+msgstr ""
+
+msgid "Management of psychosocial risks in the establishment"
+msgstr ""
+
+msgid "Barriers for psychosocial risk management and existing support"
+msgstr ""
+
+msgid "Formal employee representation in OSH issues"
+msgstr ""
