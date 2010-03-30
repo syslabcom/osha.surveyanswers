@@ -198,3 +198,5 @@ msgstr ""
 msgid "Have you used health and safety information from any of the following bodies or institutions?  In-house health and safety services"
 msgstr ""
 
+msgid "And is there a {shopfloor trade union representation}* in your establishment?"
+mgsid ""
