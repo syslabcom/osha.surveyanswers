@@ -199,4 +199,4 @@ msgid "Have you used health and safety information from any of the following bod
 msgstr ""
 
 msgid "And is there a {shopfloor trade union representation}* in your establishment?"
-mgsid ""
+msgstr ""
