@@ -206,3 +206,6 @@ msgstr ""
 
 msgid "Do you have a {works council}* in this establishment?"
 msgstr ""
+
+msgid "Does your establishment have an internal {health and safety representative}*?"
+msgstr 
