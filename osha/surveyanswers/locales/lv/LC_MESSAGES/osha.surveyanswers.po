@@ -35,7 +35,7 @@ msgid "How often does this committee or working group meet? Is this usually seve
 msgstr "Cik bieži notiek šīs komitejas vai darba grupas tikšanās? Vai tas parasti ir vairākas reizes mēnesī, reizi mēnesī, vairākas reizes gadā, reizi gadā vai retāk nekā reizi gadā?"
 msgid "(ONLY IF ER300_02=1) A redesign of the work area"
 msgstr "(ONLY IF ER300_02=1) Darba vietas pārplānošana"
-msgid "Some concern"
+msgid "Some concern "
 msgstr "Zināma uzmanība"
 msgid "Minor"
 msgstr "Maznozīmīgs"
