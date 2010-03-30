@@ -134,7 +134,7 @@ msgid "Work-related violence is not an issue in our establishment (SPONTANEOUS)"
 msgstr ""
 
 #: question 180/031
-msgid "These problems are not an issue in our establishment (SPONTANEOUS)"
+msgid "These problems are not an issue in our establishment  (SPONTANEOUS)"
 msgstr ""
 
 #: question 188/031
