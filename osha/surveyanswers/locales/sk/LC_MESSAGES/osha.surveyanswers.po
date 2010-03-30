@@ -35,7 +35,7 @@ msgid "How often does this committee or working group meet? Is this usually seve
 msgstr "Ako často sa tento výbor alebo skupina schádza? Je to obvykle niekoľkokrát do mesiaca, jedenkrát do mesiaca, niekoľkokrát za rok, raz za rok alebo menej často ako raz za rok?"
 msgid "(ONLY IF ER300_02=1) A redesign of the work area"
 msgstr "(LEN AK ER300_02=1) Nové usporiadanie pracovných priestorov"
-msgid "Some concern"
+msgid "Some concern "
 msgstr "určité obavy"
 msgid "Minor"
 msgstr "Menší"
