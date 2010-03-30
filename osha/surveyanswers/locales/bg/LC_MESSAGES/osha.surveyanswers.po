@@ -35,7 +35,7 @@ msgid "How often does this committee or working group meet? Is this usually seve
 msgstr "Колко често се събира този комитет или работна група? Дали това обикновено се случва няколко пъти месечно, веднъж месечно, няколко пъти годишно, веднъж годишно или по-рядко?"
 msgid "(ONLY IF ER300_02=1) A redesign of the work area"
 msgstr "(САМО АКО ER300_02=1) Преустройство на работното помещение"
-msgid "Some concern"
+msgid "Some concern "
 msgstr "Обръща се известно внимание"
 msgid "Minor"
 msgstr "Незначителна"
