@@ -37,7 +37,7 @@ msgid "How often does this committee or working group meet? Is this usually seve
 msgstr "Hoe vaak komt deze commissie of deze werkgroep bijeen? Is dat meestal verschillende keren per maand, één keer per maand, verschillende keren per jaar of één keer per jaar of minder dan één keer per jaar?"
 msgid "(ONLY IF ER300_02=1) A redesign of the work area"
 msgstr "(ALLEEN ALS ER300_02=1) Herinrichting van de werkplek"
-msgid "Some concern"
+msgid "Some concern "
 msgstr "Middel-groot"
 msgid "Minor"
 msgstr "Minder groot"
