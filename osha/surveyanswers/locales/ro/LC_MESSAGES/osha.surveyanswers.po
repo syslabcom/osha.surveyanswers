@@ -35,7 +35,7 @@ msgid "How often does this committee or working group meet? Is this usually seve
 msgstr "Cât de des se întruneşte acest comitet sau grup de lucru? De obicei de mai multe ori pe lună, o dată pe lună, de mai multe ori pe an, o dată pe an sau mai rar decât o dată pe an?"
 msgid "(ONLY IF ER300_02=1) A redesign of the work area"
 msgstr "(DOAR DACĂ ER300_02=1) Reamenajarea locului de muncă"
-msgid "Some concern"
+msgid "Some concern "
 msgstr "Oarecum o preocupare"
 msgid "Minor"
 msgstr "Puţin importantă"
