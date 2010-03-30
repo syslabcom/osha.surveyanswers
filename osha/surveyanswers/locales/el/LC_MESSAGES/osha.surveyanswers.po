@@ -35,7 +35,7 @@ msgid "How often does this committee or working group meet? Is this usually seve
 msgstr "Πόσο συχνά συνεδριάζει αυτή η επιτροπή ή ομάδα εργασίας; Συνήθως αρκετές φορές το μήνα, μία φορά το μήνα, αρκετές φορές το χρόνο, μία φορά το χρόνο ή λιγότερο από μία φορά το χρόνο;"
 msgid "(ONLY IF ER300_02=1) A redesign of the work area"
 msgstr "(ΜΟΝΟ ΑΝ ER300_02=1) Ανασχεδιασμός του χώρου εργασίας"
-msgid "Some concern"
+msgid "Some concern "
 msgstr "Σε κάποιο βαθμό"
 msgid "Minor"
 msgstr "Δευτερεύοντα"
