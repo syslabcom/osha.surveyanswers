@@ -1,5 +1,9 @@
 #!/opt/python/python-2.4/bin/python
 
+# Compare the statics.pot file to a po file to get the missing strings.
+# Use these to build a missing_XX.po, where XX is the language
+# Then process to run langcheck to make sure you got them all.
+
 import os
 import sys
 from popen2 import popen3
