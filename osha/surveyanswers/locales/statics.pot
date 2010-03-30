@@ -156,3 +156,19 @@ msgstr ""
 #: question 218
 msgid "Is there a member of the {health and safety representative}* in this establishment?"
 msgstr ""
+
+# Question-group labels
+msgid "General health and safety management in the establishment"
+msgstr ""
+
+msgid "Health and safety risks in the establishment"
+msgstr ""
+
+msgid "Management of psychosocial risks in the establishment"
+msgstr ""
+
+msgid "Barriers for psychosocial risk management and existing support"
+msgstr ""
+
+msgid "Formal employee representation in OSH issues"
+msgstr ""
