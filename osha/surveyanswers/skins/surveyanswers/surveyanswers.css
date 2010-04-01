@@ -49,6 +49,10 @@ body.section-sub-esener div.content-column {
     margin-top: 2em;
 }
 
+body.section-sub-esener h1.documentFirstHeading {
+    background: url("esener_logo_mini.jpg") no-repeat scroll right center #C5CBD8;
+}
+
 div.surveyanswers ul{
     margin: 0;
     padding: 0 0.5em;
