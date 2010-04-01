@@ -4,7 +4,7 @@
                 dummy python:languages.sort(lambda x,y: cmp(x['native'], y['native']));
                 showFlags view/showFlags;
                 preflang  python:here.portal_languages.getPreferredLanguage()">
-    <form action="">ESENER selector
+    <form action="">
         <ul id="portal-languageselector" accesskey="8"
             tal:condition="python:available and len(languages)>=2">
     
