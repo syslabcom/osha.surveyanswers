@@ -7,6 +7,12 @@
         <script language="JavaScript" src="FusionCharts.js">
         </script>
 
+        <h1 class="documentFirstHeading">
+            <metal:field use-macro="python:here.widget('title', mode='view')">
+            Title
+            </metal:field>
+        </h1>
+
     <div class="surveyContent">
         <a href="back" i18n:translate="" tal:attributes="href context/absolute_url">Go Back</a>
         <h1 tal:content="view/question_text"></h1>
