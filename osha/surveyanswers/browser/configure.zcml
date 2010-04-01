@@ -53,7 +53,7 @@
     <browser:viewlet
         name="osha.languageselector"
         manager="osha.theme.browser.interfaces.IOSHAHeaderDropdowns"
-        class=".viewlets.OSHALanguageSelector"
+        class=".viewlets.ESENERLanguageSelector"
         layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
         permission="zope2.View"
         for="osha.surveyanswers.interfaces.ISurvey"
