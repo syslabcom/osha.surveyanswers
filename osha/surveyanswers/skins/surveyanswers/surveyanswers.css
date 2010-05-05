@@ -76,6 +76,11 @@ div.surveyanswers_detail{
     padding-top: 1em;
     }
 
+div#chartdiv {
+    overflow-x: auto;
+    height: 320px;
+}
+
 div.surveyContent ul.discriminators{
     display: block;
     border: 1px solid #AAB1C5;
