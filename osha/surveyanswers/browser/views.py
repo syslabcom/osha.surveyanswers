@@ -242,6 +242,7 @@ function FC_Rendered(DOMId){
     <map borderColor='%(border_color)s' 
          fillColor='%(fill_color)s' 
          connectorAlpha='0'
+         connectorColor='0'
          animation='0'
          showCanvasBorder='0'
          showLegend='1'
@@ -252,9 +253,9 @@ function FC_Rendered(DOMId){
          labelSepChar='%(label_sep_char)s' 
          baseFontSize='%(base_font_size)s'>
             <colorRange>
-        <color minValue='0' maxValue='%(rng1)i' displayValue='%(rng1_msg)s' color='F2F4F7' />
-        <color minValue='%(rng1)i' maxValue='%(rng2)i' displayValue='%(rng2_msg)s' color='E6E8ED' />
-        <color minValue='%(rng2)i' maxValue='100' displayValue='%(rng3_msg)s' color='AAB1C5' />
+        <color minValue='0' maxValue='%(rng1)i' displayValue='%(rng1_msg)s' color='CFCFCF' />
+        <color minValue='%(rng1)i' maxValue='%(rng2)i' displayValue='%(rng2_msg)s' color='A8B1C2' />
+        <color minValue='%(rng2)i' maxValue='100' displayValue='%(rng3_msg)s' color='7681A2' />
    </colorRange>
       <data>%(contents)s</data>
     </map>
