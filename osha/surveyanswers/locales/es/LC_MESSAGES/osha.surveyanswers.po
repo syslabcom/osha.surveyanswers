@@ -1064,7 +1064,7 @@ msgstr "En los tres últimos años su establecimiento ha tenido que recurrir a u
 msgid "b) Good morning / afternoon, my name is ... from <INSTITUTE> in <LOCATION>. We are conducting a survey on behalf of the European Agency for Safety and Health at Work, which is the official European body responsible for information on occupational safety and health. The survey aims to assist workplaces across Europe to deal more effectively with health and safety and to promote the health and well-being of employees. All data will be treated with absolute confidentiality and the results will be totally anonymous. For this interview I would like to talk to the <txt_ER001b_ER_resp_08> in your establishment."
 msgstr "b) Buenos días/tarde, me llamo … de TNS DEMOSCOPIA en España, Estamos realizando una encuesta en nombre de la Agencia Europea para la Seguridad y la Salud en el Trabajo, organismo oficial europeo encargado de informar sobre seguridad y salud. La encuesta pretende ayudar a los centros de trabajo europeos a tratar con más eficacia la seguridad y salud, así como promover la salud y el bienestar de los empleados. Todos los datos serán tratados con la más absoluta confidencialidad y los resultados serán totalmente anónimos. Para está entrevista, me gustaría hablar con el delegado de prevención del establecimiento."
 msgid "No"
-msgstr "De ninguna importancia"
+msgstr "No"
 msgid "Large impact"
 msgstr "Gran impacto"
 msgid "Are there any particular reasons why these checks are not regularly carried out? Please tell me which of the following statements ? if any ? apply to your establishment? It is not necessary, because we do not have any major problems"
