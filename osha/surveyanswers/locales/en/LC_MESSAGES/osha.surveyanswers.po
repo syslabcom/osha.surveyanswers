@@ -456,8 +456,7 @@ msgstr "Please tell me for each of the measures you named whether it has been ve
 msgid "Please tell me for each of the measures you named whether it has been very effective, quite effective, quite ineffective or very ineffective in helping to manage psychosocial risks. What about...? [Read out]"
 msgstr "Please tell me for each of the measures you named whether it has been very effective, quite effective, quite ineffective or very ineffective in helping to manage psychosocial risks. What about...? [Read out]"
 msgid "Have you used health and safety information from any of the following bodies or institutions?  The {labour inspectorate}*"
-msgstr "Has your establishment used health and safety information from any of
-the following bodies or institutions? The Labour Inspectorate"
+msgstr "Has your establishment used health and safety information from any of the following bodies or institutions? The Labour Inspectorate"
 msgid "Have you used health and safety information from any of the following bodies or institutions?  Trade unions"
 msgstr "Has your establishment used health and safety information from any of the following bodies or institutions? Trade unions"
 msgid "In the last 3 years, has your establishment used any of the following measures to deal with psychosocial risks?  Provision of training"
