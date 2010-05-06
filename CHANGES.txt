@@ -1,6 +1,17 @@
 Changelog
 =========
 
+1.9.2 (2010-05-06)
+------------------
+
+- Created a missing_xx.po for every langusge (thomasw)
+- Display ESENER logo in title (thomasw) 
+- Wrote custom language selector that preserves the selected question (thomasw)
+- insert horizontal scroll bar below chart if the browser window gets too narrow (thomasw)
+- new colour scheme for the map (thomasw)
+- Corrected botched translations, e.g. translating "No" with "Not Difficult At All" (thomasw)
+
+
 1.9.1 (2010-03-23)
 ------------------
 
