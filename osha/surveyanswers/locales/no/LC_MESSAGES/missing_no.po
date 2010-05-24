@@ -74,17 +74,17 @@ msgstr ""
 
 #: Question-group labels
 msgid "General health and safety management in the establishment"
-msgstr ""
+msgstr "GENERELL ARBEIDMILJØLEDELSE I FORETAKET"
 
 msgid "Health and safety risks in the establishment"
-msgstr ""
+msgstr "ARBEIDSMILJØRISIKO I VIRKSOMHETEN"
 
 msgid "Management of psychosocial risks in the establishment"
-msgstr ""
+msgstr "HÅNDTERING AV PSYKOSOSIALE RISIKOER I VIRKSOMHETEN"
 
 msgid "Barriers for psychosocial risk management and existing support"
-msgstr ""
+msgstr "HINDRINGER FOR HÅNDTERING AV PSYKOSOSIALE RISIKOER OG GJELDENDE STØTTE"
 
 msgid "Formal employee representation in OSH issues"
-msgstr ""
+msgstr "FORMELL REPRESENTASJON AV DE ANSATTE I ARBEIDSMILJØSAKER"
 

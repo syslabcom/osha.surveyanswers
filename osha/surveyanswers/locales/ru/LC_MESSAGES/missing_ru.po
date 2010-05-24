@@ -52,16 +52,16 @@ msgstr ""
 
 #: Question-group labels
 msgid "General health and safety management in the establishment"
-msgstr ""
+msgstr "ОБЩЕЕ УПРАВЛЕНИЕ ПО ОБЕСПЕЧЕНИЮ ОХРАНЫ ЗДОРОВЬЯ И ПОВЫШЕНИЯ БЕЗОПАСНОСТИ НА ЕДИНИЦЕ ПРЕДПРИЯТИЯ"
 
 msgid "Health and safety risks in the establishment"
-msgstr ""
+msgstr "РИСКИ ЗДОРОВЬЯ И БЕЗОПАСНОСТИ НА ЕДИНИЦЕ ПРЕДПРИЯТИЯ"
 
 msgid "Management of psychosocial risks in the establishment"
-msgstr ""
+msgstr "УПРАВЛЕНИЕ ПСИХОСОЦИАЛЬНЫМИ РИСКАМИ НА ЕДИНИЦЕ ПРЕДПРИЯТИЯ"
 
 msgid "Barriers for psychosocial risk management and existing support"
-msgstr ""
+msgstr "БАРЬЕРЫ В УПРАВЛЕНИИ ПСИХОСОЦИАЛЬЫМИ РИСКАМИ И СУЩЕСТВУЮЩАЯ ПОДДЕРЖКА"
 
 msgid "Formal employee representation in OSH issues"
-msgstr ""
+msgstr "ОФИЦИАЛЬНОЕ ПРЕДСТАВИТЕЛЬСТВО РАБОТНИКОВ ПО ВОПРОСАМ ОЗ и ТБ"

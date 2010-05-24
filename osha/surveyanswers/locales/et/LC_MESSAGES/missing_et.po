@@ -52,16 +52,16 @@ msgstr ""
 
 #: Question-group labels
 msgid "General health and safety management in the establishment"
-msgstr ""
+msgstr "TERVISHOIU JA OHUTUSE ÜLDINE KORRALDUS ETTEVÕTTES"
 
 msgid "Health and safety risks in the establishment"
-msgstr ""
+msgstr "TERVISHOIU- JA OHUTUSALASED RISKID ETTEVÕTTES"
 
 msgid "Management of psychosocial risks in the establishment"
-msgstr ""
+msgstr "PSÜHHOSOTSIAALSETE RISKIDE JUHTIMINE ETTEVÕTTES"
 
 msgid "Barriers for psychosocial risk management and existing support"
-msgstr ""
+msgstr "TAKISTUSED PSÜHHOSOTISAALSE RISKIJUHTIMISE JA OLEMASOLEVA TOE RAKENDAMISEL"
 
 msgid "Formal employee representation in OSH issues"
-msgstr ""
+msgstr "AMETLIK TÖÖTAJATE ESINDUS TÖÖOHUTUSE JA -TERVISHOIU KÜSIMUSTES"

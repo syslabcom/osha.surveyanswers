@@ -1271,3 +1271,19 @@ msgid "Dangerous substances (Int.: explain if necessary: e.g. dusts, chemical, b
 msgstr "Опасные вещества (Инт.: При необходимости объясните: например, пыль, химикаты, биологически опасные или радиоактивные  вещества)"
 msgid "Very willing"
 msgstr "Очень охотно"
+
+#: Question-group labels
+msgid "General health and safety management in the establishment"
+msgstr "ОБЩЕЕ УПРАВЛЕНИЕ ПО ОБЕСПЕЧЕНИЮ ОХРАНЫ ЗДОРОВЬЯ И ПОВЫШЕНИЯ БЕЗОПАСНОСТИ НА ЕДИНИЦЕ ПРЕДПРИЯТИЯ"
+
+msgid "Health and safety risks in the establishment"
+msgstr "РИСКИ ЗДОРОВЬЯ И БЕЗОПАСНОСТИ НА ЕДИНИЦЕ ПРЕДПРИЯТИЯ"
+
+msgid "Management of psychosocial risks in the establishment"
+msgstr "УПРАВЛЕНИЕ ПСИХОСОЦИАЛЬНЫМИ РИСКАМИ НА ЕДИНИЦЕ ПРЕДПРИЯТИЯ"
+
+msgid "Barriers for psychosocial risk management and existing support"
+msgstr "БАРЬЕРЫ В УПРАВЛЕНИИ ПСИХОСОЦИАЛЬЫМИ РИСКАМИ И СУЩЕСТВУЮЩАЯ ПОДДЕРЖКА"
+
+msgid "Formal employee representation in OSH issues"
+msgstr "ОФИЦИАЛЬНОЕ ПРЕДСТАВИТЕЛЬСТВО РАБОТНИКОВ ПО ВОПРОСАМ ОЗ и ТБ"

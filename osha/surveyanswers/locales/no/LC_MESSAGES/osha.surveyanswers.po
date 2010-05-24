@@ -1245,3 +1245,19 @@ msgid "Dangerous substances (Int.: explain if necessary: e.g. dusts, chemical, b
 msgstr "Farlige substanser (Intervjuer:  om nødvendig, forklare: f.eks. kjemisk, biologisk eller radioaktivt støv)"
 msgid "Very willing"
 msgstr "Veldig villige"
+
+#: Question-group labels
+msgid "General health and safety management in the establishment"
+msgstr "GENERELL ARBEIDMILJØLEDELSE I FORETAKET"
+
+msgid "Health and safety risks in the establishment"
+msgstr "ARBEIDSMILJØRISIKO I VIRKSOMHETEN"
+
+msgid "Management of psychosocial risks in the establishment"
+msgstr "HÅNDTERING AV PSYKOSOSIALE RISIKOER I VIRKSOMHETEN"
+
+msgid "Barriers for psychosocial risk management and existing support"
+msgstr "HINDRINGER FOR HÅNDTERING AV PSYKOSOSIALE RISIKOER OG GJELDENDE STØTTE"
+
+msgid "Formal employee representation in OSH issues"
+msgstr "FORMELL REPRESENTASJON AV DE ANSATTE I ARBEIDSMILJØSAKER"
