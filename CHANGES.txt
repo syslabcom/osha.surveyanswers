@@ -4,8 +4,7 @@ Changelog
 1.9.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Some more translations (Question-group labels) in 3 langs (thomasw) 
 
 1.9.2 (2010-05-06)
 ------------------
