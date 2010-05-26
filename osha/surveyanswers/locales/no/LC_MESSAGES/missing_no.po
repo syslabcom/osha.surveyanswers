@@ -72,19 +72,3 @@ msgstr ""
 msgid "Is there a member of the {health and safety representative}* in this establishment?"
 msgstr ""
 
-#: Question-group labels
-msgid "General health and safety management in the establishment"
-msgstr "GENERELL ARBEIDMILJØLEDELSE I FORETAKET"
-
-msgid "Health and safety risks in the establishment"
-msgstr "ARBEIDSMILJØRISIKO I VIRKSOMHETEN"
-
-msgid "Management of psychosocial risks in the establishment"
-msgstr "HÅNDTERING AV PSYKOSOSIALE RISIKOER I VIRKSOMHETEN"
-
-msgid "Barriers for psychosocial risk management and existing support"
-msgstr "HINDRINGER FOR HÅNDTERING AV PSYKOSOSIALE RISIKOER OG GJELDENDE STØTTE"
-
-msgid "Formal employee representation in OSH issues"
-msgstr "FORMELL REPRESENTASJON AV DE ANSATTE I ARBEIDSMILJØSAKER"
-

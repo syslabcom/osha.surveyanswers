@@ -1439,3 +1439,19 @@ msgid "Dangerous substances (Int.: explain if necessary: e.g. dusts, chemical, b
 msgstr "Tehlikeli maddeler (Görüşmeci: gerekirse açıklayınız: örn. tozlar, kimyasal, biyolojik veya radyoaktif maddeler)"
 msgid "Very willing"
 msgstr "Çok istekli"
+
+#: Question-group labels
+msgid "General health and safety management in the establishment"
+msgstr "İŞYERİNDEKİ GENEL SAĞLIK VE GÜVENLİK YÖNETİMİ"
+
+msgid "Health and safety risks in the establishment"
+msgstr "İŞYERİNDEKİ SAĞLIK VE GÜVENLİK RİSKLERİ"
+
+msgid "Management of psychosocial risks in the establishment"
+msgstr "İŞYERİNDE PSİKOSOSYAL RİSKLERİN YÖNETİMİ"
+
+msgid "Barriers for psychosocial risk management and existing support"
+msgstr "PSİKOSOSYAL RİSK YÖNETİMİNİN ÖNÜNDEKİ ENGELLER VE MEVCUT DESTEK"
+
+msgid "Formal employee representation in OSH issues"
+msgstr "MSG (Mesleki Sağlık ve Güvenlik) MESELELERİNDE RESMİ ÇALIŞAN TEMSİLCİLİĞİ"

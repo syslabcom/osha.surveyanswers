@@ -49,19 +49,3 @@ msgstr ""
 #: question 218
 msgid "Is there a member of the {health and safety representative}* in this establishment?"
 msgstr ""
-
-#: Question-group labels
-msgid "General health and safety management in the establishment"
-msgstr "TERVISHOIU JA OHUTUSE ÜLDINE KORRALDUS ETTEVÕTTES"
-
-msgid "Health and safety risks in the establishment"
-msgstr "TERVISHOIU- JA OHUTUSALASED RISKID ETTEVÕTTES"
-
-msgid "Management of psychosocial risks in the establishment"
-msgstr "PSÜHHOSOTSIAALSETE RISKIDE JUHTIMINE ETTEVÕTTES"
-
-msgid "Barriers for psychosocial risk management and existing support"
-msgstr "TAKISTUSED PSÜHHOSOTISAALSE RISKIJUHTIMISE JA OLEMASOLEVA TOE RAKENDAMISEL"
-
-msgid "Formal employee representation in OSH issues"
-msgstr "AMETLIK TÖÖTAJATE ESINDUS TÖÖOHUTUSE JA -TERVISHOIU KÜSIMUSTES"
