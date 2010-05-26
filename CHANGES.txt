@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.9.3 (unreleased)
+1.9.3 (2010-05-26)
 ------------------
 
 - Some more translations (Question-group labels) in 3 langs (thomasw) 
