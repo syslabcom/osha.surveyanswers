@@ -1703,3 +1703,29 @@ msgid "The role of ER in the OSH management"
 msgstr "PAPILDOMA INFORMACIJA APIE ĮMONĘ"
 msgid "Drivers and barriers for psychosocial risk management"
 msgstr "PSICHOLOGINIŲ IR SOCIALINIŲ RIZIKOS VEIKSNIŲ VALDYMO KLIŪTYS IR VARIKLIAI"
+msgid "Download data as excel"
+msgstr "Atsisiųsti duomenis „excel“ formatu"
+
+msgid "Go Back"
+msgstr "Atgal"
+
+msgid "Ungrouped"
+msgstr "Išgrupuoti"
+
+msgid "Company Size"
+msgstr "Įmonės dydis"
+
+msgid "Sector Type"
+msgstr "Sektoriaus rūšis"
+
+msgid "Production sector"
+msgstr "Gamybos sektorius"
+
+msgid "Private Services"
+msgstr "Privačiosios paslaugos"
+
+msgid "Public Services"
+msgstr "Viešosios paslaugos"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Ar šioje įmonėje yra {atstovas, atsakingas už darbuotojų saugą ir sveikatą}*?"

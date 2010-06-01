@@ -1165,3 +1165,50 @@ msgid "The role of ER in the OSH management"
 msgstr "ROLE DU ER DANS LA GESTION DE LA SST"
 msgid "Drivers and barriers for psychosocial risk management"
 msgstr "INCITANTS ET OBSTACLES A LA GESTION DES RISQUES PSYCHOSOCIAUX"
+msgid "Download data as excel"
+msgstr "Télécharger les données dans un fichier Excel."
+
+msgid "Go Back"
+msgstr "Revenir en arrière"
+
+msgid "Ungrouped"
+msgstr "Non groupé"
+
+msgid "Company Size"
+msgstr "Taille de l’entreprise"
+
+msgid "Sector Type"
+msgstr "SType de secteur"
+
+msgid "1 to 9 employees"
+msgstr "1 à 9 collaborateurs"
+
+msgid "10 to 19 employees"
+msgstr "10 à 19 collaborateurs"
+
+msgid "20 to 49 employees"
+msgstr "20 à 49 collaborateurs"
+
+msgid "50 to 249 employees"
+msgstr "50 à 249 collaborateurs"
+
+msgid "250 to 499 employees"
+msgstr "250 à 499 collaborateurs"
+
+msgid "500 or more employees"
+msgstr "500 collaborateurs ou plus"
+
+msgid "No answer"
+msgstr "Sans réponse"
+
+msgid "Production sector"
+msgstr "Secteur de la production"
+
+msgid "Private Services"
+msgstr "Services privés"
+
+msgid "Public Services"
+msgstr "Services publics"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Un membre du {représentant de la santé et de la sécurité}* est-il présent dans cet établissement?"

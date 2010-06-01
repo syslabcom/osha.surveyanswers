@@ -1181,3 +1181,53 @@ msgid "The role of ER in the OSH management"
 msgstr "ER:s ROLL I HANTERINGEN AV ARBETSMILJÖFRÅGOR"
 msgid "Drivers and barriers for psychosocial risk management"
 msgstr "MOTIVATION OCH HINDER FÖR HANTERING AV PSYKOSOCIALA RISKER"
+msgid "Download data as excel"
+msgstr "Ladda ned data som excel"
+
+msgid "Go Back"
+msgstr "Gå tillbaka"
+
+msgid "Ungrouped"
+msgstr "Ungrouped"
+
+msgid "Company Size"
+msgstr "Ogrupperat"
+
+msgid "Sector Type"
+msgstr "Sektortyp"
+
+msgid "1 to 9 employees"
+msgstr "1 till 9 anställda"
+
+msgid "10 to 19 employees"
+msgstr "10 till 19 anställda"
+
+msgid "20 to 49 employees"
+msgstr "20 till 49 anställda"
+
+msgid "50 to 249 employees"
+msgstr "50 till 249 anställda"
+
+msgid "250 to 499 employees"
+msgstr "250 till 499 anställda"
+
+msgid "500 or more employees"
+msgstr "500 anställda eller fler"
+
+msgid "No answer"
+msgstr "Inget svar"
+
+msgid "Production sector"
+msgstr "Produktionssektor"
+
+msgid "Private Services"
+msgstr "Privata tjänster"
+
+msgid "Public Services"
+msgstr "Offentliga tjänster"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Finns det någon företrädare för {skyddsombud}* på denna arbetsplats?"
+
+msgid "Do you have a {works council}* in this establishment?"
+msgstr "Finns det ett {företagsråd}* på din arbetsplats?"

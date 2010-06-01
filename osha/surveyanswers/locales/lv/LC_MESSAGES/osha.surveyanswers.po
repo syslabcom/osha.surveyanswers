@@ -1179,3 +1179,50 @@ msgid "The role of ER in the OSH management"
 msgstr "DARBINIEKU PĀRSTĀVJA LOMA DARBA DROŠĪBAS UN VESELĪBAS AIZSARDZĪBAS PĀRVALDĪBAS JAUTĀJUMOS"
 msgid "Drivers and barriers for psychosocial risk management"
 msgstr "STIMULI UN ŠĶĒRŠĻI PSIHOSOCIĀLO RISKU PĀRVALDĪBAI"
+msgid "Download data as excel"
+msgstr "Lejupielādējiet datus EXCEL formātā"
+
+msgid "Go Back"
+msgstr "Atgriezieties"
+
+msgid "Ungrouped"
+msgstr "Negrupēts"
+
+msgid "Company Size"
+msgstr "Uzņēmuma lielums"
+
+msgid "Sector Type"
+msgstr "Nozares veidse"
+
+msgid "1 to 9 employees"
+msgstr "1–9 darbinieki"
+
+msgid "10 to 19 employees"
+msgstr "1–9 darbinieki"
+
+msgid "20 to 49 employees"
+msgstr "1–9 darbinieki"
+
+msgid "50 to 249 employees"
+msgstr "1–9 darbinieki"
+
+msgid "250 to 499 employees"
+msgstr "1–9 darbinieki"
+
+msgid "500 or more employees"
+msgstr "500 vai vairāk darbinieku"
+
+msgid "No answer"
+msgstr "Nav atbildes"
+
+msgid "Production sector"
+msgstr "Ražošanas nozare"
+
+msgid "Private Services"
+msgstr "Privāti pakalpojumi"
+
+msgid "Public Services"
+msgstr "Sabiedriski pakalpojumi"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Vai šajā uzņēmumā ir (pārstāvja darba drošības un veselības aizsardzības jautājumos)* biedrs?"

@@ -1291,3 +1291,29 @@ msgid "The role of ER in the OSH management"
 msgstr "ÚLOHA ER V RIADENÍ BOZP"
 msgid "Drivers and barriers for psychosocial risk management"
 msgstr "STIMULY A PREKÁŽKY RIADENIA PSYCHOSOCIÁLNYCH RIZÍK"
+msgid "Download data as excel"
+msgstr "Prevziať údaje ako súbor programu Excel"
+
+msgid "Go Back"
+msgstr "Späť"
+
+msgid "Ungrouped"
+msgstr "Nezoskupené"
+
+msgid "Company Size"
+msgstr "Veľkosť spoločnosti"
+
+msgid "Sector Type"
+msgstr "Typ sektora"
+
+msgid "Production sector"
+msgstr "Výrobný sektor"
+
+msgid "Private Services"
+msgstr "Súkromné služby"
+
+msgid "Public Services"
+msgstr "Verejné služby"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Pôsobí v tejto organizácii člen {zástupca pre bezpečnosť a ochranu zdravia}*?"

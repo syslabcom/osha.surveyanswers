@@ -18,18 +18,18 @@ for ld in langdirs:
   data = fh.read()
   fh.close()
 
-  new_lines = list()
-  lines = data.split('\n')
-  for li in lines:
-    if li.find(bad) > 0 and li.startswith('msgid'):
-      li = li.replace(bad, good)
-      cnt += 1
-    new_lines.append(li)
-
-  fh = open("%s/%s" %(path, fname), 'w')
-  fh.write('\n'.join(new_lines))
-  fh.close()
-  print "%d replacements done" %cnt
+#  new_lines = list()
+#  lines = data.split('\n')
+#  for li in lines:
+#    if li.find(bad) > 0 and li.startswith('msgid'):
+#      li = li.replace(bad, good)
+#      cnt += 1
+#    new_lines.append(li)
+#
+#  fh = open("%s/%s" %(path, fname), 'w')
+#  fh.write('\n'.join(new_lines))
+#  fh.close()
+#  print "%d replacements done" %cnt
 
   cmd = "msgfmt -C %s/%s" %(path, fname)
   stout, stdin, stderr = popen3(cmd) 

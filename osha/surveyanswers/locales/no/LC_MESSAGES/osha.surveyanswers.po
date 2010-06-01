@@ -1247,17 +1247,80 @@ msgid "Very willing"
 msgstr "Veldig villige"
 
 #: Question-group labels
+#msgid "General health and safety management in the establishment"
+#msgstr "GENERELL ARBEIDMILJØLEDELSE I FORETAKET"
+
+#msgid "Health and safety risks in the establishment"
+#msgstr "ARBEIDSMILJØRISIKO I VIRKSOMHETEN"
+
+#msgid "Management of psychosocial risks in the establishment"
+#msgstr "HÅNDTERING AV PSYKOSOSIALE RISIKOER I VIRKSOMHETEN"
+
+#msgid "Barriers for psychosocial risk management and existing support"
+#msgstr "HINDRINGER FOR HÅNDTERING AV PSYKOSOSIALE RISIKOER OG GJELDENDE STØTTE"
+
+#msgid "Formal employee representation in OSH issues"
+#msgstr "FORMELL REPRESENTASJON AV DE ANSATTE I ARBEIDSMILJØSAKER"
+
+msgid "Download data as excel"
+msgstr "Last ned data som excel"
+
+msgid "Go Back"
+msgstr "Tilbake"
+
+msgid "Ungrouped"
+msgstr "Ungrouped"
+
+msgid "Company Size"
+msgstr "Selskapets størrelse"
+
+msgid "Sector Type"
+msgstr "Type sektor"
+
+msgid "1 to 9 employees"
+msgstr "1-9 ansatte"
+
+msgid "10 to 19 employees"
+msgstr "10-19 ansatte"
+
+msgid "20 to 49 employees"
+msgstr "20-49 ansatte"
+
+msgid "50 to 249 employees"
+msgstr "50-249 ansatte"
+
+msgid "250 to 499 employees"
+msgstr "250-499 ansatte"
+
+msgid "500 or more employees"
+msgstr "500 eller flere ansatte"
+
+msgid "No answer"
+msgstr "Ikke besvart"
+
+msgid "Production sector"
+msgstr "Produksjonsvirksomhet"
+
+msgid "Private Services"
+msgstr "Privat tjenesteyting"
+
+msgid "Public Services"
+msgstr "Offentlig tjenesteyting"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Finnes det en {helse og sikkerhetsrepresentant}* i dette foretaket?"
+
 msgid "General health and safety management in the establishment"
-msgstr "GENERELL ARBEIDMILJØLEDELSE I FORETAKET"
+msgstr "Generell håndtering av helse og sikkerhet i foretaket"
 
 msgid "Health and safety risks in the establishment"
-msgstr "ARBEIDSMILJØRISIKO I VIRKSOMHETEN"
+msgstr "Helse-, og sikkerhetsrisikoer i foretaket"
 
 msgid "Management of psychosocial risks in the establishment"
-msgstr "HÅNDTERING AV PSYKOSOSIALE RISIKOER I VIRKSOMHETEN"
+msgstr "Håndtering av psykososiale risikoer i foretaket"
 
 msgid "Barriers for psychosocial risk management and existing support"
-msgstr "HINDRINGER FOR HÅNDTERING AV PSYKOSOSIALE RISIKOER OG GJELDENDE STØTTE"
+msgstr "Hindringer for håndtering av psykososiale risikoer og eksisterende støttefunksjoner"
 
 msgid "Formal employee representation in OSH issues"
-msgstr "FORMELL REPRESENTASJON AV DE ANSATTE I ARBEIDSMILJØSAKER"
+msgstr "Formell ansatterepresentasjon i saker som gjelder helse og sikkerhet på arbeidsplassen"

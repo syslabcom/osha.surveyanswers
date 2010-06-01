@@ -1417,3 +1417,29 @@ msgid "The role of ER in the OSH management"
 msgstr "AZ ER SZEREPE A MUNKAVÉDELMI IRÁNYÍTÁSBAN"
 msgid "Drivers and barriers for psychosocial risk management"
 msgstr "A PSZICHOLÓGIAI KOCKÁZATOK KEZELÉSÉNEK ÖSZTÖNZŐI ÉS KORLÁTAI"
+msgid "Download data as excel"
+msgstr "Töltse le az adatokat excel formátumban"
+
+msgid "Go Back"
+msgstr "Vissza"
+
+msgid "Ungrouped"
+msgstr "Nem csoportosított"
+
+msgid "Company Size"
+msgstr "Vállalkozás mérete"
+
+msgid "Sector Type"
+msgstr "Ágazat típusa"
+
+msgid "Production sector"
+msgstr "Termelési ágazat"
+
+msgid "Private Services"
+msgstr "Magánszolgáltatások"
+
+msgid "Public Services"
+msgstr "Közszolgáltatások"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Van-e a szervezetben (egészségvédelmi és biztonsági képviseleti) * tag?"

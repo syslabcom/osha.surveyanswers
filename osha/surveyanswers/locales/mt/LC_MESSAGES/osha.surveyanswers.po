@@ -1057,3 +1057,47 @@ msgid "Dangerous substances (Int.: explain if necessary: e.g. dusts, chemical, b
 msgstr "Sustanzi perikolużi (Int.: explain if necessary: e.ż. trabijiet, kimiċi, bioloġiċi jew radjuattivi)"
 msgid "Very willing"
 msgstr "Dispost ħafna"
+msgid "Download data as excel"
+msgstr "Niżżel dejta bħala excel"
+
+msgid "Go Back"
+msgstr "Mur Lura"
+
+msgid "Ungrouped"
+msgstr "Mhux raggruppata"
+
+msgid "Company Size"
+msgstr "Daqs tal-Kumpanija"
+
+msgid "Sector Type"
+msgstr "Tip ta’ Settur"
+
+msgid "Production sector"
+msgstr "Settur ta’ produzzjoni"
+
+msgid "Private Services"
+msgstr "Servizzi Privati"
+
+msgid "Public Services"
+msgstr "Servizzi Pubbliċi"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "F’dan l-istabbiliment, hemm membru tar-{rappreżentant tas-saħħa u s-sigurtà}*?"
+
+msgid "General health and safety management in the establishment"
+msgstr "Ġestjoni tas-saħħa u s-sigurtà ġenerali fl-istabbiliment"
+
+msgid "Health and safety risks in the establishment"
+msgstr "Riskji għas-saħħa u s-sigurtà fl-istabbiliment"
+
+msgid "Management of psychosocial risks in the establishment"
+msgstr "Ġestjoni ta’ riskji psikosoċjali fl-istabbiliment"
+
+msgid "Barriers for psychosocial risk management and existing support"
+msgstr "Ostakoli għall-ġestjoni ta’ riskji psikosoċjali u appoġġ eżistenti"
+
+msgid "Formal employee representation in OSH issues"
+msgstr "Rappreżentazzjoni formali ta’ impjegat fi kwistjonijiet tal-OHS"
+
+msgid "Do you have a {works council}* in this establishment?"
+msgstr "F’dan l-istabbiliment għandkom {kunsill tax-xogħlijiet}*?"

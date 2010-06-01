@@ -1441,17 +1441,59 @@ msgid "Very willing"
 msgstr "Çok istekli"
 
 #: Question-group labels
+#msgid "General health and safety management in the establishment"
+#msgstr "İŞYERİNDEKİ GENEL SAĞLIK VE GÜVENLİK YÖNETİMİ"
+
+#msgid "Health and safety risks in the establishment"
+#msgstr "İŞYERİNDEKİ SAĞLIK VE GÜVENLİK RİSKLERİ"
+
+#msgid "Management of psychosocial risks in the establishment"
+#msgstr "İŞYERİNDE PSİKOSOSYAL RİSKLERİN YÖNETİMİ"
+
+#msgid "Barriers for psychosocial risk management and existing support"
+#msgstr "PSİKOSOSYAL RİSK YÖNETİMİNİN ÖNÜNDEKİ ENGELLER VE MEVCUT DESTEK"
+
+#msgid "Formal employee representation in OSH issues"
+#msgstr "MSG (Mesleki Sağlık ve Güvenlik) MESELELERİNDE RESMİ ÇALIŞAN TEMSİLCİLİĞİ"
+
+msgid "Download data as excel"
+msgstr "Verileri excel olarak indir"
+
+msgid "Go Back"
+msgstr "Geri Git"
+
+msgid "Ungrouped"
+msgstr "Ungrouped"
+
+msgid "Company Size"
+msgstr "Gruplanmamış"
+
+msgid "Sector Type"
+msgstr "Sektör Türü"
+
+msgid "Production sector"
+msgstr "Üretim sektörü"
+
+msgid "Private Services"
+msgstr "Özel Hizmetler"
+
+msgid "Public Services"
+msgstr "Kamu Hizmetleri"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Bu işletmede {sağlık ve güvenlik temsilcisi}* üyesi var mı?"
+
 msgid "General health and safety management in the establishment"
-msgstr "İŞYERİNDEKİ GENEL SAĞLIK VE GÜVENLİK YÖNETİMİ"
+msgstr "İşletmedeki genel sağlık ve güvenlik yönetimi"
 
 msgid "Health and safety risks in the establishment"
-msgstr "İŞYERİNDEKİ SAĞLIK VE GÜVENLİK RİSKLERİ"
+msgstr "İşletmedeki sağlık ve güvenlik riskleri"
 
 msgid "Management of psychosocial risks in the establishment"
-msgstr "İŞYERİNDE PSİKOSOSYAL RİSKLERİN YÖNETİMİ"
+msgstr "İşletmedeki psikososyal risklerin yönetimi"
 
 msgid "Barriers for psychosocial risk management and existing support"
-msgstr "PSİKOSOSYAL RİSK YÖNETİMİNİN ÖNÜNDEKİ ENGELLER VE MEVCUT DESTEK"
+msgstr "Psikososyal risk yönetiminin karşısındaki engeller ve mevcut destek"
 
 msgid "Formal employee representation in OSH issues"
-msgstr "MSG (Mesleki Sağlık ve Güvenlik) MESELELERİNDE RESMİ ÇALIŞAN TEMSİLCİLİĞİ"
+msgstr "İSG konularında çalışanların resmen temsili"

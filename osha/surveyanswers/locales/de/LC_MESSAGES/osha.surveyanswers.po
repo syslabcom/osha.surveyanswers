@@ -1183,3 +1183,53 @@ msgid "The role of ER in the OSH management"
 msgstr "Die Rolle der Arbeitnehmervertretung beim Management von Gesundheitsschutz und Sicherheit am Arbeitsplatz"
 msgid "Drivers and barriers for psychosocial risk management"
 msgstr "Antriebsmotive und Hemmnisse für das Management psychosozialer Risiken"
+msgid "Download data as excel"
+msgstr "Im Excel-Format herunterladen"
+
+msgid "Go Back"
+msgstr "Zurück"
+
+msgid "Ungrouped"
+msgstr "Nicht gruppiert"
+
+msgid "Company Size"
+msgstr "Unternehmensgröße"
+
+msgid "Sector Type"
+msgstr "Wirtschaftszweig"
+
+msgid "1 to 9 employees"
+msgstr "1-9 Mitarbeiter"
+
+msgid "10 to 19 employees"
+msgstr "10-19 Mitarbeiter"
+
+msgid "20 to 49 employees"
+msgstr "20-49 Mitarbeiter"
+
+msgid "50 to 249 employees"
+msgstr "50-249 Mitarbeiter"
+
+msgid "250 to 499 employees"
+msgstr "250-499 Mitarbeiter"
+
+msgid "500 or more employees"
+msgstr "500 oder mehr Mitarbeiter"
+
+msgid "No answer"
+msgstr "Keine Angabe"
+
+msgid "Production sector"
+msgstr "Verarbeitendes Gewerbe"
+
+msgid "Private Services"
+msgstr "Private Dienstleistungen"
+
+msgid "Public Services"
+msgstr "Öffentliche Dienstleistungen"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Gibt es in diesem Betrieb einen {Beauftragten für Sicherheit und Gesundheitsschutz}*?"
+
+msgid "And is there a {shopfloor trade union representation}* in your establishment?"
+msgstr "Gibt es in Ihrem Betrieb auch eine {Gewerkschaftsvertretung der Werksmitarbeiter}*?"

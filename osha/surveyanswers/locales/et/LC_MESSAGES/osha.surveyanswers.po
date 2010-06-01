@@ -1273,17 +1273,59 @@ msgid "Very willing"
 msgstr "Väga hästi"
 
 #: Question-group labels
+#msgid "General health and safety management in the establishment"
+#msgstr "TERVISHOIU JA OHUTUSE ÜLDINE KORRALDUS ETTEVÕTTES"
+
+#msgid "Health and safety risks in the establishment"
+#msgstr "TERVISHOIU- JA OHUTUSALASED RISKID ETTEVÕTTES"
+
+#msgid "Management of psychosocial risks in the establishment"
+#msgstr "PSÜHHOSOTSIAALSETE RISKIDE JUHTIMINE ETTEVÕTTES"
+
+#msgid "Barriers for psychosocial risk management and existing support"
+#msgstr "TAKISTUSED PSÜHHOSOTISAALSE RISKIJUHTIMISE JA OLEMASOLEVA TOE RAKENDAMISEL"
+
+#msgid "Formal employee representation in OSH issues"
+#msgstr "AMETLIK TÖÖTAJATE ESINDUS TÖÖOHUTUSE JA -TERVISHOIU KÜSIMUSTES"
+
+msgid "Download data as excel"
+msgstr "Laadi andmed alla Exceli tabelina"
+
+msgid "Go Back"
+msgstr "Tagasi"
+
+msgid "Ungrouped"
+msgstr "Rühmitamata"
+
+msgid "Company Size"
+msgstr "Ettevõtte suurus"
+
+msgid "Sector Type"
+msgstr "Sektor"
+
+msgid "Production sector"
+msgstr "Tootmissektor"
+
+msgid "Private Services"
+msgstr "Erasektori teenused"
+
+msgid "Public Services"
+msgstr "Avalikud teenused"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Kas teie ettevõttes on olemas {töökeskkonna volinik}*?"
+
 msgid "General health and safety management in the establishment"
-msgstr "TERVISHOIU JA OHUTUSE ÜLDINE KORRALDUS ETTEVÕTTES"
+msgstr "Tervishoiu ja ohutuse üldine korraldus ettevõttes"
 
 msgid "Health and safety risks in the establishment"
-msgstr "TERVISHOIU- JA OHUTUSALASED RISKID ETTEVÕTTES"
+msgstr "Tervishoiu- ja ohutusalased riskid ettevõttes"
 
 msgid "Management of psychosocial risks in the establishment"
-msgstr "PSÜHHOSOTSIAALSETE RISKIDE JUHTIMINE ETTEVÕTTES"
+msgstr "Psühhosotsiaalsete riskide juhtimine ettevõttes"
 
 msgid "Barriers for psychosocial risk management and existing support"
-msgstr "TAKISTUSED PSÜHHOSOTISAALSE RISKIJUHTIMISE JA OLEMASOLEVA TOE RAKENDAMISEL"
+msgstr "Takistused psühhosotsiaalsete riskide juhtimise ja olemasoleva toe rakendamisel"
 
 msgid "Formal employee representation in OSH issues"
-msgstr "AMETLIK TÖÖTAJATE ESINDUS TÖÖOHUTUSE JA -TERVISHOIU KÜSIMUSTES"
+msgstr "Ametlik töötajate esindus tööohutuse ja -tervishoiu küsimustes"

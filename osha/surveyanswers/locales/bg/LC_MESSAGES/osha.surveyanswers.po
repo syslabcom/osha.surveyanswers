@@ -1319,3 +1319,29 @@ msgid "The role of ER in the OSH management"
 msgstr "РОЛЯТА НА ПРЕДСТАВИТЕЛЯ НА РАБОТНИЦИТЕ И СЛУЖИТЕЛИТЕ В УПРАВЛЕНИЕТО НА БЕЗОПАСНОСТТА И ЗДРАВЕТО ПРИ РАБОТА"
 msgid "Drivers and barriers for psychosocial risk management"
 msgstr "МОТИВИРАЩИ ФАКТОРИ И ПРЕЧКИ ПРЕД УПРАВЛЕНИЕТО НА ПСИХОСОЦИАЛНИТЕ РИСКОВЕ"
+msgid "Download data as excel"
+msgstr "Изтеглете данните като excel"
+
+msgid "Go Back"
+msgstr "Върнете се обратно"
+
+msgid "Ungrouped"
+msgstr "Негрупирани"
+
+msgid "Company Size"
+msgstr "Размер на предприятието"
+
+msgid "Sector Type"
+msgstr "Вид сектор"
+
+msgid "Production sector"
+msgstr "Производствен сектор"
+
+msgid "Private Services"
+msgstr "Частни услуги"
+
+msgid "Public Services"
+msgstr "Обществени услуги"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Има ли член на {представител по здравето и безопасността}* в това предприятие?"

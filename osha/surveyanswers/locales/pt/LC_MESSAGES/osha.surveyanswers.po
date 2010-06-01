@@ -1301,3 +1301,29 @@ msgid "The role of ER in the OSH management"
 msgstr "O PAPEL DO ER NA GESTÃO DA SEGURANÇA E SAÚDE NO TRABALHO"
 msgid "Drivers and barriers for psychosocial risk management"
 msgstr "IMPULSIONADORES E OBSTÁCULOS PARA A GESTÃO DOS RISCOS PSICOSSOCIAIS"
+msgid "Download data as excel"
+msgstr "Descarregar dados em formato Excel"
+
+msgid "Go Back"
+msgstr "Regressar"
+
+msgid "Ungrouped"
+msgstr "Não agrupados"
+
+msgid "Company Size"
+msgstr "Dimensão da empresa"
+
+msgid "Sector Type"
+msgstr "Tipo de sector"
+
+msgid "Production sector"
+msgstr "Sector de produção"
+
+msgid "Private Services"
+msgstr "Serviços privados"
+
+msgid "Public Services"
+msgstr "Serviços públicos"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Há algum membro da {representante em matéria de saúde e segurança}* neste estabelecimento?"

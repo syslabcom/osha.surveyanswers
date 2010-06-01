@@ -1331,3 +1331,29 @@ msgid "The role of ER in the OSH management"
 msgstr "Ο ΡΟΛΟΣ ΤΟΥ ER ΣΤΗ ΔΙΑΧΕΙΡΙΣΗ ΤΗΣ ΥΑΕ (Υγείας και Ασφάλειας στην Εργασία)"
 msgid "Drivers and barriers for psychosocial risk management"
 msgstr "ΚΙΝΗΤΡΑ ΚΑΙ ΕΜΠΟΔΙΑ ΓΙΑ ΤΗ ΔΙΑΧΕΙΡΙΣΗ ΨΥΧΟΚΟΙΝΩΝΙΚΩΝ ΚΙΝΔΥΝΩΝ"
+msgid "Download data as excel"
+msgstr "Μεταφορτώστε τα δεδομένα σε αρχείο excel"
+
+msgid "Go Back"
+msgstr "Επιστροφή"
+
+msgid "Ungrouped"
+msgstr "Μη ομαδοποιημένα δεδομένα"
+
+msgid "Company Size"
+msgstr "Μέγεθος εταιρείας"
+
+msgid "Sector Type"
+msgstr "Κλάδος"
+
+msgid "Production sector"
+msgstr "Τομέας παραγωγής"
+
+msgid "Private Services"
+msgstr "Υπηρεσίες ιδιωτικού τομέα"
+
+msgid "Public Services"
+msgstr "Υπηρεσίες δημοσίου τομέα"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Υπάρχει κάποιο μέλος {εκπρόσωπος ασφάλειας και υγείας}* στη συγκεκριμένη επιχείρηση?"

@@ -1183,3 +1183,74 @@ msgid "The role of ER in the OSH management"
 msgstr "DE ROL VAN DE PV IN DE AANPAK VAN DE ARBEIDSOMSTANDIGHEDEN, VEILIGHEID EN GEZONDHEID OP HET WERK"
 msgid "Drivers and barriers for psychosocial risk management"
 msgstr "PRIKKELS EN BARRIERES VOOR DE AANPAK VAN PSYCHOSOCIALE RISICO'S"
+msgid "Download data as excel"
+msgstr "Gegevens downloaden als Excel-bestand"
+
+msgid "Go Back"
+msgstr "Terug"
+
+msgid "Ungrouped"
+msgstr "Niet gegroepeerd"
+
+msgid "Company Size"
+msgstr "Bedrijfsgrootte"
+
+msgid "Sector Type"
+msgstr "Sectortype"
+
+msgid "1 to 9 employees"
+msgstr "1 tot 9 werknemers"
+
+msgid "10 to 19 employees"
+msgstr "10 tot 19 werknemers"
+
+msgid "20 to 49 employees"
+msgstr "20 tot 49 werknemers"
+
+msgid "50 to 249 employees"
+msgstr "50 tot 249 werknemers"
+
+msgid "250 to 499 employees"
+msgstr "250 tot 499 werknemers"
+
+msgid "500 or more employees"
+msgstr "500 werknemers of meer"
+
+msgid "No answer"
+msgstr "Geen antwoord"
+
+msgid "Production sector"
+msgstr "Productiesector"
+
+msgid "Private Services"
+msgstr "Private diensten"
+
+msgid "Public Services"
+msgstr "Openbare diensten"
+
+msgid "Have you used health and safety information from any of the following bodies or institutions?  Insurance providers"
+msgstr "Hebt u gebruik gemaakt van veiligheids- en gezondheidsinformatie van een of meer van de volgende instanties of instellingen? Verzekeringsmaatschappijen"
+
+msgid "Have you used health and safety information from any of the following bodies or institutions?  The European Agency for safety and health at work"
+msgstr "Hebt u gebruik gemaakt van veiligheids- en gezondheidsinformatie van een of meer van de volgende instanties of instellingen? Het Europees Agentschap voor veiligheid en gezondheid op het werk"
+
+msgid "Have you used health and safety information from any of the following bodies or institutions?  Contracted health and safety experts"
+msgstr "Hebt u gebruik gemaakt van veiligheids- en gezondheidsinformatie van een of meer van de volgende instanties of instellingen? Gecontracteerde veiligheids- en gezondheidsdeskundigen (arbodeskundigen)"
+
+msgid "Have you used health and safety information from any of the following bodies or institutions?  Employers? organisations"
+msgstr "Hebt u gebruik gemaakt van veiligheids- en gezondheidsinformatie van een of meer van de volgende instanties of instellingen? Werkgeversorganisaties"
+
+msgid "Have you used health and safety information from any of the following bodies or institutions?  Trade unions"
+msgstr "Hebt u gebruik gemaakt van veiligheids- en gezondheidsinformatie van een of meer van de volgende instanties of instellingen? Vakbonden"
+
+msgid "Have you used health and safety information from any of the following bodies or institutions?  Official institutes for health and safety at work "
+msgstr "Hebt u gebruik gemaakt van veiligheids- en gezondheidsinformatie van een of meer van de volgende instanties of instellingen? Officiële instellingen voor veiligheid en gezondheid op het werk (arbodiensten)"
+
+msgid "Have you used health and safety information from any of the following bodies or institutions?  The {labour inspectorate}*"
+msgstr "Hebt u gebruik gemaakt van veiligheids- en gezondheidsinformatie van een of meer van de volgende instanties of instellingen? De {arbeidsinspectie}*"
+
+msgid "Have you used health and safety information from any of the following bodies or institutions?  In-house health and safety services"
+msgstr "Hebt u gebruik gemaakt van veiligheids- en gezondheidsinformatie van een of meer van de volgende instanties of instellingen? Interne veiligheids- en gezondheidsdiensten"
+
+msgid "Does your establishment have an internal {health and safety representative}*?"
+msgstr "Heeft uw organisatie een interne {veiligheids- en gezondheidsvertegenwoordiger}*?"

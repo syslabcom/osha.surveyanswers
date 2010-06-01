@@ -1215,3 +1215,51 @@ msgid "The role of ER in the OSH management"
 msgstr "TYÖNTEKIJÖIDEN EDUSTAJAN ROOLI TYÖSUOJELUASIOISSA"
 msgid "Drivers and barriers for psychosocial risk management"
 msgstr "PSYKOSOSIAALISTEN RISKIEN HALLINNAN ESTEET JA NYKYINEN TUKI"
+
+msgid "Download data as excel"
+msgstr "Lataa Excel-muodossa"
+
+msgid "Go Back"
+msgstr "Takaisin"
+
+msgid "Ungrouped"
+msgstr "Ryhmittelemätön"
+
+msgid "Company Size"
+msgstr "Yrityksen koko"
+
+msgid "Sector Type"
+msgstr "Toimialan tyyppi"
+
+msgid "1 to 9 employees"
+msgstr "1 – 9 työntekijää"
+
+msgid "10 to 19 employees"
+msgstr "10 – 19 työntekijää"
+
+msgid "20 to 49 employees"
+msgstr "20 – 49 työntekijää"
+
+msgid "50 to 249 employees"
+msgstr "50 – 249 työntekijää"
+
+msgid "250 to 499 employees"
+msgstr "250 – 499 työntekijää"
+
+msgid "500 or more employees"
+msgstr "Yli 500 työntekijää"
+
+msgid "No answer"
+msgstr "Ei vastausta"
+
+msgid "Production sector"
+msgstr "Tuotantosektori"
+
+msgid "Private Services"
+msgstr "Yksityiset palvelut"
+
+msgid "Public Services"
+msgstr "Julkiset palvelut"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Onko toimipaikassanne {työsuojeluvaltuutettu}*?"

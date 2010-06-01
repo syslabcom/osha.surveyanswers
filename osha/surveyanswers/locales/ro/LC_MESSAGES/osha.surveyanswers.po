@@ -1395,3 +1395,29 @@ msgid "The role of ER in the OSH management"
 msgstr "ROLUL REPREZENTANTULUI SALARIAŢILOR ÎN GESTIUNEA PROBLEMELOR DE SĂNĂTATE ŞI SECURITATE ÎN MUNCĂ"
 msgid "Drivers and barriers for psychosocial risk management"
 msgstr "FORŢA MOTRICE ŞI BARIERELE ÎN GESTIUNEA RISCURILOR PSIHOSOCIALE"
+msgid "Download data as excel"
+msgstr "Descărcaţi datele în format Excel"
+
+msgid "Go Back"
+msgstr "Înapoi"
+
+msgid "Ungrouped"
+msgstr "Negrupat"
+
+msgid "Company Size"
+msgstr "Dimensiunea întreprinderii"
+
+msgid "Sector Type"
+msgstr "Tipul sectorului"
+
+msgid "Production sector"
+msgstr "Sectorul de producţie"
+
+msgid "Private Services"
+msgstr "Servicii private"
+
+msgid "Public Services"
+msgstr "Servicii publice"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Există în această întreprindere un membru al {reprezentant pe probleme de sănătate şi securitate}*?"

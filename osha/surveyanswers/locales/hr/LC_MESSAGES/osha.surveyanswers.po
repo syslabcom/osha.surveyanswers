@@ -1269,17 +1269,59 @@ msgid "Very willing"
 msgstr "Vrlo spremno"
 
 #: Question-group labels
+#msgid "General health and safety management in the establishment"
+#msgstr "OPĆE UPRAVLJANJE ZAŠTITOM NA RADU U PODUZEĆU"
+
+#msgid "Health and safety risks in the establishment"
+#msgstr "OPASNOSTI PO ZDRAVLJE I SIGURNOST U PODUZEĆU"
+
+#msgid "Management of psychosocial risks in the establishment"
+#msgstr "UPRAVLJANJE PSIHOSOCIJALNIM OPASNOSTIMA U PODUZEĆU"
+
+#msgid "Barriers for psychosocial risk management and existing support"
+#msgstr "PREPREKE ZA UPRAVLJANJE PSIHOSOCIJALNIM OPASNOSTIMA I POSTOJEĆA PODRŠKA"
+
+#msgid "Formal employee representation in OSH issues"
+#msgstr "FORMALNO ZASTUPANJE ZAPOSLENIKA U PITANJIMA ZAŠTITE NA RADU"
+
+msgid "Download data as excel"
+msgstr "Preuzimanje podataka u excel formatu"
+
+msgid "Go Back"
+msgstr "Natrag"
+
+msgid "Ungrouped"
+msgstr "Negrupirano"
+
+msgid "Company Size"
+msgstr "Veličina tvrtke"
+
+msgid "Sector Type"
+msgstr "Vrsta sektora"
+
+msgid "Production sector"
+msgstr "Proizvodni sektor"
+
+msgid "Private Services"
+msgstr "Privatne usluge"
+
+msgid "Public Services"
+msgstr "Javne službe"
+
+msgid "Is there a member of the {health and safety representative}* in this establishment?"
+msgstr "Postoji li u ovom poduzeću član {povjerenika za sigurnost i zdravlje na radu}*?"
+
 msgid "General health and safety management in the establishment"
-msgstr "OPĆE UPRAVLJANJE ZAŠTITOM NA RADU U PODUZEĆU"
+msgstr "Opća uprava za sigurnost i zdravlje unutar poduzeća"
 
 msgid "Health and safety risks in the establishment"
-msgstr "OPASNOSTI PO ZDRAVLJE I SIGURNOST U PODUZEĆU"
+msgstr "Zdravstveni i sigurnosni rizici u poduzeću"
 
 msgid "Management of psychosocial risks in the establishment"
-msgstr "UPRAVLJANJE PSIHOSOCIJALNIM OPASNOSTIMA U PODUZEĆU"
+msgstr "Upravljanje psihosocijalnim rizicima u poduzeću"
 
 msgid "Barriers for psychosocial risk management and existing support"
-msgstr "PREPREKE ZA UPRAVLJANJE PSIHOSOCIJALNIM OPASNOSTIMA I POSTOJEĆA PODRŠKA"
+msgstr "Prepreke za upravljanje psihosocijalnim rizicima i postojeća podrška"
 
 msgid "Formal employee representation in OSH issues"
-msgstr "FORMALNO ZASTUPANJE ZAPOSLENIKA U PITANJIMA ZAŠTITE NA RADU"
+msgstr "Službeni predstavnik zaposlenika za pitanja sigurnosti i zdravlja na radu"
