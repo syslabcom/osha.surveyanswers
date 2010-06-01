@@ -1,11 +1,10 @@
 Changelog
 =========
 
-1.9.4 (unreleased)
+1.9.4 (2010-06-01)
 ------------------
 
-- Nothing changed yet.
-
+- Added the translations for the missing strings, received from the Agency [thomasw]
 
 1.9.3 (2010-05-26)
 ------------------
