@@ -1178,7 +1178,7 @@ msgid "Company Size"
 msgstr "Taille de l’entreprise"
 
 msgid "Sector Type"
-msgstr "SType de secteur"
+msgstr "Type de secteur"
 
 msgid "1 to 9 employees"
 msgstr "1 à 9 collaborateurs"
