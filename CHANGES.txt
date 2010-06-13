@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.9.5 (unreleased)
+1.9.5 (2010-06-13)
 ------------------
 
 - 2 translation fixes #1321 (thomasw)
