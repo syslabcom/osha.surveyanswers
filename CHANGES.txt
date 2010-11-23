@@ -1,10 +1,16 @@
 Changelog
 =========
 
-1.9.6 (unreleased)
+1.9.7 (unreleased)
 ------------------
 
 - Nothing changed yet.
+
+
+1.9.6 (2010-11-23)
+------------------
+
+- Fixed an issue with translated countries. Fixes #2213 (gerken)
 
 
 1.9.5 (2010-06-13)

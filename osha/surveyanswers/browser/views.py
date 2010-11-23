@@ -344,7 +344,7 @@ function FC_Rendered(DOMId){
                 sorted_keys_dataset = self.db.getOrderedAnswerMeanings(self.group_by)
             else:
                 sorted_keys_dataset = [""]
-                keyToName = lambda x: self.translate(ID_TO_LONG_NAME['%03i' % (x)])
+                keyToName = lambda x: ID_TO_LONG_NAME['%03i' % (x)]
                 chart_contents = {}
                 for key, value in contents.items():
                     chart_contents[keyToName(key)] = {"": value}
