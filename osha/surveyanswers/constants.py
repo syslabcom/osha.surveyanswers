@@ -1,5 +1,5 @@
 try:
-    from Products.OSHATranslations import OSHAMessageFactory as _
+    from osha.theme import OSHAMessageFactory as _
 except ImportError:
     def _(x):
         return x
