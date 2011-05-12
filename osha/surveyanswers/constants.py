@@ -1,8 +1,6 @@
-try:
-    from osha.theme import OSHAMessageFactory as _
-except ImportError:
-    def _(x):
-        return x
+from zope.i18nmessageid import MessageFactory
+_ = OSHAMessageFactory = MessageFactory('osha')
+
 SHORT_NAME_TO_ID = dict((
         ('AL', '001'),
         ('AD', '002'),
@@ -163,6 +161,5 @@ LONG_TO_TRANSLATED = dict((
         ('North Ireland', 'NI North Ireland'),
         ('Wales', 'WA Wales'),
 ))
-
 
 ID_TO_LONG_NAME = dict([(x[0], SHORT_NAME_TO_LONG[x[1]]) for x in ID_TO_SHORT_NAME.items()])
