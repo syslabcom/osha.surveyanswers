@@ -27,10 +27,8 @@ long_description = (
     '************\n'
     + '\n' +
     read('CONTRIBUTORS.txt')
-    + '\n' 
+    + '\n'
     )
-    
-tests_require=['zope.testing']
 
 setup(name='osha.surveyanswers',
       version=version,
@@ -59,11 +57,13 @@ setup(name='osha.surveyanswers',
           'archetypes.schemaextender',
           # -*- Extra requirements: -*-
       ],
-      tests_require=tests_require,
-      extras_require=dict(tests=tests_require),
-      test_suite = 'osha.surveyanswers.tests.test_docs.test_suite',
+      extras_require={
+          'test': [
+              'plone.app.testing',
+              'mock',
+          ],
+      },
       entry_points="""
-      # -*- entry_points -*- 
+      # -*- entry_points -*-
       """,
-      )      
-      
+      )
