@@ -6,7 +6,7 @@ from zope.interface import implements
 
 import sqlalchemy as sa #@UnresolvedImport
 
-from collective.lead.interfaces import IDatabase
+from osha.policy.interfaces import IDatabaseSettings
 
 from osha.surveyanswers.interfaces import ISurvey, ISurveyDatabase
 
@@ -50,7 +50,7 @@ class SurveyDatabase(object):
     @property
     def connection(self):
         if not hasattr(self, '_connection'):
-            db_util = getUtility(IDatabase, "osha.database")
+            db_util = getUtility(IDatabaseSettings )
             self._connection = db_util.connection
         return self._connection
 
