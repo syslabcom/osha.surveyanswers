@@ -64,6 +64,7 @@ setup(name='osha.surveyanswers',
           ],
       },
       entry_points="""
-      # -*- entry_points -*-
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
       )
