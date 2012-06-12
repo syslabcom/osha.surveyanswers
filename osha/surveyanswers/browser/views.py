@@ -201,7 +201,7 @@ class SingleQuestion(object):
                 [x for x in self.db.getDiscriminators() if x[0] in ['sec3', 'size_5']]]
 
     def absolute_url(self):
-        return self.context.context.absolute_url()
+        return self.context.absolute_url()
         
 class FusionJS(object):
     
