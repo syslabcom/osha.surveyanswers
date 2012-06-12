@@ -28,6 +28,12 @@ class SurveyDatabase(object):
     
     def __init__(self, context):
         self.context = context 
+	db_util = getUtility(IDatabaseSettings)
+	dsn = "%(driver)s://%(username)s:%(password)s@%(host)s:%(port)s/%(database)s" % dict(
+	    driver=db_util.drivername, username=db_util.username, host=db_util.hostname,
+	    password=db_util.password, database=db_util.database, port=db_util.port)
+        engine = sa.create_engine(dsn)
+        self.connection = engine.connect()
 
     @property
     def responses(self):
@@ -47,13 +53,6 @@ class SurveyDatabase(object):
             self._map_data = sa.Table('map_data', self.meta, autoload=True)
         return self._map_data 
     
-    @property
-    def connection(self):
-        if not hasattr(self, '_connection'):
-            db_util = getUtility(IDatabaseSettings )
-            self._connection = db_util.connection
-        return self._connection
-
     @property
     def meta(self):
         if not hasattr(self, '_meta'):
