@@ -7,6 +7,7 @@ from zope.component import adapts, getMultiAdapter
 from zope.interface import implements
 from zope.publisher.interfaces.browser import IBrowserRequest, IBrowserPublisher,\
     IBrowserView
+from zope.publisher.interfaces import IPublishTraverse
 from ZPublisher.BaseRequest import DefaultPublishTraverse
 
 import xlwt
@@ -19,7 +20,7 @@ from osha.surveyanswers.interfaces import ISurvey, ISingleQuestion,\
     ISurveyDatabase
 
 class SurveyTraverser(object):
-    implements(IBrowserPublisher)
+    implements(IPublishTraverse)
     adapts(ISurvey, IBrowserRequest)
     
     def __init__(self, context, request):
@@ -40,7 +41,7 @@ class SurveyTraverser(object):
         return QuestionOverView(self.context, self.request), tuple()
     
 class CountryTraverser(object):
-    implements(IBrowserPublisher)
+    implements(IPublishTraverse)
     adapts(ISingleQuestion, IBrowserRequest)
     
     def __init__(self, context, request):
@@ -75,7 +76,7 @@ class SingleQuestionCountry(object):
         self.country = country
 
     def absolute_url(self):
-        return self.context.context.absolute_url()
+        return self.context.absolute_url()
     
     @property
     def question_text(self):
@@ -172,9 +173,17 @@ class XLSDownload(object):
         self.request.RESPONSE.setHeader("Content-disposition","attachment;filename=statistics.xls")
         return retval.getvalue()
     
-class SingleQuestion(object):
+class SingleQuestion(BrowserView):
     implements(IBrowserView, ISingleQuestion)
     adapts(ISurvey, IBrowserRequest)
+
+    def publishTraverse(self, request, name):
+        db = ISurveyDatabase(self.context)
+        if db.hasQuestion(self.question_id):
+            view = getMultiAdapter((self.context, request), name="question_country").__of__(self.context)
+            view.init(self.question_id, name)
+            return view
+        return DefaultPublishTraverse(self.context, request).publishTraverse(request, name)
     
     def __init__(self, context, request):
         self.context = context
