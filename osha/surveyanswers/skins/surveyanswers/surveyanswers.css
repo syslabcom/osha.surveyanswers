@@ -12,6 +12,7 @@ div.surveyanswers div.questions {
     width:66.2%;
     overflow: auto;
     padding-left: 1em;
+    margin-top:15px;
     max-height: 100%;
 }
 
@@ -19,7 +20,6 @@ div.surveyanswers div.inner_questions{
 display:block;
 margin-left:-9px;
 position:relative;
-margin-top:15px;
     border-top:1px solid #C4C2C2;
     border-left:1px solid #C4C2C2;
     border-right:1px solid #C4C2C2;
