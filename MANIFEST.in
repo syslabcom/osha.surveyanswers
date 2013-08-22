@@ -1,0 +1,19 @@
+include *.pot
+include *.txt
+recursive-include db_scripts *.gitignore
+recursive-include db_scripts *.py
+recursive-include db_scripts *.sh
+recursive-include db_scripts *.sql
+recursive-include db_scripts *.txt
+recursive-include docs *.EUPL
+recursive-include docs *.GPL
+recursive-include docs *.txt
+recursive-include osha *.css
+recursive-include osha *.jpg
+recursive-include osha *.po
+recursive-include osha *.pot
+recursive-include osha *.pt
+recursive-include osha *.py
+recursive-include osha *.txt
+recursive-include osha *.xml
+recursive-include osha *.zcml
