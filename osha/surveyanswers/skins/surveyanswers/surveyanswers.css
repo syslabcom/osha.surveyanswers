@@ -5,193 +5,21 @@ div.surveyanswers div.group{
     border-width: 1px;
 }
 
-/* quick fix is here */
 div.surveyanswers div.questions {
     left:16.8%;
     position:absolute;
     top:3%;
     width:66.2%;
+    overflow: auto;
     padding-left: 1em;
-    max-height: 600px;
-    overflow: scroll;
-}
-/* end quick fix */
-
-div.surveyanswers div.inner_questions{
-display:block;
-margin-left:-9px;
-position:relative;
-top:15px;
-    border-top:1px solid #C4C2C2;
-    border-left:1px solid #C4C2C2;
-    border-right:1px solid #C4C2C2;
-    background-color: #F7F7F7;
-    z-index:3;
-}
-
-body.section-sub-esener div#portal-network{
-    display: none;
-}
-
-body.section-sub-esener #portal-column-two {
-    display: none;
-}
-
-body.section-sub-esener #portal-column-one {
-    margin: 4em 0 0 -100%;
-}
-
-body.section-sub-esener #portal-column-content {
-    width: 84%;
-    height: 1200px;
-}
-
-body.section-sub-esener #portal-breadcrumbs {
-    display: none;
-}
-
-body.section-sub-esener div.content-column {
-    margin-top: 2em;
-}
-
-body.section-sub-esener h1.documentFirstHeading {
-    background: url("esener_logo_mini.jpg") no-repeat scroll right center #C5CBD8;
-}
-
-div.surveyanswers ul{
-    margin: 0;
-    padding: 0 0.5em;
-    }
-div.surveyanswers li {
-    border-bottom:1px solid #F1BA8D;
-    /*border-color: :#F1BA8D;*/
-    border-width:1px;
-    list-style-image:none;
-    list-style-position:outside;
-    list-style-type:none;
-    padding:0 1em 4px;
-    margin-bottom: 0;
-}
-
-div.surveyanswers_country{
-    padding-top: 4em;
-    }
-
-div.surveyanswers_detail{
-    padding-top: 1em;
-    }
-
-div#chartdiv {
-    overflow-x: auto;
-    height: 320px;
-}
-
-div.surveyContent ul.discriminators{
-    display: block;
-    border: 1px solid #AAB1C5;
-    list-style-type: none!important;
-    list-style-image: none!important;
-    padding: 1.5em;
-    margin-top: 15px;
-    width: 10em;
-    margin-left: 0;
-    margin-bottom: 0.5em;
-    }
-
-div.surveyContent div.surveyanswers_detail ul.discriminators{
-    margin-left: 4em;
-}
-
-div.surveyContent div.right_box{
-    float: left;
-}
-
-div.surveyContent div#mapdiv{
-    float: left;
-    width: 550px;
-}
-
-div.right_box ul.discriminators .selected,
-div.surveyanswers_detail ul.discriminators .selected{
-    background-color: #E6E8ED;
-    border: 1px solid #AAB1C5;
-    padding: 1px 4px;
-    margin-left: -4px;
-    }
-
-div.surveyContent .excel-download {
-    display: list-item;
-    list-style-image: url(msexcel_icon.gif);
-    list-style-position: inside;
-    }
-
-div.surveyContent div.surveyanswers_detail .excel-download {
-    margin-left: 4em;
-}
-
-.surveyanswers ul.questionslvl1 li.title, div.inner_questions li {
-    border-bottom:1px dotted #C6C6C6;
-    background-color: #F7F7F7;
-    font-size:110%;
-    font-weight:Normal;
-    padding:0 0 0.2em;
-    cursor: pointer;
-}
-
-div.inner_questions a{
-    display:block;
-}
-
-.surveyanswers ul.questionslvl1 li.title:hover, div.inner_questions li:hover {
-    background-color: #C5CBD8;
-}
-
-.surveyanswers ul.questionslvl1 li.title.selected, div.inner_questions li.selected{
-    background-color: #C5CBD8;
-}   
-
-div.surveyContent h1{
-    border-bottom:medium none;
-    font-size:125%;
-    font-weight:bold;
-    padding:0 1em;
-    text-decoration: none;
-}
-
-div.surveyContent h2{
-    border-bottom:medium none;
-    font-size:100%;
-    font-weight:bold;
-    font-style: italic;
-    padding:0 1em;
-    text-decoration: none;
-}
-
-
-
-
-
-
-
-div.surveyanswers div.group{
-    background-color: #E6E8ED;
-    /*border-color: #AAB1C5;*/
-    border-style: solid;
-    border-width: 1px;
-}
-
-div.surveyanswers div.questions {
-    left:16.8%;
-    position:absolute;
-    top:3%;
-    width:66.2%;
+    max-height: 100%;
 }
 
 div.surveyanswers div.inner_questions{
 display:block;
 margin-left:-9px;
 position:relative;
-top:15px;
+margin-top:15px;
     border-top:1px solid #C4C2C2;
     border-left:1px solid #C4C2C2;
     border-right:1px solid #C4C2C2;
